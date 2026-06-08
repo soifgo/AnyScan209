@@ -1,6 +1,9 @@
 
 
- <img width="200" height="200" alt="icon" src="https://github.com/user-attachments/assets/1579986b-01d5-437d-9a16-009149290f95" />
+<p align="center">
+  <img width="300" height="300" alt="AnyScan209 Icon" src="https://github.com/user-attachments/assets/1579986b-01d5-437d-9a16-009149290f95" />
+</p>
+ 
 
 
 # 🛰️ AnyScan209 — Geophysical 2D/3D Mapping Software
