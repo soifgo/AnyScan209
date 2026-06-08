@@ -75,3 +75,12 @@ You can download the official, secure, and production-ready versions of AnyScan2
 
 * [Download via Uptodown](https://anyscan209.en.uptodown.com/android) 🚀
 * [Download via APKPure](https://apkpure.com/anyscan209/any.scan_209/download/1.86) 📱
+
+---
+
+## ⚖️ License
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. 
+Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license. Copyright and license notices must be preserved.
+
+*Read the full [LICENSE](LICENSE) file for more details.*
