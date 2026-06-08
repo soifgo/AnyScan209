@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyScan209 — Geophysical 2D/3D Mapping Software</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --text-main: #f0f6fc;
+            --accent-color: #58a6ff;
+            --border-color: #30363d;
+            --success-color: #238636;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: var(--text-main);
+            font-size: 2.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        h2 {
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: var(--accent-color);
+        }
+
+        .developer-badge {
+            display: inline-block;
+            background-color: #21262d;
+            border: 1px solid var(--border-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .lead-text {
+            font-size: 1.15rem;
+            color: #8b949e;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+
+        .tip-box {
+            background-color: rgba(56, 139, 253, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        .warning-box {
+            background-color: rgba(210, 153, 34, 0.1);
+            border-left: 4px solid #d29922;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 50px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-uptodown {
+            background-color: #004b93;
+        }
+
+        .btn-apkpure {
+            background-color: var(--success-color);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <img class="logo" alt="AnyScan209 Icon" src="https://github.com/user-attachments/assets/1579986b-01d5-437d-9a16-009149290f95" />
+            <h1>🛰️ AnyScan209</h1>
+            <div class="developer-badge">👨‍💻 Developer: Saeid Moghadam</div>
+            <p class="lead-text">Professional Geophysical 2D/3D Subsurface Mapping Software</p>
+        </header>
+
+        <section>
+            <p><strong>AnyScan209</strong> is an advanced, independent geophysical software utility designed and developed by <strong>Saeid Moghadam</strong>. This professional-grade Android application is engineered to transform raw sensor data into real-time <strong>2D and 3D subsurface visualization maps</strong>, providing high-performance rendering for independent researchers, geologists, and exploration specialists worldwide.</p>
+            <p>Highly optimized for geophysical surveying, ground scanning, mineral exploration, and environmental mapping, AnyScan209 delivers precise data visualization without the need for expensive proprietary platforms.</p>
+        </section>
+
+        <h2>🌐 Dual Operating Modes</h2>
+        
+        <h3>1. Internal Magnetic Sensor Mode</h3>
+        <ul>
+            <li><strong>Hardware-Free Scanning:</strong> Utilizes your smartphone's built-in magnetometer to monitor, record, and map localized magnetic fields instantly.</li>
+            <li><strong>Smart Isolation:</strong> Perfect for quick field trials, baseline testing, and learning the scanning grid logic.</li>
+        </ul>
+
+        <h3>2. External Sensor Mode (Hardware-Ready)</h3>
+        <ul>
+            <li><strong>Microcontroller Integration:</strong> Receives raw analog or digital data packets (ranging from <code>0 to 1024</code>) via Bluetooth from external hardware (e.g., AVR/ATmega chips or dedicated magnetometer modules).</li>
+            <li><strong>Versatile Data Processing:</strong> Can visualize magnetic field strength, temperature, altitude, metal detection signals, or any telemetry data.</li>
+        </ul>
+
+        <h2>🛠️ Key Features & Architecture</h2>
+        <ul>
+            <li><strong>Advanced Project Management:</strong> Seamlessly create new exploration grids, organize scanning tasks, or open/analyze previously saved databases.</li>
+            <li><strong>Real-Time 3D Rendering Page:</strong> The core interface of the app, capable of generating immediate 3D surface topographical graphs and color-coded anomaly maps as you walk the grid.</li>
+            <li><strong>Flexible Configuration & Color Theory:</strong> Toggle between sensor modes, customize color gradients for better stratigraphy contrast, and tweak scanning steps to match your field environment.</li>
+            <li><strong>Open-Source Initiative:</strong> Built with transparency in mind, ensuring fast runtime execution, clean UI layout, and stable navigation.</li>
+        </ul>
+
+        <h2>🚀 Quick Start Guide</h2>
+        <h3>How to Start a New Project:</h3>
+        <ol>
+            <li><strong>Define Your Grid:</strong> Enter your desired scan size by setting the <strong>Length</strong> and <strong>Width</strong> (Steps per Line / Total Lines).</li>
+            <li><strong>Name Your Project:</strong> Provide a unique filename to initialize the local storage database.</li>
+            <li><strong>Initialize:</strong> Tap the "Create / New" icon to build your grid.</li>
+            <li><strong>Navigate:</strong> Use the yellow back icon (or system back navigation) to jump directly into the active Scan Page.</li>
+        </ol>
+
+        <h3>Bluetooth Operations (External Mode):</h3>
+        <ul>
+            <li><strong>Connect:</strong> Tap the Bluetooth icon to scan, discover, and pair with your external hardware module.</li>
+            <li><strong>Disconnect/Reset:</strong> Long-press the Bluetooth icon to safely drop the current connection or reset the serial stream.</li>
+            <li><strong>Automated Stepping:</strong> Each valid data packet received from your hardware automatically triggers a data point capture and advances the scanner one step forward on the grid.</li>
+        </ul>
+
+        <h2>🔐 Required Permissions</h2>
+        <p>To ensure absolute stability, please grant the following permissions on the first launch:</p>
+        <ul>
+            <li><strong>Storage Access:</strong> For saving structured project files, exporting maps, and reading database logs.</li>
+            <li><strong>Bluetooth & Location:</strong> Required by Android core layout to discover and connect to external hardware modules stably.</li>
+        </ul>
+
+        <h2>💡 Expert Operator Tips</h2>
+        <div class="warning-box">
+            <strong>⚠️ Hardware Limitation:</strong> Some smartphone models do not possess an internal magnetometer sensor. On these devices, AnyScan209 will automatically default to External Sensor Mode.
+        </div>
+        <div class="tip-box">
+            <strong>🎯 Field Tip:</strong> When using the Internal Sensor Mode, mount your smartphone on a <strong>non-magnetic selfie stick</strong> or fiberglass rod to isolate the internal sensor from your hand's interference. You can also pair a cheap Bluetooth remote shutter to trigger each scan step manually and wirelessly!
+        </div>
+
+        <div class="download-section">
+            <h2>📥 Download AnyScan209</h2>
+            <p>You can download the official, secure, and production-ready versions from verified channels:</p>
+            <a href="https://anyscan209.en.uptodown.com/android" class="btn btn-uptodown" target="_blank">Download via Uptodown 🚀</a>
+            <a href="https://apkpure.com/anyscan209/any.scan_209/download/1.86" class="btn btn-apkpure" target="_blank">Download via APKPure 📱</a>
+        </div>
+
+        <h2>⚖️ License</h2>
+        <p>This project is licensed under the <strong>GNU General Public License v3.0 (GPL-3.0)</strong>. Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license. Copyright and license notices must be preserved.</p>
+
+        <footer>
+            <p>© 2026 GitHub, Inc. Developed with 💻 and ⚙️ by Saeid Moghadam (soifgo).</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
