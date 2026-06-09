@@ -49,22 +49,9 @@
             transform: scale(1.05);
         }
 
-        h1 {
-            color: var(--text-main);
-            font-size: 2.2rem;
-            margin: 20px 0 10px 0;
-        }
-
-        h2 {
-            color: var(--text-main);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 40px;
-        }
-
-        h3 {
-            color: var(--accent-color);
-        }
+        h1 { color: var(--text-main); font-size: 2.2rem; margin: 20px 0 10px 0; }
+        h2 { color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: var(--accent-color); }
 
         .developer-badge {
             display: inline-block;
@@ -78,22 +65,10 @@
             margin-bottom: 15px;
         }
 
-        .lead-text {
-            font-size: 1.15rem;
-            color: #8b949e;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        strong {
-            color: var(--text-main);
-        }
+        .lead-text { font-size: 1.15rem; color: #8b949e; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        strong { color: var(--text-main); }
 
         .tip-box {
             background-color: rgba(56, 139, 253, 0.1);
@@ -134,20 +109,18 @@
             color: white;
         }
 
-        .btn:active {
-            transform: scale(0.98);
-        }
+        .btn:active { transform: scale(0.98); }
+        .btn-uptodown { background-color: #004b93; }
+        .btn-apkpure { background-color: var(--success-color); }
+        .btn:hover { opacity: 0.9; }
 
-        .btn-uptodown {
-            background-color: #004b93;
-        }
-
-        .btn-apkpure {
-            background-color: var(--success-color);
-        }
-
-        .btn:hover {
-            opacity: 0.9;
+        /* Video Responsive Styling */
+        .video-container { text-align: center; margin: 20px 0; }
+        .responsive-video {
+            width: 30%;
+            max-width: 600px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         footer {
@@ -177,7 +150,6 @@
         </section>
 
         <h2>🌐 Dual Operating Modes</h2>
-        
         <h3>1. Internal Magnetic Sensor Mode</h3>
         <ul>
             <li><strong>Hardware-Free Scanning:</strong> Utilizes your smartphone's built-in magnetometer to monitor, record, and map localized magnetic fields instantly.</li>
@@ -199,20 +171,17 @@
         </ul>
 
         <h2>🚀 Quick Start Guide</h2>
+        <h2>🎥 AnyScan209 Video Tutorial</h2>
+        <div class="tip-box">
+            <p>Watch the step-by-step guide to master the <strong>AnyScan209</strong> mapping workflow and hardware integration.</p>
+        </div>
 
-<h2>🎥 AnyScan209 Video Tutorial</h2>
-<div class="tip-box">
-    <p>Watch the step-by-step guide to master the <strong>AnyScan209</strong> mapping workflow and hardware integration.</p>
-</div>
-
-<div style="text-align: center; margin: 20px 0;">
-    <video controls width="40%" style="border-radius: 12px; border: 1px solid var(--border-color);">
-        <source src="anyscan209.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-
+        <div class="video-container">
+            <video controls class="responsive-video">
+                <source src="anyscan209.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
         <h3>How to Start a New Project:</h3>
         <ol>
@@ -221,13 +190,6 @@
             <li><strong>Initialize:</strong> Tap the "Create / New" icon to build your grid.</li>
             <li><strong>Navigate:</strong> Use the yellow back icon (or system back navigation) to jump directly into the active Scan Page.</li>
         </ol>
-
-        <h3>Bluetooth Operations (External Mode):</h3>
-        <ul>
-            <li><strong>Connect:</strong> Tap the Bluetooth icon to scan, discover, and pair with your external hardware module.</li>
-            <li><strong>Disconnect/Reset:</strong> Long-press the Bluetooth icon to safely drop the current connection or reset the serial stream.</li>
-            <li><strong>Automated Stepping:</strong> Each valid data packet received from your hardware automatically triggers a data point capture and advances the scanner one step forward on the grid.</li>
-        </ul>
 
         <h2>🔐 Required Permissions</h2>
         <p>To ensure absolute stability, please grant the following permissions on the first launch:</p>
@@ -241,24 +203,21 @@
             <strong>⚠️ Hardware Limitation:</strong> Some smartphone models do not possess an internal magnetometer sensor. On these devices, AnyScan209 will automatically default to External Sensor Mode.
         </div>
         <div class="tip-box">
-            <strong>🎯 Field Tip:</strong> When using the Internal Sensor Mode, mount your smartphone on a <strong>non-magnetic selfie stick</strong> or fiberglass rod to isolate the internal sensor from your hand's interference. You can also pair a cheap Bluetooth remote shutter to trigger each scan step manually and wirelessly!
+            <strong>🎯 Field Tip:</strong> When using the Internal Sensor Mode, mount your smartphone on a <strong>non-magnetic selfie stick</strong> or fiberglass rod to isolate the internal sensor from your hand's interference.
         </div>
 
         <div class="download-section">
             <h2>📥 Download AnyScan209</h2>
-            <p>You can download the official, secure, and production-ready versions from verified channels:</p>
             <a href="https://anyscan209.en.uptodown.com/android" class="btn btn-uptodown" target="_blank">Download via Uptodown 🚀</a>
             <a href="https://apkpure.com/anyscan209/any.scan_209/download/1.86" class="btn btn-apkpure" target="_blank">Download via APKPure 📱</a>
         </div>
 
         <h2>⚖️ License</h2>
-        <p>This project is licensed under the <strong>GNU General Public License v3.0 (GPL-3.0)</strong>. Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license. Copyright and license notices must be preserved.</p>
+        <p>This project is licensed under the <strong>GNU General Public License v3.0 (GPL-3.0)</strong>.</p>
 
         <footer>
             <p>© 2026 GitHub, Inc. Developed with 💻 and ⚙️ by Saeid Moghadam (soifgo).</p>
         </footer>
-
     </div>
-
 </body>
 </html>
