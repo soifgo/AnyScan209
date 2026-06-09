@@ -3,102 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnyScan209 — User Tutorial</title>
+    <title>AnyScan209 — Official Full Tutorial</title>
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --text-color: #c9d1d9;
-            --text-main: #f0f6fc;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
-        }
-        html { scroll-behavior: smooth; }
+        :root { --bg-color: #0d1117; --text-color: #c9d1d9; --text-main: #f0f6fc; --accent-color: #58a6ff; --border-color: #30363d; }
         body { font-family: sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }
-        h1, h2 { color: var(--text-main); }
+        h1, h2, h3 { color: var(--text-main); }
         h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 40px; }
-        .toc { background: #161b22; padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); }
-        .toc ul { list-style: none; padding: 0; }
-        .toc li { margin: 10px 0; }
-        .toc a { color: var(--accent-color); text-decoration: none; font-weight: bold; }
-        code { background: #21262d; padding: 2px 5px; border-radius: 4px; color: #ffa657; }
-        
-        /* Video Styling */
         .video-wrapper { text-align: center; margin: 30px 0; }
-        .responsive-video { 
-            width: 30%; 
-            max-width: 600px; 
-            border-radius: 12px; 
-            border: 2px solid var(--border-color); 
-            background: #000;
-        }
+        .responsive-video { width: 30%; max-width: 600px; border-radius: 12px; border: 2px solid var(--border-color); }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>📖 AnyScan209 Official Tutorial</h1>
-        
-        <div class="toc">
-            <h3>Table of Contents</h3>
-            <ul>
-                <li><a href="#video-guide">🎥 Watch Video Guide</a></li>
-                <li><a href="#getting-started">1. Getting Started</a></li>
-                <li><a href="#modes-setup">2. Setting Up Operating Modes</a></li>
-                <li><a href="#project-flow">3. Project Workflow</a></li>
-                <li><a href="#bluetooth-tips">4. Bluetooth & Hardware</a></li>
-            </ul>
-        </div>
+<div class="container">
+    <h1>📖 AnyScan209 Official Tutorial</h1>
 
-        <h2 id="video-guide">🎥 Video Tutorial</h2>
-        <div class="video-wrapper">
-            <video controls class="responsive-video">
-                <source src="anyscan209.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-
-
-
-
-
-<h2 id="getting-started">1. Getting Started</h2>
-        <p>To begin your geophysical survey, launch the <strong>AnyScan209</strong> application and ensure all necessary system permissions—specifically <strong>Storage</strong> (for project saving) and <strong>Bluetooth/Location</strong> (for hardware communication)—are granted. Upon the first launch, the Dashboard will initialize. From here, you can select 'New Project' to define your scanning parameters or 'Open Project' to load previously saved database files (.db or .json) for further analysis and visualization.</p>
-
-        <h2 id="modes-setup">2. Setting Up Operating Modes</h2>
-        <p>AnyScan209 is engineered for versatility, supporting two primary operational modes:</p>
-        <ul>
-            <li><strong>Internal Magnetic Sensor Mode:</strong> This mode utilizes the smartphone's built-in magnetometer. It is ideal for baseline testing and surface-level magnetic field monitoring. <em>Important:</em> To minimize interference from the user's body, it is recommended to mount the device on a non-magnetic (fiberglass or wooden) rod during operation.</li>
-            <li><strong>External Sensor Mode (Hardware-Ready):</strong> This mode is designed for advanced exploration. It enables the app to receive real-time data packets from external microcontrollers (e.g., Arduino, ESP32, or AVR-based systems) via a Bluetooth serial connection. Ensure your external sensor module outputs raw data values within the <code>0-1024</code> range for optimal software scaling and rendering.</li>
-        </ul>
-
-        <h2 id="project-flow">3. Project Workflow</h2>
-        <p>To ensure data integrity, follow this standard scanning procedure:</p>
-        <ol>
-            <li><strong>Grid Definition:</strong> Set the exact dimensions for your scan area. Input the total number of survey lines and the number of steps per line to create an accurate map grid.</li>
-            <li><strong>Metadata & Storage:</strong> Assign a unique, descriptive name to your project. This ensures that all telemetry data is logged into a dedicated local file directory.</li>
-            <li><strong>Initialization:</strong> Tap the "Initialize" button to prepare the database.</li>
-            <li><strong>Scanning & Rendering:</strong> Once initialized, proceed to the 3D Rendering interface. As you move along the grid, the software will render real-time topographical graphs and color-coded heatmaps. Use the live preview to identify anomalies instantly.</li>
-        </ol>
-
-        <h2 id="bluetooth-tips">4. Bluetooth & Hardware</h2>
-        <p>If you experience data streaming latency or connection drops in External Mode, follow these troubleshooting steps:</p>
-        <ul>
-            <li><strong>Reset Connection:</strong> Long-press the Bluetooth connection icon on the interface to force a re-handshake with the external module.</li>
-            <li><strong>Baud Rate Sync:</strong> Verify that the baud rate of your external hardware (e.g., 9600 or 115200) matches the communication protocol configured within the app settings.</li>
-            <li><strong>Signal Integrity:</strong> Keep the Bluetooth module free of electromagnetic obstacles. Ensure no other high-energy electronic devices are interfering with the wireless bridge.</li>
-            <li><strong>Background Processes:</strong> Ensure that no other background applications are attempting to reserve the device's Bluetooth stack, as this can lead to serialized data corruption.</li>
-        </ul>
-
-
-
-
-
-
-        <footer style="margin-top: 50px; text-align: center; font-size: 0.9rem; color: #8b949e;">
-            <p>Need more help? Contact: <a href="mailto:ssmqqmss@gmail.com" style="color: var(--accent-color);">ssmqqmss@gmail.com</a></p>
-        </footer>
+    <div class="video-wrapper">
+        <video controls class="responsive-video">
+            <source src="anyscan209.mp4" type="video/mp4">
+        </video>
     </div>
+
+    <h2>1. Creating a Scan File</h2>
+    <p>AnyScan209 features three main screens. To create a scan, use the longitudinal and transverse bars to set your desired dimensions (min 8x8, max 100). Enter a name at the top if needed and click the "Create Scan" folder. If a new screen doesn't appear, you can proceed to the 3D mode. At the top (left to right), you will find: Open Scan, Export (OBJ, STL, CSV), and Bluetooth transfer. Long-press the Bluetooth icon to adjust transmission speed. Use the "Yellow Arrow" to reach Settings and the Bluetooth icon to manage device pairing. Once paired, the app remembers the device; long-press the icon if you need to refresh the list.</p>
+
+<img class="menu" alt="menu1" src="menu1.jpg" />
+
+    <h2>2. Scan Screen Operations</h2>
+    <p>Use the phone’s back button or the top arrow to enter the scan screen. The top menu (left to right) includes: New, 2D/3D mode, and scanning direction (Unidirectional/Bidirectional). Use the bottom seek bar to observe values, and the navigation bar to move forward/backward through grid cells. The "Forward/Backward" icons move the cursor without recording; use the "Record" button to log data. Long-press the Record button to enable blinking/timed recording (set speed in Settings); long-press again to exit. For manual value entry, set the sensor to "External" in Settings, return to the scan screen, enter values, and record to correct data.</p>
+    <p>After scanning, you can choose "Direct Save" (original data) or "Enhanced Save" (signal amplification). You can also save mid-scan via the top menu. Finally, click on the scan file to view it in high resolution.</p>
+
+<img class="menu" alt="menu2" src="menu2.jpg" />
+
+    <h2>3. 2D Menu Features</h2>
+    <p>This menu includes: Linear/Parabolic smoothing, step display modes, and 43+ color palettes. You can choose between two signal display modes (full color help). Additional options include: Standard Amplification, Mirrored Amplification, Noise Reduction (removes small anomalies), and Iron Object Detection (detects opposing poles with Single/Dipole modes). Use "Restore" to return to the last save, enable grid lines, or use "Zoom" if scan dimensions are disproportionate.</p>
+
+<img class="menu" alt="menu3" src="menu3.jpg" />
+
+    <h2>4. 3D View & Settings</h2>
+    <p>In 3D mode, use the rotation and depth/height seek bars. Long-press the blue seek bar to trigger automatic rotation. The top icon toggles between "Rotate" and "Move" modes; long-press it to show the center point.</p>
+    <p><strong>3D Menu:</strong> Options 1-2 (Navigation), 3 (Default textures), 4 (Custom image from album), 4-5 (Lighting/Shading), 6-10 (Previous settings), 11-14 (Map modes: Top/Bottom/Inverted, etc. - note: geological surveys often use "all values down"), 15-20 (Depth slice, Cross-section, Color filtering, Full/Directional guide, Background). The final option, "Base Plate," allows full/grid display, glass/transparent mode, direction guides, and custom background image settings.</p>
+
+<img class="menu" alt="menu4" src="menu4.jpg" />
+
+    <h2>5. General Settings</h2>
+    <p>Accessible from both screens. Top: Update/Version, Sensor Select (Internal/External; long-press Internal for Magnetometer/Altimeter), Language, Compass. Long-press the compass icon for orientation arrows. Essential options: Detector (Beep/Frequency sound), Vibration (feedback), Keep Screen On, and Auxiliary Graphics (Long-press to enable: Sensitivity, Logarithmic, Linear Meter, Mirror Meter, Full Meter). Bottom: 3 seek bars for Gain, Sampling Speed, and Movement Speed (for timed/automatic modes).</p>
+
+<img class="menu" alt="menu5" src="menu5.jpg" />
+
+    <footer style="margin-top: 50px; text-align: center; color: #8b949e;">
+        <p>Support: <a href="mailto:ssmqqmss@gmail.com" style="color: var(--accent-color);">ssmqqmss@gmail.com</a></p>
+    </footer>
+</div>
 </body>
 </html>
