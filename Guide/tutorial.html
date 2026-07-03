@@ -244,7 +244,7 @@ Loop</pre>
     <span class="function">digitalWrite</span>(outputPin, HIGH);
     lastSwitchState = HIGH;
     analogValue = <span class="function">analogRead</span>(A1);
-    Serial.<span class="function">println</span>(analogValue);
+    Serial.<span class="function">println</span>(analogValue);  <span class="comment">// Sends value with CR+LF (\r\n)</span>
   }
 }</pre>
     </div>
