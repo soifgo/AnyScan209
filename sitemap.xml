@@ -1,21 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+ 
   <url>
     <loc>https://soifgo.github.io/AnyScan209/</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://soifgo.github.io/AnyScan209/logo.png</image:loc>
+      <image:title>AnyScan209 Logo</image:title>
+    </image:image>
   </url>
+
+ 
   <url>
     <loc>https://soifgo.github.io/AnyScan209/Guide/tutorial.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+ 
   <url>
     <loc>https://soifgo.github.io/AnyScan209/Guide/policy_anyscan209.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+ 
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu1.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu2.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu3.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu4.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu5.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu6.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/menu7.jpg</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+ 
+  <url>
+    <loc>https://soifgo.github.io/AnyScan209/Guide/anyscan209.mp4</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <video:video>
+      <video:thumbnail_loc>https://soifgo.github.io/AnyScan209/Guide/menu1.jpg</video:thumbnail_loc>
+      <video:title>AnyScan209 Tutorial</video:title>
+      <video:description>  AnyScan209</video:description>
+    </video:video>
+  </url>
+
 </urlset>
