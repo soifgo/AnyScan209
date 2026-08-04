@@ -1,2 +1,3 @@
 User-agent: *
-Disallow: /Guide/tutorial.html
+
+Sitemap: https://soifgo.github.io/AnyScan209/sitemap.xml
