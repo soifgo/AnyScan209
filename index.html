@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0d1117">
+    <meta name="theme-color" content="#0f172a">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Saeid Moghadam">
 
@@ -142,62 +142,107 @@
     </script>
 
     <style>
+        /* ====== تم جدید شبیه DeepSeek ====== */
         :root {
-            --bg-color: #0d1117;
-            --text-color: #c9d1d9;
-            --text-main: #f0f6fc;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
-            --success-color: #238636;
+            --bg-color: #0f172a;        /* آبی-تیره عمیق شبیه DeepSeek */
+            --bg-card: #1e293b;         /* کارت‌ها و باکس‌ها */
+            --text-color: #cbd5e1;      /* خاکستری-آبی روشن برای متن معمولی */
+            --text-main: #f1f5f9;       /* سفید-آبی برای تیترها */
+            --text-muted: #94a3b8;      /* برای متن‌های کم‌اهمیت‌تر */
+            --accent-color: #4f8cff;    /* آبی پررنگ شبیه DeepSeek */
+            --accent-hover: #6aa0ff;    /* آبی روشن‌تر برای هاور */
+            --border-color: #334155;    /* حاشیه‌ها با کنتراست خوب */
+            --success-color: #22c55e;   /* سبز شاداب برای دکمه دانلود */
+            --success-hover: #4ade80;
+            --code-bg: #0f172a;
+            --highlight-bg: #1e293b;
         }
 
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.8;
-            margin: 0;
+            line-height: 1.9;
             padding: 20px;
+            font-size: 1.05rem;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 820px;
             margin: 0 auto;
         }
 
+        /* ====== تیترها با فونت خوانا ====== */
         h1, h2, h3, h4 {
             color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         h1 {
             border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 15px;
-            font-size: 2rem;
+            padding-bottom: 16px;
+            font-size: 2.2rem;
+            line-height: 1.2;
         }
 
         h2 {
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
-            margin-top: 45px;
-            font-size: 1.6rem;
+            margin-top: 48px;
+            font-size: 1.7rem;
         }
 
         h3 {
             color: var(--accent-color);
-            margin-top: 30px;
-            font-size: 1.3rem;
+            margin-top: 32px;
+            font-size: 1.35rem;
         }
 
         h4 {
             color: var(--text-main);
-            margin-top: 25px;
-            font-size: 1.1rem;
+            margin-top: 26px;
+            font-size: 1.15rem;
         }
 
+        /* ====== پاراگراف‌ها ====== */
+        p {
+            color: var(--text-color);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        /* ====== لینک‌ها ====== */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* ====== لیست‌ها ====== */
+        ul, ol {
+            padding-left: 26px;
+            margin: 16px 0;
+            color: var(--text-color);
+        }
+
+        ul li, ol li {
+            margin-bottom: 6px;
+            font-size: 1.02rem;
+        }
+
+        /* ====== ویدیو ====== */
         .video-wrapper {
             text-align: center;
             margin: 30px 0;
@@ -215,6 +260,7 @@
             margin: 0 auto;
         }
 
+        /* ====== تصاویر منو ====== */
         .menu {
             width: 100%;
             max-width: 400px;
@@ -223,37 +269,32 @@
             margin: 20px auto;
             border-radius: 12px;
             border: 2px solid var(--border-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
         }
 
-        .menu-small {
-            max-width: 280px;
-        }
-
-        .menu-medium {
-            max-width: 480px;
-        }
-
-        .menu-large {
-            max-width: 650px;
-        }
+        .menu-small { max-width: 280px; }
+        .menu-medium { max-width: 480px; }
+        .menu-large { max-width: 650px; }
 
         .logo {
             max-width: 180px;
             height: auto;
             margin: 20px auto;
+            display: block;
         }
 
+        /* ====== کد بلاک ====== */
         .code-block {
-            background: #161b22;
+            background: var(--code-bg);
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 22px;
             margin: 25px 0;
             overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #e6edf3;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.92rem;
+            color: #e2e8f0;
+            line-height: 1.7;
         }
 
         .code-block pre {
@@ -262,122 +303,121 @@
             word-break: break-all;
         }
 
-        .code-block .comment { color: #8b949e; }
-        .code-block .keyword { color: #ff7b72; }
-        .code-block .string { color: #a5d6ff; }
-        .code-block .function { color: #d2a8ff; }
-        .code-block .number { color: #79c0ff; }
+        .code-block .comment { color: #64748b; font-style: italic; }
+        .code-block .keyword { color: #c084fc; }
+        .code-block .string { color: #7dd3fc; }
+        .code-block .function { color: #fbbf24; }
+        .code-block .number { color: #34d399; }
 
+        /* ====== جدول مقایسه ====== */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 0.95rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .comparison-table th,
         .comparison-table td {
             border: 1px solid var(--border-color);
-            padding: 12px 15px;
+            padding: 12px 16px;
             text-align: left;
         }
 
         .comparison-table th {
-            background: #21262d;
+            background: #1e293b;
             color: var(--text-main);
+            font-weight: 700;
         }
 
         .comparison-table tr:nth-child(even) {
-            background: #161b22;
+            background: #162032;
         }
 
+        .comparison-table tr:hover {
+            background: #253348;
+        }
+
+        /* ====== باکس هایلایت ====== */
         .highlight-box {
-            background: #1c2333;
+            background: var(--highlight-bg);
             border-left: 4px solid var(--accent-color);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 8px;
+            padding: 18px 22px;
+            margin: 22px 0;
+            border-radius: 0 12px 12px 12px;
+            color: var(--text-color);
         }
 
+        .highlight-box h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        .highlight-box ul {
+            margin-top: 8px;
+        }
+
+        /* ====== دکمه دانلود ====== */
         .download-btn {
             display: inline-block;
             background: var(--success-color);
-            padding: 16px 40px;
-            min-height: 56px;
-            min-width: 200px;
-            border-radius: 8px;
-            color: white;
+            padding: 18px 44px;
+            min-height: 60px;
+            min-width: 220px;
+            border-radius: 10px;
+            color: #ffffff;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 700;
             text-decoration: none;
-            transition: background 0.3s ease;
+            transition: background 0.25s ease, transform 0.15s ease;
             text-align: center;
             line-height: 1.4;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
         }
 
         .download-btn:hover {
-            background: #2ea043;
+            background: var(--success-hover);
             text-decoration: none;
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
         }
 
+        /* ====== باکس دانلود ====== */
         .download-box {
-            background: #161b22;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 24px;
+            margin: 24px 0;
             text-align: center;
         }
 
         .download-box a {
             color: var(--accent-color);
-            font-size: 1.1rem;
-            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 600;
         }
 
         .download-box a:hover {
-            text-decoration: underline;
+            color: var(--accent-hover);
         }
 
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            color: #8b949e;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--success-color);
-            color: white;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
+        /* ====== بخش FAQ ====== */
         .faq-section {
-            background: #161b22;
+            background: var(--bg-card);
             border-radius: 12px;
-            padding: 25px;
+            padding: 28px 30px;
             margin: 30px 0;
             border: 1px solid var(--border-color);
         }
 
         .faq-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -390,27 +430,98 @@
         .faq-item h4 {
             color: var(--accent-color);
             margin-bottom: 8px;
+            font-size: 1.1rem;
         }
 
+        .faq-item p {
+            color: var(--text-color);
+            margin-bottom: 0;
+        }
+
+        /* ====== فوتـر ====== */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 22px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ====== تیبل آف کانتنتس ====== */
+        .toc {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px 26px;
+            margin: 24px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .toc h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 6px;
+            font-size: 1.4rem;
+        }
+
+        .toc ol {
+            margin-bottom: 0;
+        }
+
+        .toc ol li {
+            margin-bottom: 4px;
+        }
+
+        .toc a {
+            color: var(--accent-color);
+        }
+
+        .toc a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ====== برچسب (badge) ====== */
+        .badge {
+            display: inline-block;
+            background: var(--success-color);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        /* ====== ریسپانسیو ====== */
         @media (max-width: 600px) {
-            body { padding: 10px; }
-            h1 { font-size: 1.6rem; }
-            h2 { font-size: 1.3rem; }
-            .code-block { font-size: 0.8rem; padding: 12px; }
+            body { padding: 12px; font-size: 0.98rem; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.35rem; }
+            h3 { font-size: 1.15rem; }
+            .code-block { font-size: 0.82rem; padding: 14px; }
             .menu { max-width: 100%; }
             .menu-small, .menu-medium, .menu-large { max-width: 100%; }
             .download-btn {
-                font-size: 1rem;
-                padding: 14px 24px;
-                min-height: 48px;
+                font-size: 1.05rem;
+                padding: 16px 28px;
+                min-height: 52px;
                 min-width: 160px;
             }
+            .faq-section { padding: 18px; }
+            .toc { padding: 16px; }
         }
 
         @media (max-width: 400px) {
             .comparison-table { font-size: 0.75rem; }
             .comparison-table th,
             .comparison-table td { padding: 6px 8px; }
+            body { font-size: 0.92rem; }
         }
     </style>
 
@@ -422,13 +533,13 @@
         <!-- ====== HEADER ====== -->
         <header style="text-align:center;">
             <img class="logo" src="logo.png" alt="AnyScan209 – Free 3D Ground Scanner and Magnetometer App Logo" loading="lazy">
-            <h1>AnyScan209 – Free 3D Ground Scanner & Magnetometer App for Android</h1>
-            <p style="font-size:1.2rem; color:var(--text-main);">
+            <h1>AnyScan209 – Free 3D Ground Scanner &amp; Magnetometer App for Android</h1>
+            <p style="font-size:1.2rem; color:var(--text-main); font-weight:500;">
                 <strong>AnyScan209</strong> is a professional <strong>free Android magnetometer app</strong> that transforms your smartphone into a powerful <strong>3D ground scanner</strong>.
                 Designed for <strong>geophysical surveys</strong>, <strong>magnetic field visualization</strong>, and <strong>subsurface anomaly detection</strong>,
                 this app supports both internal smartphone sensors and external Bluetooth modules like HC-05.
             </p>
-            <p style="font-size:1rem; color:var(--text-color);">
+            <p style="font-size:1.05rem; color:var(--text-color);">
                 With AnyScan209, you can perform <strong>2D and 3D subsurface mapping</strong>, export data in <strong>OBJ, STL, and CSV formats</strong>,
                 and analyze magnetic field variations with precision. Whether you're a researcher, educator, or hobbyist,
                 this <strong>free ground scanner app</strong> provides professional-grade geophysical analysis tools right on your Android device.
@@ -436,7 +547,7 @@
         </header>
 
         <!-- ====== DOWNLOAD BUTTON ====== -->
-        <div style="text-align:center; margin:25px 0;">
+        <div style="text-align:center; margin:28px 0;">
             <a href="https://anyscan209.en.uptodown.com/android" class="download-btn" rel="nofollow">
                 📥 Download AnyScan209 (Free)
             </a>
@@ -469,7 +580,7 @@
                 <source src="anyscan209.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p style="font-size:0.9rem; color:var(--text-color);">
+            <p style="font-size:0.95rem; color:var(--text-muted);">
                 <strong>Video:</strong> AnyScan209 tutorial – how to use the 3D ground scanner and magnetometer app for Android.
             </p>
         </div>
@@ -711,7 +822,7 @@
         </div>
 
         <!-- ====== DOWNLOAD BUTTON ====== -->
-        <div style="text-align:center; margin:25px 0;">
+        <div style="text-align:center; margin:28px 0;">
             <a href="https://anyscan209.en.uptodown.com/android" class="download-btn" rel="nofollow">
                 📥 Download AnyScan209 (Free)
             </a>
@@ -719,7 +830,7 @@
 
         <!-- ====== SECTION 11 ====== -->
         <div class="download-box">
-            <h2>Proteus File Download</h2>
+            <h2 style="margin-top:0;">Proteus File Download</h2>
             <p>
                 <a href="Proteuse_file.zip">
                     📦 Download All Files (Proteus Project)
@@ -753,14 +864,14 @@
                     <tr><td><strong>STMicroelectronics</strong></td><td>LIS3MDL</td><td>1000 Hz</td><td>Medium</td><td>Medium</td><td>Motorola, Nokia and LG devices</td></tr>
                 </tbody>
             </table>
-            <figcaption style="font-size:0.85rem; color:var(--text-color); margin-top:8px;">
+            <figcaption style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">
                 Table 1: Magnetometer sensor specifications for smartphones compatible with AnyScan209.
             </figcaption>
         </figure>
         
         <!-- ====== NEW: SENSOR PERFORMANCE EXPLANATION BOX ====== -->
         <div class="highlight-box" style="border-left-color: #f0883e; margin-top: 25px;">
-            <h3 style="color: #f0883e; margin-top: 0;">⚠️ Why does my flagship phone have a weaker or slower magnetometer sensor?</h3>
+            <h3 style="color: #fbbf24; margin-top: 0;">⚠️ Why does my flagship phone have a weaker or slower magnetometer sensor?</h3>
             <p>
                 <strong>Most flagship smartphones use high-quality 16-bit magnetometer sensors</strong> with excellent precision and fast sampling rates. However, you may notice that a mid-range or budget device (e.g., Samsung Galaxy A-series) performs more sensitively or responds faster in certain conditions.
             </p>
@@ -885,7 +996,7 @@
                 &nbsp;|&nbsp;
                 <a href="https://github.com/soifgo/AnyScan209" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </p>
-            <p style="font-size:0.85rem; margin-top:8px;">
+            <p style="font-size:0.9rem; margin-top:8px; color:var(--text-muted);">
                 &copy;2025-2026 AnyScan209 — Built by Saeid Moghadam
             </p>
         </footer>
