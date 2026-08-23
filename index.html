@@ -142,17 +142,17 @@
     </script>
 
     <style>
-        /* ====== تم جدید شبیه DeepSeek ====== */
+ 
         :root {
-            --bg-color: #0f172a;        /* آبی-تیره عمیق شبیه DeepSeek */
-            --bg-card: #1e293b;         /* کارت‌ها و باکس‌ها */
-            --text-color: #cbd5e1;      /* خاکستری-آبی روشن برای متن معمولی */
-            --text-main: #f1f5f9;       /* سفید-آبی برای تیترها */
-            --text-muted: #94a3b8;      /* برای متن‌های کم‌اهمیت‌تر */
-            --accent-color: #4f8cff;    /* آبی پررنگ شبیه DeepSeek */
-            --accent-hover: #6aa0ff;    /* آبی روشن‌تر برای هاور */
-            --border-color: #334155;    /* حاشیه‌ها با کنتراست خوب */
-            --success-color: #22c55e;   /* سبز شاداب برای دکمه دانلود */
+            --bg-color: #0f172a;        
+            --bg-card: #1e293b;          
+            --text-color: #cbd5e1;      
+            --text-main: #f1f5f9;        
+            --text-muted: #94a3b8;       
+            --accent-color: #4f8cff;     
+            --accent-hover: #6aa0ff;    
+            --border-color: #334155;     
+            --success-color: #22c55e;    
             --success-hover: #4ade80;
             --code-bg: #0f172a;
             --highlight-bg: #1e293b;
@@ -178,7 +178,7 @@
             margin: 0 auto;
         }
 
-        /* ====== تیترها با فونت خوانا ====== */
+ 
         h1, h2, h3, h4 {
             color: var(--text-main);
             font-weight: 700;
@@ -211,14 +211,14 @@
             font-size: 1.15rem;
         }
 
-        /* ====== پاراگراف‌ها ====== */
+ 
         p {
             color: var(--text-color);
             margin-bottom: 16px;
             font-size: 1.05rem;
         }
 
-        /* ====== لینک‌ها ====== */
+ 
         a {
             color: var(--accent-color);
             text-decoration: none;
@@ -230,7 +230,7 @@
             text-decoration: underline;
         }
 
-        /* ====== لیست‌ها ====== */
+ 
         ul, ol {
             padding-left: 26px;
             margin: 16px 0;
@@ -242,7 +242,7 @@
             font-size: 1.02rem;
         }
 
-        /* ====== ویدیو ====== */
+ 
         .video-wrapper {
             text-align: center;
             margin: 30px 0;
@@ -260,7 +260,7 @@
             margin: 0 auto;
         }
 
-        /* ====== تصاویر منو ====== */
+ 
         .menu {
             width: 100%;
             max-width: 400px;
@@ -283,7 +283,7 @@
             display: block;
         }
 
-        /* ====== کد بلاک ====== */
+ 
         .code-block {
             background: var(--code-bg);
             border-radius: 12px;
@@ -309,7 +309,7 @@
         .code-block .function { color: #fbbf24; }
         .code-block .number { color: #34d399; }
 
-        /* ====== جدول مقایسه ====== */
+ 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
@@ -341,7 +341,7 @@
             background: #253348;
         }
 
-        /* ====== باکس هایلایت ====== */
+  
         .highlight-box {
             background: var(--highlight-bg);
             border-left: 4px solid var(--accent-color);
@@ -360,7 +360,7 @@
             margin-top: 8px;
         }
 
-        /* ====== دکمه دانلود ====== */
+ 
         .download-btn {
             display: inline-block;
             background: var(--success-color);
@@ -386,7 +386,7 @@
             box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
         }
 
-        /* ====== باکس دانلود ====== */
+ 
         .download-box {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -406,7 +406,7 @@
             color: var(--accent-hover);
         }
 
-        /* ====== بخش FAQ ====== */
+ 
         .faq-section {
             background: var(--bg-card);
             border-radius: 12px;
@@ -438,7 +438,7 @@
             margin-bottom: 0;
         }
 
-        /* ====== فوتـر ====== */
+ 
         footer {
             margin-top: 50px;
             text-align: center;
@@ -455,7 +455,7 @@
             color: var(--accent-hover);
         }
 
-        /* ====== تیبل آف کانتنتس ====== */
+ 
         .toc {
             background: var(--bg-card);
             border-radius: 12px;
@@ -487,7 +487,7 @@
             color: var(--accent-hover);
         }
 
-        /* ====== برچسب (badge) ====== */
+  
         .badge {
             display: inline-block;
             background: var(--success-color);
@@ -498,7 +498,7 @@
             font-weight: 700;
         }
 
-        /* ====== ریسپانسیو ====== */
+ 
         @media (max-width: 600px) {
             body { padding: 12px; font-size: 0.98rem; }
             h1 { font-size: 1.7rem; }
@@ -575,15 +575,21 @@
         </nav>
 
         <!-- ====== VIDEO ====== -->
-        <div class="video-wrapper">
-            <video controls class="responsive-video" poster="og-banner.jpg">
-                <source src="anyscan209.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p style="font-size:0.95rem; color:var(--text-muted);">
-                <strong>Video:</strong> AnyScan209 tutorial – how to use the 3D ground scanner and magnetometer app for Android.
-            </p>
-        </div>
+<div class="video-wrapper">
+    <video controls class="responsive-video" poster="og-banner.jpg">
+        <source src="anyscan209.mp4" type="video/mp4">
+    </video>
+
+    <p>
+        <strong>Video:</strong> AnyScan209 tutorial
+    </p>
+
+    <div style="margin-top:15px;">
+        <a href="video.html" class="download-btn">
+            🎬 Open Dedicated Video Page
+        </a>
+    </div>
+</div>
 
         <!-- ====== SECTION 1 ====== -->
         <h2 id="create-scan">1. How to Create a Scan File in AnyScan209</h2>
