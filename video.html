@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -17,7 +16,6 @@
       href="https://soifgo.github.io/AnyScan209/video.html">
 
 <!-- Open Graph -->
-
 <meta property="og:type" content="video.other">
 <meta property="og:title"
       content="AnyScan209 Tutorial Video - 3D Ground Scanner & Magnetometer App">
@@ -31,7 +29,6 @@
 <meta property="og:image:height" content="630">
 
 <!-- Twitter -->
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title"
       content="AnyScan209 Tutorial Video - 3D Ground Scanner & Magnetometer App">
@@ -40,34 +37,29 @@
 <meta name="twitter:image"
       content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
 
-<!-- Video Structured Data -->
-
+<!-- ====== COMPLETE VideoObject Structured Data ====== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-
   "name": "AnyScan209 Tutorial - How to Use the 3D Ground Scanner App",
-
   "description": "Complete tutorial video showing how to use AnyScan209 for magnetic field scanning, 2D and 3D visualization, subsurface mapping, external sensor configuration, Bluetooth integration, and OBJ, STL, and CSV data export.",
-
   "thumbnailUrl": [
     "https://soifgo.github.io/AnyScan209/og-banner.jpg"
   ],
-
   "uploadDate": "2026-07-04T00:00:00+00:00",
-
   "duration": "PT36M55S",
-
   "contentUrl": "https://soifgo.github.io/AnyScan209/anyscan209.mp4",
-
   "embedUrl": "https://soifgo.github.io/AnyScan209/video.html",
-
   "publisher": {
     "@type": "Person",
     "name": "Saeid Moghadam"
   },
-
+  "interactionStatistic": {
+    "@type": "InteractionCounter",
+    "interactionType": "https://schema.org/WatchAction",
+    "userInteractionCount": "1"
+  },
   "potentialAction": {
     "@type": "WatchAction",
     "target": {
@@ -78,8 +70,32 @@
 }
 </script>
 
-<style>
+<!-- ====== WebPage with VideoObject as mainEntity (CRITICAL FOR WATCH PAGE) ====== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "AnyScan209 Tutorial Video - 3D Ground Scanner & Magnetometer App",
+  "description": "Official AnyScan209 tutorial video showing 3D ground scanning, magnetic field visualization, sensor configuration, subsurface mapping, and data export.",
+  "url": "https://soifgo.github.io/AnyScan209/video.html",
+  "mainEntity": {
+    "@type": "VideoObject",
+    "name": "AnyScan209 Tutorial - How to Use the 3D Ground Scanner App",
+    "description": "Complete tutorial video showing how to use AnyScan209 for magnetic field scanning, 2D and 3D visualization, subsurface mapping, external sensor configuration, Bluetooth integration, and OBJ, STL, and CSV data export.",
+    "thumbnailUrl": "https://soifgo.github.io/AnyScan209/og-banner.jpg",
+    "contentUrl": "https://soifgo.github.io/AnyScan209/anyscan209.mp4",
+    "embedUrl": "https://soifgo.github.io/AnyScan209/video.html",
+    "uploadDate": "2026-07-04T00:00:00+00:00",
+    "duration": "PT36M55S",
+    "publisher": {
+      "@type": "Person",
+      "name": "Saeid Moghadam"
+    }
+  }
+}
+</script>
 
+<style>
 body{
     margin:0;
     padding:0;
@@ -134,10 +150,13 @@ video{
     text-decoration:none;
     border-radius:8px;
     font-weight:bold;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 .download-btn:hover{
     opacity:.9;
+    transform: scale(1.02);
+    text-decoration:none;
 }
 
 .back-link{
@@ -157,6 +176,11 @@ footer{
     font-size:.9rem;
 }
 
+.meta-info {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
 </style>
 
 </head>
@@ -165,15 +189,14 @@ footer{
 
 <div class="container">
 
-```
-<h1>AnyScan209 Video Tutorial</h1>
+<h1>🎬 AnyScan209 Video Tutorial</h1>
 
-<div class="description">
+<p class="description">
     Watch the official AnyScan209 tutorial video and learn how to use
     the Android 3D Ground Scanner and Magnetometer application for
     magnetic field visualization, subsurface mapping, data collection,
     sensor configuration, and export operations.
-</div>
+</p>
 
 <div class="video-box">
 
@@ -187,30 +210,33 @@ footer{
 
     </video>
 
+    <p class="meta-info">
+        📅 Uploaded: July 4, 2026 &nbsp;|&nbsp; ⏱️ Duration: 36:55
+    </p>
+
 </div>
 
 <p class="description">
-    This 36-minute tutorial demonstrates scan creation, 2D and 3D
+    This <strong>36-minute tutorial</strong> demonstrates scan creation, 2D and 3D
     visualization, external sensor configuration, Bluetooth integration,
-    and export formats including OBJ, STL, and CSV.
+    and export formats including <strong>OBJ, STL, and CSV</strong>.
 </p>
 
 <a class="download-btn"
    href="https://anyscan209.en.uptodown.com/android">
-    Download AnyScan209
+   📥 Download AnyScan209 (Free)
 </a>
 
 <br>
 
 <a class="back-link"
    href="https://soifgo.github.io/AnyScan209/">
-    ← Back to Main Page
+   ← Back to Main Page
 </a>
 
 <footer>
-    © 2026 AnyScan209 — Saeid Moghadam
+    &copy; 2026 AnyScan209 — Built by Saeid Moghadam
 </footer>
-```
 
 </div>
 
