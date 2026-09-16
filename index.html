@@ -11,8 +11,8 @@
 
     <meta name="description" content="Free Android app: magnetometer, altimeter, light meter &amp; sound level meter in one. 2D/3D visualizer for any 0-1024 sensor data. Export OBJ/STL/CSV. No ads.">
 
-    <meta name="keywords" content="AnyScan209, magnetometer app, altimeter app, barometer app, light meter app, sound level meter, noise meter, universal sensor visualizer, EMF detector, 3D scanner app, sensor data mapping, OBJ STL CSV export, Arduino sensor app, subsurface mapping, illumination mapping, acoustic mapping">
-
+    <!-- حذف متای keywords اضافی برای جلوگیری از تکرار -->
+    
     <meta name="google-site-verification" content="a_eyU1xDCfLVC4vCKrGpm0_cHHUaNBcgR4AWRieeOmI">
     <link rel="canonical" href="https://soifgo.github.io/AnyScan209/">
 
@@ -75,29 +75,39 @@
         }
     </script>
 
- 
+    <!-- ====== STRUCTURED DATA: WebPage & VideoObject (اصلاح شده با @graph) ====== -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
         {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "AnyScan209 – Free 2D/3D Universal Visualizer & Magnetometer App",
-            "description": "Download AnyScan209 FREE – Universal 2D/3D visualizer for 4 internal sensors and any 0-1024 external sensor data. Export OBJ/STL/CSV. No ads.",
-            "url": "https://soifgo.github.io/AnyScan209/",
-            "mainEntity": {
-                "@type": "VideoObject",
-                "name": "AnyScan209 Tutorial - How to Use the 2D/3D Visualizer App",
-                "description": "Complete tutorial video showing how to use AnyScan209 for sensor data visualization, 3D mapping, and data export.",
-                "thumbnailUrl": "https://soifgo.github.io/AnyScan209/og-banner.jpg",
-                "contentUrl": "https://soifgo.github.io/AnyScan209/anyscan209.mp4",
-                "embedUrl": "https://soifgo.github.io/AnyScan209/video.html",
-                "uploadDate": "2026-07-04T00:00:00+00:00",
-                "duration": "PT36M55S",
-                "publisher": {
-                    "@type": "Person",
-                    "name": "Saeid Moghadam"
-                }
-            }
+          "@type": "WebPage",
+          "@id": "https://soifgo.github.io/AnyScan209/#webpage",
+          "url": "https://soifgo.github.io/AnyScan209/",
+          "name": "AnyScan209 – Free 2D/3D Universal Visualizer & Magnetometer App",
+          "description": "Download AnyScan209 FREE – Universal 2D/3D visualizer for 4 internal sensors and any 0-1024 external sensor data. Export OBJ/STL/CSV. No ads.",
+          "inLanguage": "en",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://soifgo.github.io/AnyScan209/#website"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "AnyScan209 Tutorial - How to Use the 2D/3D Visualizer App",
+          "description": "Complete tutorial video showing how to use AnyScan209 for sensor data visualization, 3D mapping, and data export.",
+          "thumbnailUrl": "https://soifgo.github.io/AnyScan209/og-banner.jpg",
+          "contentUrl": "https://soifgo.github.io/AnyScan209/anyscan209.mp4",
+          "embedUrl": "https://soifgo.github.io/AnyScan209/video.html",
+          "uploadDate": "2026-07-04T00:00:00+00:00",
+          "duration": "PT36M55S",
+          "publisher": {
+            "@type": "Person",
+            "name": "Saeid Moghadam"
+          }
         }
+      ]
+    }
     </script>
 
     <!-- ====== FAQPage ====== -->
@@ -155,21 +165,6 @@
                     "text": "Gain adjusts the sensitivity of the internal 16-bit magnetometer (0-65535 raw). Default Gain=10 maps the raw data to the 0-1024 visualization range with neutral point at 512. Lower Gain (9 to 1) reduces sensitivity but covers a wider range. In External mode, you must pre-scale your sensor data before sending via Bluetooth."
                 }
             }]
-        }
-    </script>
-
-    <!-- ====== PrivacyPolicy ====== -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "AnyScan209 Privacy Policy",
-            "description": "Privacy policy for AnyScan209 – free 2D/3D sensor data visualizer and magnetometer app for Android.",
-            "url": "https://soifgo.github.io/AnyScan209/policy_anyscan209.html",
-            "about": {
-                "@type": "Thing",
-                "name": "Data Privacy and Security"
-            }
         }
     </script>
 
