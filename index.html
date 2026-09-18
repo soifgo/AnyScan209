@@ -46,7 +46,10 @@
             "applicationSubCategory": "Universal Sensor Data Visualizer & Magnetometer",
             "description": "AnyScan209 is a free universal 2D/3D visualizer with four internal smartphone sensors (magnetometer, barometer, light, sound) and support for any external sensor data in the 0-1024 range. Turn your Android into a powerful visualization tool for magnetic fields, altitude, illumination, acoustic signals, temperature, pressure, or any custom sensor data (Arduino/ESP via Bluetooth). Export to OBJ, STL, and CSV. No ads, no data collection.",
             "url": "https://soifgo.github.io/AnyScan209/",
-            "downloadUrl": "https://anyscan209.en.uptodown.com/android",
+            "downloadUrl": [
+                "https://anyscan209.en.uptodown.com/android",
+                "https://apkpure.com/anyscan209/any.scan_209"
+            ],
             "inLanguage": ["en"],
             "offers": {
                 "@type": "Offer",
@@ -179,6 +182,8 @@
             --border-color: #e2e8f0;
             --success-color: #16a34a;
             --success-hover: #22c55e;
+            --apkpure-color: #00b36b;
+            --apkpure-hover: #00c974;
             --code-bg: #f1f5f9;
             --highlight-bg: #f1f5f9;
             --table-even: #f8fafc;
@@ -197,6 +202,8 @@
             --border-color: #334155;
             --success-color: #22c55e;
             --success-hover: #4ade80;
+            --apkpure-color: #00c974;
+            --apkpure-hover: #00e085;
             --code-bg: #0f172a;
             --highlight-bg: #1e293b;
             --table-even: #162032;
@@ -344,6 +351,67 @@
         .universal-banner strong { color: #d97706; }
         html[data-theme="dark"] .universal-banner strong { color: #fbbf24; }
 
+        /* ===== Download Cards (Uptodown + APKPure) ===== */
+        .dl-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .dl-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            padding: 24px 18px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .dl-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+        .dl-card.uptodown-card { border-color: var(--accent-color); }
+        .dl-card.uptodown-card:hover { box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25); }
+        .dl-card.apkpure-card { border-color: var(--apkpure-color); }
+        .dl-card.apkpure-card:hover { box-shadow: 0 12px 28px rgba(0, 179, 107, 0.25); }
+        .dl-card .dl-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 10px; }
+        .dl-card h3 { margin: 0 0 6px 0; font-size: 1.2rem; }
+        .dl-card .dl-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; min-height: 40px; }
+        .dl-card .dl-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 12px; }
+        .btn-uptodown {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-card); color: var(--text-main);
+            border: 2px solid var(--accent-color);
+            padding: 12px 26px; border-radius: 40px;
+            font-weight: 700; font-size: 1rem;
+            text-decoration: none; width: 100%; justify-content: center;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+        }
+        .btn-uptodown:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
+        .btn-uptodown img { height: 26px; width: auto; }
+        .btn-apkpure {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-card); color: var(--text-main);
+            border: 2px solid var(--apkpure-color);
+            padding: 12px 26px; border-radius: 40px;
+            font-weight: 700; font-size: 1rem;
+            text-decoration: none; width: 100%; justify-content: center;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(0, 179, 107, 0.2);
+        }
+        .btn-apkpure:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
+        .btn-apkpure img { height: 26px; width: auto; }
+        .dl-note {
+            text-align: center; font-size: 0.85rem; color: var(--text-muted);
+            margin-top: 6px; margin-bottom: 28px;
+        }
+        .dl-note a { color: var(--accent-color); }
+
         /* ===== Forum Banner ===== */
         .forum-banner {
             background: linear-gradient(135deg, var(--bg-card) 0%, var(--highlight-bg) 100%);
@@ -392,6 +460,8 @@
             .forum-banner { padding: 20px 18px; }
             .forum-banner .forum-btn { font-size: 1rem; padding: 12px 24px; }
             .theme-toggle { width: 40px; height: 40px; font-size: 1.1rem; top: 12px; right: 12px; }
+            .dl-card { padding: 18px 14px; }
+            .dl-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 400px) {
             .comparison-table { font-size: 0.75rem; }
@@ -446,38 +516,72 @@
             </p>
         </header>
 
-<!-- ====== COMMUNITY FORUM BANNER (moved to top) ====== -->
-<div class="forum-banner">
-    <h3>💬 Join the AnyScan209 Community Forum</h3>
-    <p>Ask questions, share your projects, report bugs, and suggest new features. Everyone is welcome, from beginners to experts.</p>
+        <!-- ====== DOWNLOAD SECTION: 2 CARDS (Uptodown + APKPure) ====== -->
+        <div class="dl-grid">
 
-    <div style="text-align:left; background:var(--bg-color); border:1px solid var(--border-color); border-radius:10px; padding:16px 20px; margin:18px 0; font-size:0.98rem;">
-        <strong style="color:var(--text-main); display:block; margin-bottom:10px;">📝 How to post a question</strong>
-        <ol style="margin:0; padding-left:22px; color:var(--text-color);">
-            <li>Create a free account at <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">github.com/signup</a> (just an email and password).</li>
-            <li>Open the forum: <a href="https://github.com/soifgo/AnyScan209/discussions" target="_blank" rel="noopener noreferrer">github.com/soifgo/AnyScan209/discussions</a></li>
-            <li>Click the green <strong>New discussion</strong> button on the top right.</li>
-            <li>Choose the category that fits best:
-                <ul style="margin:6px 0 0 0;">
-                    <li><strong>Q&amp;A</strong> — for questions</li>
-                    <li><strong>Ideas</strong> — for feature suggestions</li>
-                    <li><strong>Show and tell</strong> — to share your scans or projects</li>
-                    <li><strong>General</strong> — for anything else</li>
-                </ul>
-            </li>
-            <li>Write your message and click <strong>Start discussion</strong>.</li>
-        </ol>
-        <p style="margin:10px 0 0 0; color:var(--text-muted); font-size:0.92rem;"> </p>
-    </div>
+            <!-- Uptodown Download Card -->
+            <div class="dl-card uptodown-card">
+                <div>
+                    <div class="dl-icon">🛒</div>
+                    <h3 style="color:var(--accent-color);">Uptodown</h3>
+                    <p class="dl-desc">Trusted third-party Android app store.</p>
+                </div>
+                <a href="https://anyscan209.en.uptodown.com/android"
+                   class="btn-uptodown"
+                   rel="nofollow">
+                    <img src="uptodown.png" alt="Uptodown">
+                    <span>Download</span>
+                </a>
+                <div class="dl-meta">Verified store • Free download</div>
+            </div>
 
-    <a href="https://github.com/soifgo/AnyScan209/discussions" class="forum-btn" target="_blank" rel="noopener noreferrer">Open the Forum →</a>
-</div>
+            <!-- APKPure Download Card -->
+            <div class="dl-card apkpure-card">
+                <div>
+                    <div class="dl-icon">🛒</div>
+                    <h3 style="color:var(--apkpure-color);">APKPure</h3>
+                    <p class="dl-desc">Fast APK mirror with XAPK support.</p>
+                </div>
+                <a href="https://apkpure.com/anyscan209/any.scan_209"
+                   class="btn-apkpure"
+                   rel="nofollow">
+                    <img src="apkpure.png" alt="APKPure">
+                    <span>Download</span>
+                </a>
+                <div class="dl-meta">Fast mirror • Free download</div>
+            </div>
 
-        <div style="text-align:center; margin:28px 0;">
-           <a href="https://anyscan209.en.uptodown.com/android" class="download-btn" rel="nofollow" style="display:inline-flex; align-items:center; gap:10px; background:var(--bg-card); border:2px solid var(--accent-color); box-shadow:0 4px 14px rgba(37,99,235,0.2); padding:14px 32px; border-radius:40px; color:var(--text-main); font-weight:900; font-size:1.8rem; transition:all 0.2s ease; text-decoration:none;">
-    <img src="uptodown.png" alt="Uptodown" style="height:64px; width:auto; display:inline-block; vertical-align:middle;">
-    <span>Download on Uptodown</span>
-</a>
+        </div>
+
+        <p class="dl-note">
+            💡 Tip: If one store is blocked in your region, try the other mirror. Both versions are identical and 100% free.
+        </p>
+
+        <!-- ====== COMMUNITY FORUM BANNER ====== -->
+        <div class="forum-banner">
+            <h3>💬 Join the AnyScan209 Community Forum</h3>
+            <p>Ask questions, share your projects, report bugs, and suggest new features. Everyone is welcome, from beginners to experts.</p>
+
+            <div style="text-align:left; background:var(--bg-color); border:1px solid var(--border-color); border-radius:10px; padding:16px 20px; margin:18px 0; font-size:0.98rem;">
+                <strong style="color:var(--text-main); display:block; margin-bottom:10px;">📝 How to post a question</strong>
+                <ol style="margin:0; padding-left:22px; color:var(--text-color);">
+                    <li>Create a free account at <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">github.com/signup</a> (just an email and password).</li>
+                    <li>Open the forum: <a href="https://github.com/soifgo/AnyScan209/discussions" target="_blank" rel="noopener noreferrer">github.com/soifgo/AnyScan209/discussions</a></li>
+                    <li>Click the green <strong>New discussion</strong> button on the top right.</li>
+                    <li>Choose the category that fits best:
+                        <ul style="margin:6px 0 0 0;">
+                            <li><strong>Q&amp;A</strong> — for questions</li>
+                            <li><strong>Ideas</strong> — for feature suggestions</li>
+                            <li><strong>Show and tell</strong> — to share your scans or projects</li>
+                            <li><strong>General</strong> — for anything else</li>
+                        </ul>
+                    </li>
+                    <li>Write your message and click <strong>Start discussion</strong>.</li>
+                </ol>
+                <p style="margin:10px 0 0 0; color:var(--text-muted); font-size:0.92rem;"> </p>
+            </div>
+
+            <a href="https://github.com/soifgo/AnyScan209/discussions" class="forum-btn" target="_blank" rel="noopener noreferrer">Open the Forum →</a>
         </div>
 
         <!-- ====== VIDEO SECTION ====== -->
@@ -791,12 +895,6 @@
             </pre>
         </div>
 
-        <div style="text-align:center; margin:28px 0;">
-            <a href="https://anyscan209.en.uptodown.com/android" class="download-btn" rel="nofollow" style="display:inline-flex; align-items:center; gap:10px; background:var(--bg-card); border:2px solid var(--accent-color); box-shadow:0 4px 14px rgba(37,99,235,0.2); padding:14px 32px; border-radius:40px; color:var(--text-main); font-weight:600; font-size:1.8rem; transition:all 0.2s ease; text-decoration:none;">
-    <img src="uptodown.png" alt="Uptodown" style="height:32px; width:auto; display:inline-block; vertical-align:middle;">
-    <span>Download on Uptodown</span>
-</a>
-        </div>
         <div class="download-box">
             <h2 style="margin-top:0;">Proteus File Download</h2>
             <p><a href="Proteuse_file.zip">📦 Download All Files (Proteus Project)</a></p>
