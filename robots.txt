@@ -1,4 +1,6 @@
+# robots.txt for AnyScan209
 User-agent: *
 Allow: /
 
-Sitemap: https://soifgo.github.io/AnyScan209/sitemap.xml
+# Sitemap Location
+Sitemap: https://yourdomain.com/sitemap.xml

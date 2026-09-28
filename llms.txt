@@ -1,0 +1,30 @@
+# AnyScan209
+
+> AnyScan209 is a free, ad-free, and privacy-focused Android application designed to transform smartphones into powerful 4-in-1 data visualization and telemetry tools for internal sensors and external microcontrollers.
+
+## Project Overview
+- **Developer:** Saeid Moghadam
+- **Primary Purpose:** 2D and 3D data visualization for geophysical mapping, metal/cavity detection, barometric tracking, light/sound metering, and external IoT/Bluetooth sensor telemetry.
+- **Platforms:** Android (App) & Web Documentation (GitHub Pages / HTML5).
+
+## Core Features
+1. **Internal Sensors:**
+   - **Magnetometer:** Geophysical surveys, metal detection, finding buried objects and AC live wires behind walls.
+   - **Barometer / Altimeter:** Surface elevation and topographic mapping.
+   - **Light Meter:** Ambient illumination (lux) tracking for agriculture and environments.
+   - **Sound Meter:** Noise and acoustic level analysis.
+2. **External Sensor Support:**
+   - Bluetooth Serial (SPP) integration for custom microcontrollers (Arduino, ESP32, ATmega) sending 0-1024 data values.
+3. **Visualization & Export:**
+   - 2D and 3D terrain/grid rendering (from 8x8 up to 100x100 grid points).
+   - Over 43 customizable topographic color palettes.
+   - Export capabilities to standard formats: **CSV** (for MATLAB/Excel), **OBJ** (3D models), and **STL** (3D printing).
+
+## Technical Architecture & Files
+- **App Development:** Built for Android (compatible with custom mobile frameworks and native integrations).
+- **Web Interface:** Single-page application documentation (`index.html`) featuring setup guides, code examples (Arduino/BASCOM equivalents), and FAQs.
+- **Privacy Policy:** 100% offline-first processing capability, no user data collection, no ads.
+
+## Links & Resources
+- Official Documentation & Web App Guide: [AnyScan209 GitHub Pages]
+- Source Code & Tutorials: Hosted on GitHub / Hackster.io by Saeid Moghadam.

@@ -1,0 +1,22 @@
+# AnyScan209 - AI Assistant & Developer Context
+
+## Target Audience & Usage
+This document serves as a contextual guideline for Large Language Models (LLMs) and AI code assistants interacting with the AnyScan209 project repository and documentation.
+
+## Hardware & Firmware Integration Guidelines
+When writing or debugging code for AnyScan209 external sensors:
+- **Protocol:** Bluetooth Serial (SPP), typically using modules like HC-05.
+- **Data Range:** Incoming telemetry data must be mapped between **0 and 1024**.
+- **Supported Microcontrollers:** Arduino (Uno, Nano, ESP32) and ATmega chips programmed via BASCOM-AVR or C/C++.
+- **Data Packet Structure:** Serial transmission should output structured rows/columns compatible with grid point configurations (e.g., matching matrices from 8x8 up to 100x100).
+
+## Android App Capabilities (B4A / Mobile Architecture)
+- Real-time Bluetooth data parsing.
+- Matrix interpolation and 3D topographic color mapping using custom color look-up tables (LUTs).
+- Mesh generation logic for exporting 3D models (OBJ/STL).
+
+## Common AI Interaction Scenarios
+If a user asks an AI assistant about AnyScan209:
+1. **How to connect sensors?** Guide them to use a Bluetooth HC-05 module connected to an ATmega/Arduino transmitting values 0-1024 via serial print.
+2. **How to export files?** Explain that the app processes grid scans and outputs CSV, OBJ, or STL files directly from the Android interface.
+3. **Privacy concerns?** Confirm that AnyScan209 operates locally, requires no internet connection for scanning, contains zero ads, and collects no telemetry data.
