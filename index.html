@@ -7,7 +7,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Saeid Moghadam">
     <meta name="keywords" content="3D Magnetic Mapping, Geophysical Scanning App, Magnetic Anomaly Detection, Magnetometer Visualization, Subsurface Magnetic Imaging, DIY Ground Scanner, Internal Magnetometer Filter, CSV/OBJ Export Scanner, Android Sensor Visualizer">
-    
+
     <title>AnyScan209 – Free 4-in-1 Sensor Visualizer: Magnetometer, Altimeter, Light &amp; Sound Mapper for Android</title>
 
     <meta name="description" content="Free Android app: magnetometer, altimeter, light meter &amp; sound level meter in one. 2D/3D visualizer for any 0-1024 sensor data. Export OBJ/STL/CSV. No ads.">
@@ -113,8 +113,8 @@
           "name": "AnyScan209 Tutorial - How to Use the 2D/3D Visualizer App",
           "description": "Complete tutorial video showing how to use AnyScan209 for sensor data visualization, 3D mapping, and data export.",
           "thumbnailUrl": "https://soifgo.github.io/AnyScan209/og-banner.jpg",
-          "contentUrl": "https://soifgo.github.io/AnyScan209/anyscan209.mp4",
-          "embedUrl": "https://soifgo.github.io/AnyScan209/video.html",
+          "contentUrl": "https://mega.nz/file/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk",
+          "embedUrl": "https://mega.nz/embed/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk",
           "uploadDate": "2026-07-04T00:00:00+00:00",
           "duration": "PT36M55S",
           "publisher": {
@@ -287,12 +287,30 @@
             font-size: 0.9em;
             color: var(--text-main);
         }
-        .video-wrapper { text-align: center; margin: 30px 0; }
-        .responsive-video {
-            width: 100%; max-width: 560px; height: auto; aspect-ratio: 16 / 9;
-            border-radius: 12px; border: 2px solid var(--border-color);
-            background: #000; display: block; margin: 0 auto;
+
+        /* ===== VIDEO WRAPPER (MEGA IFRAME) ===== */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: #000;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
         }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .menu { width: 100%; max-width: 400px; height: auto; display: block; margin: 20px auto; border-radius: 12px; border: 2px solid var(--border-color); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
         .menu-small { max-width: 280px; }
         .menu-medium { max-width: 480px; }
@@ -477,6 +495,7 @@
             .theme-toggle { width: 40px; height: 40px; font-size: 1.1rem; top: 12px; right: 12px; }
             .dl-card { padding: 18px 14px; }
             .dl-grid { grid-template-columns: 1fr; }
+            .video-wrapper { max-width: 100%; }
         }
         @media (max-width: 400px) {
             .comparison-table { font-size: 0.75rem; }
@@ -599,18 +618,22 @@
             <a href="https://github.com/soifgo/AnyScan209/discussions" class="forum-btn" target="_blank" rel="noopener noreferrer">Open the Forum →</a>
         </div>
 
-        <!-- ====== VIDEO SECTION ====== -->
-        <div class="video-wrapper">
-            <h2 style="margin-top:0;">📹 Watch the Tutorial Video</h2>
-            <video controls class="responsive-video" poster="og-banner.jpg" preload="metadata">
-                <source src="anyscan209.mp4" type="video/mp4">
-                Your browser does not support the HTML5 video tag.
-            </video>
-            <p><strong>Video:</strong> AnyScan209 tutorial – 36 minutes</p>
-            <div style="margin-top:15px;">
-                <a href="video.html" class="download-btn" style="background:var(--accent-color); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);">🎬 Watch on Dedicated Video Page</a>
-            </div>
-        </div>
+<!-- ====== VIDEO SECTION (MEGA IFRAME) ====== -->
+<div style="margin-top: 30px; text-align: center;">
+    <h2 style="margin-top:0;">📹 Watch the Tutorial Video</h2>
+
+    <div class="video-wrapper">
+        <iframe src="https://mega.nz/embed/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk"
+                allowfullscreen
+                loading="lazy"></iframe>
+    </div>
+
+    <p style="margin-top:15px;"><strong>Video:</strong> AnyScan209 tutorial – 36 minutes</p>
+
+    <div style="margin-top:15px;">
+        <a href="video.html" class="download-btn" style="background:var(--accent-color); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);">🎬 Watch on Dedicated Video Page</a>
+    </div>
+</div>
 
         <nav class="toc">
             <h2>Contents</h2>
