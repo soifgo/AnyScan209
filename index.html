@@ -20,7 +20,6 @@
     <link rel="alternate" type="text/html" hreflang="en" href="https://soifgo.github.io/AnyScan209/video.html" media="screen">
     <link rel="repository" href="https://github.com/soifgo/AnyScan209">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="AnyScan209 - Free 4-in-1 Sensor Visualizer for Android (Magnetometer, Altimeter, Light &amp; Sound)">
     <meta property="og:description" content="Download AnyScan209 free – universal 2D/3D visualizer for 4 internal sensors (magnetometer, barometer, light, sound) and any 0-1024 external sensor. Export OBJ/STL/CSV. No ads.">
@@ -31,17 +30,14 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="en_US">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AnyScan209 - Free 4-in-1 Sensor Visualizer: Magnetometer, Altimeter, Light &amp; Sound">
     <meta name="twitter:description" content="Download AnyScan209 free – universal visualizer for 4 internal sensors and any 0-1024 external sensor data. Export OBJ/STL/CSV.">
     <meta name="twitter:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
 
-    <!-- Mobile Web App Capability -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!-- ====== STRUCTURED DATA: SoftwareApplication ====== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -90,7 +86,6 @@
         }
     </script>
 
-    <!-- ====== STRUCTURED DATA: WebPage & VideoObject ====== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -126,7 +121,6 @@
     }
     </script>
 
-    <!-- ====== FAQPage ====== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -185,7 +179,6 @@
     </script>
 
     <style>
-        /* ===== LIGHT THEME (default) ===== */
         :root {
             --bg-color: #f8fafc;
             --bg-card: #ffffff;
@@ -205,7 +198,6 @@
             --table-hover: #eff6ff;
         }
 
-        /* ===== DARK THEME ===== */
         html[data-theme="dark"] {
             --bg-color: #0f172a;
             --bg-card: #1e293b;
@@ -227,6 +219,9 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
+
+        .ignore { /* translation skip marker */ }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-color);
@@ -238,7 +233,6 @@
         }
         .container { max-width: 820px; margin: 0 auto; }
 
-        /* ===== THEME TOGGLE ===== */
         .theme-toggle {
             position: fixed;
             top: 16px;
@@ -269,7 +263,6 @@
         }
         .theme-toggle:focus { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
-        /* ===== LANGUAGE SWITCHER - FIXED POSITION ===== */
         .language-switcher {
             position: fixed;
             top: 16px;
@@ -278,6 +271,7 @@
             z-index: 1001;
             direction: ltr;
         }
+
         .lang-btn {
             background: var(--bg-card);
             border: 2px solid var(--border-color);
@@ -293,11 +287,13 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: background 0.2s, border-color 0.2s, transform 0.15s;
         }
+
         .lang-btn:hover {
             background: var(--highlight-bg);
             border-color: var(--accent-color);
             transform: scale(1.03);
         }
+
         .lang-dropdown {
             display: none;
             position: absolute;
@@ -313,7 +309,9 @@
             padding: 8px 0;
             direction: ltr;
         }
+
         .lang-dropdown.show { display: block; }
+
         .lang-item {
             display: block;
             padding: 10px 18px;
@@ -325,6 +323,7 @@
             direction: ltr;
             text-align: left;
         }
+
         .lang-item:hover {
             background: var(--highlight-bg);
             color: var(--accent-color);
@@ -351,7 +350,6 @@
             color: var(--text-main);
         }
 
-        /* ===== VIDEO WRAPPER (MEGA IFRAME) ===== */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -379,6 +377,7 @@
         .menu-medium { max-width: 480px; }
         .menu-large { max-width: 650px; }
         .logo { max-width: 180px; height: auto; margin: 20px auto; display: block; }
+
         .code-block {
             background: var(--code-bg); border-radius: 12px; border: 1px solid var(--border-color);
             padding: 22px; margin: 25px 0; overflow-x: auto;
@@ -391,6 +390,7 @@
         .code-block .string { color: #7dd3fc; }
         .code-block .function { color: #fbbf24; }
         .code-block .number { color: #34d399; }
+
         .comparison-table {
             width: 100%; border-collapse: collapse; margin: 20px 0;
             font-size: 0.95rem; background: var(--bg-card); border-radius: 12px; overflow: hidden;
@@ -401,12 +401,14 @@
         .comparison-table th { background: var(--bg-card); color: var(--text-main); font-weight: 700; }
         .comparison-table tr:nth-child(even) { background: var(--table-even); }
         .comparison-table tr:hover { background: var(--table-hover); }
+
         .highlight-box {
             background: var(--highlight-bg); border-left: 4px solid var(--accent-color);
             padding: 18px 22px; margin: 22px 0; border-radius: 0 12px 12px 12px; color: var(--text-color);
         }
         .highlight-box h3 { color: var(--accent-color); margin-top: 0; }
         .highlight-box ul { margin-top: 8px; }
+
         .download-btn {
             display: inline-block; background: var(--success-color);
             padding: 18px 44px; min-height: 60px; min-width: 220px; border-radius: 10px;
@@ -416,12 +418,14 @@
             box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
         }
         .download-btn:hover { background: var(--success-hover); text-decoration: none; transform: scale(1.03); box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4); }
+
         .download-box {
             background: var(--bg-card); border: 1px solid var(--border-color);
             border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;
         }
         .download-box a { color: var(--accent-color); font-size: 1.15rem; font-weight: 600; }
         .download-box a:hover { color: var(--accent-hover); }
+
         .faq-section {
             background: var(--bg-card); border-radius: 12px;
             padding: 28px 30px; margin: 30px 0; border: 1px solid var(--border-color);
@@ -430,9 +434,11 @@
         .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .faq-item h4 { color: var(--accent-color); margin-bottom: 8px; font-size: 1.1rem; }
         .faq-item p { color: var(--text-color); margin-bottom: 0; }
+
         footer { margin-top: 50px; text-align: center; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 22px; }
         footer a { color: var(--accent-color); }
         footer a:hover { color: var(--accent-hover); }
+
         .toc {
             background: var(--bg-card); border-radius: 12px;
             padding: 20px 26px; margin: 24px 0; border: 1px solid var(--border-color);
@@ -442,12 +448,13 @@
         .toc ol li { margin-bottom: 4px; }
         .toc a { color: var(--accent-color); }
         .toc a:hover { color: var(--accent-hover); }
+
         .badge { display: inline-block; background: var(--success-color); color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+
         .universal-banner { background: var(--bg-card); border-left: 4px solid #f59e0b; padding: 18px 22px; margin: 22px 0; border-radius: 0 12px 12px 12px; }
         .universal-banner strong { color: #d97706; }
         html[data-theme="dark"] .universal-banner strong { color: #fbbf24; }
 
-        /* ===== Download Cards (Uptodown + APKPure) ===== */
         .dl-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -478,6 +485,7 @@
         .dl-card h3 { margin: 0 0 6px 0; font-size: 1.2rem; }
         .dl-card .dl-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; min-height: 40px; }
         .dl-card .dl-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 12px; }
+
         .btn-uptodown {
             display: inline-flex; align-items: center; gap: 10px;
             background: var(--bg-card); color: var(--text-main);
@@ -490,6 +498,7 @@
         }
         .btn-uptodown:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
         .btn-uptodown img { height: 26px; width: auto; }
+
         .btn-apkpure {
             display: inline-flex; align-items: center; gap: 10px;
             background: var(--bg-card); color: var(--text-main);
@@ -502,13 +511,13 @@
         }
         .btn-apkpure:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
         .btn-apkpure img { height: 26px; width: auto; }
+
         .dl-note {
             text-align: center; font-size: 0.85rem; color: var(--text-muted);
             margin-top: 6px; margin-bottom: 28px;
         }
         .dl-note a { color: var(--accent-color); }
 
-        /* ===== Forum Banner ===== */
         .forum-banner {
             background: linear-gradient(135deg, var(--bg-card) 0%, var(--highlight-bg) 100%);
             border: 2px solid var(--accent-color);
@@ -571,7 +580,6 @@
         }
     </style>
 
-    <!-- ===== THEME: apply saved preference BEFORE paint (prevents flash) ===== -->
     <script>
         (function() {
             try {
@@ -592,10 +600,8 @@
 </head>
 <body>
 
-    <!-- ===== THEME TOGGLE BUTTON ===== -->
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light theme" title="Toggle dark / light theme">🌙</button>
 
-    <!-- ===== LANGUAGE SWITCHER ===== -->
     <div class="language-switcher ignore" id="languageSwitcher">
         <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">
             🌐 <span id="currentLangLabel">English</span>
@@ -609,7 +615,7 @@
             <img class="logo" src="logo.png" alt="AnyScan209 – Free 4-in-1 Sensor Visualizer: Magnetometer, Altimeter, Light and Sound Mapper App Logo" loading="lazy">
             <h1>AnyScan209 – Free 2D/3D Universal Visualizer &amp; Magnetometer App for Android</h1>
             <p style="font-size:1.2rem; color:var(--text-main); font-weight:500;">
-                <strong>AnyScan209</strong> is a professional <strong>free Android app</strong> that transforms your smartphone into a powerful <strong>4-in-1 sensor visualizer</strong> for any sensor data in the <strong>0–1024</strong> range.
+                <strong class="ignore">AnyScan209</strong> is a professional <strong>free Android app</strong> that transforms your smartphone into a powerful <strong>4-in-1 sensor visualizer</strong> for any sensor data in the <strong>0–1024</strong> range.
             </p>
             <div class="universal-banner" style="text-align:left;">
                 <p style="font-size:1.1rem; margin-bottom:0;">
@@ -621,14 +627,12 @@
                 Designed for <strong>geophysical surveys</strong>, <strong>magnetic field visualization</strong>, <strong>subsurface anomaly detection</strong>, <strong>elevation mapping</strong>, <strong>illumination analysis</strong>, and <strong>acoustic noise mapping</strong>, this app supports both internal smartphone sensors and external Bluetooth modules like HC-05.
             </p>
             <p style="font-size:1.05rem; color:var(--text-color);">
-                With AnyScan209, you can perform <strong>2D and 3D mapping</strong>, export data in <strong>OBJ, STL, and CSV formats</strong>, and analyze variations with precision. Whether you're a researcher, educator, or hobbyist, this <strong>free universal visualizer</strong> provides professional-grade analysis tools right on your Android device.
+                With <span class="ignore">AnyScan209</span>, you can perform <strong>2D and 3D mapping</strong>, export data in <strong>OBJ, STL, and CSV formats</strong>, and analyze variations with precision. Whether you're a researcher, educator, or hobbyist, this <strong>free universal visualizer</strong> provides professional-grade analysis tools right on your Android device.
             </p>
         </header>
 
-        <!-- ====== DOWNLOAD SECTION: 2 CARDS (Uptodown + APKPure) ====== -->
         <div class="dl-grid">
 
-            <!-- Uptodown Download Card -->
             <div class="dl-card uptodown-card">
                 <div>
                     <div class="dl-icon">🛒</div>
@@ -644,7 +648,6 @@
                 <div class="dl-meta">Verified store • Free download</div>
             </div>
 
-            <!-- APKPure Download Card -->
             <div class="dl-card apkpure-card">
                 <div>
                     <div class="dl-icon">🛒</div>
@@ -666,9 +669,8 @@
             💡 Tip: If one store is blocked in your region, try the other mirror. Both versions are identical and 100% free.
         </p>
 
-        <!-- ====== COMMUNITY FORUM BANNER ====== -->
         <div class="forum-banner">
-            <h3>💬 Join the AnyScan209 Community Forum</h3>
+            <h3>💬 Join the <span class="ignore">AnyScan209</span> Community Forum</h3>
             <p>Ask questions, share your projects, report bugs, and suggest new features. Everyone is welcome, from beginners to experts.</p>
 
             <div style="text-align:left; background:var(--bg-color); border:1px solid var(--border-color); border-radius:10px; padding:16px 20px; margin:18px 0; font-size:0.98rem;">
@@ -693,7 +695,6 @@
             <a href="https://github.com/soifgo/AnyScan209/discussions" class="forum-btn" target="_blank" rel="noopener noreferrer">Open the Forum →</a>
         </div>
 
-<!-- ====== VIDEO SECTION (MEGA IFRAME) ====== -->
 <div style="margin-top: 30px; text-align: center;">
     <h2 style="margin-top:0;">📹 Watch the Tutorial Video</h2>
 
@@ -703,7 +704,7 @@
                 loading="lazy"></iframe>
     </div>
 
-    <p style="margin-top:15px;"><strong>Video:</strong> AnyScan209 tutorial – 36 minutes</p>
+    <p style="margin-top:15px;"><strong>Video:</strong> <span class="ignore">AnyScan209</span> tutorial – 36 minutes</p>
 
     <div style="margin-top:15px;">
         <a href="video.html" class="download-btn" style="background:var(--accent-color); box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);">🎬 Watch on Dedicated Video Page</a>
@@ -736,7 +737,7 @@
         </nav>
 
         <h2 id="create-scan">1. How to Create a Scan File in AnyScan209</h2>
-        <p>The <strong>AnyScan209</strong> features three main screens. To create a scan file, select the required dimensions using the longitudinal and transverse bars. The supported scan size range is from <strong>8×8 up to 100×100 points</strong>, allowing detailed <strong>mapping</strong> and <strong>data visualization</strong>.</p>
+        <p>The <strong class="ignore">AnyScan209</strong> features three main screens. To create a scan file, select the required dimensions using the longitudinal and transverse bars. The supported scan size range is from <strong>8×8 up to 100×100 points</strong>, allowing detailed <strong>mapping</strong> and <strong>data visualization</strong>.</p>
         <p>Enter a file name if required and select the <strong>Create Scan</strong> option. The top menu includes <strong>Open Scan</strong>, <strong>Export (OBJ, STL, CSV)</strong>, and <strong>Bluetooth transfer</strong> options. Long-press the Bluetooth icon to adjust communication speed for external sensors. Use <strong>Settings</strong> to configure sensors, language, and device connection.</p>
         <img class="menu menu-small" alt="AnyScan209 main menu" src="menu1.jpg" loading="lazy">
 
@@ -800,7 +801,7 @@
         <img class="menu menu-small" alt="AnyScan209 3D viewer" src="menu4.jpg" loading="lazy">
 
         <h2 id="export">7. Export and Data Transmission Formats</h2>
-        <p>AnyScan209 supports data export and real-time streaming in multiple formats for maximum compatibility with analysis software:</p>
+        <p><span class="ignore">AnyScan209</span> supports data export and real-time streaming in multiple formats for maximum compatibility with analysis software:</p>
         <ul>
             <li><strong>OBJ:</strong> Best for advanced 3D modeling and rendering software.</li>
             <li><strong>STL:</strong> Ideal for 3D printing applications to generate physical topographic relief maps.</li>
@@ -830,14 +831,13 @@
         <img class="menu menu-small" alt="AnyScan209 scanning setup" src="selfi.jpg" loading="lazy">
 
         <h2 id="external">10. External Sensor Mode for Advanced Scanning</h2>
-        <p>In <strong>External Sensor mode</strong>, activate the external option from the Settings page. Using a <strong>serial Bluetooth module</strong> such as HC-05 or another SPP-compatible device, a microcontroller can send measurement values to <strong>AnyScan209</strong>.</p>
+        <p>In <strong>External Sensor mode</strong>, activate the external option from the Settings page. Using a <strong>serial Bluetooth module</strong> such as HC-05 or another SPP-compatible device, a microcontroller can send measurement values to <strong class="ignore">AnyScan209</strong>.</p>
         <p>The communication range is based on values from <strong>0 to 1024</strong>. In magnetometer mode, the center balance value is approximately 512. Other sensor types can use the full 0 to 1024 range for various measurements.</p>
         <img class="menu menu-medium" alt="AnyScan209 external sensor mode" src="menu6.jpg" loading="lazy">
 
-        <!-- ====== INTERNAL SENSORS SECTION ====== -->
         <h2 id="internal-sensors">11. Internal Sensors – Four Powerful Modes in One App</h2>
 
-        <p><strong>AnyScan209</strong> is not just a magnetometer. It is a <strong>universal 2D/3D visualizer</strong> that can read from <strong>four different internal smartphone sensors</strong>. To choose the sensor you want, simply <strong>long-press the sensor icon</strong> on the <strong>Settings</strong> page — a sensor selection list will appear, and you can switch between any of the following four sensors at any time.</p>
+        <p><strong class="ignore">AnyScan209</strong> is not just a magnetometer. It is a <strong>universal 2D/3D visualizer</strong> that can read from <strong>four different internal smartphone sensors</strong>. To choose the sensor you want, simply <strong>long-press the sensor icon</strong> on the <strong>Settings</strong> page — a sensor selection list will appear, and you can switch between any of the following four sensors at any time.</p>
 
         <img class="menu menu-medium" alt="AnyScan209 internal sensor selection list" src="menu8.jpg" loading="lazy">
 
@@ -852,7 +852,7 @@
         </div>
 
         <h3>🧲 1. Magnetometer – For Geophysics, Cavity Detection &amp; Magnetic Field Mapping</h3>
-        <p>The <strong>magnetometer</strong> (compass sensor) is the most powerful mode in AnyScan209 and is designed for serious field work:</p>
+        <p>The <strong>magnetometer</strong> (compass sensor) is the most powerful mode in <span class="ignore">AnyScan209</span> and is designed for serious field work:</p>
         <ul>
             <li><strong>Geophysical surveys</strong> – mapping subsurface anomalies</li>
             <li><strong>Cavity and void detection</strong> – locating underground hollow spaces, tunnels, or buried structures</li>
@@ -864,7 +864,7 @@
         <p>This mode is ideal for researchers, geophysicists, treasure hunters, and anyone working with magnetic field analysis.</p>
 
         <h3>⛰️ 2. Barometer / Altimeter – For Elevation Mapping &amp; Surface Topography</h3>
-        <p>The <strong>barometric pressure sensor</strong> (available on many modern smartphones) measures atmospheric pressure and converts it into <strong>relative altitude</strong>. In AnyScan209 this sensor becomes a powerful <strong>elevation mapping tool</strong>:</p>
+        <p>The <strong>barometric pressure sensor</strong> (available on many modern smartphones) measures atmospheric pressure and converts it into <strong>relative altitude</strong>. In <span class="ignore">AnyScan209</span> this sensor becomes a powerful <strong>elevation mapping tool</strong>:</p>
         <ul>
             <li><strong>Altitude measurement</strong> – tracking elevation changes</li>
             <li><strong>Surface topography mapping</strong> – building 2D and 3D maps of terrain height differences</li>
@@ -876,7 +876,7 @@
         </div>
 
         <h3>💡 3. Light Sensor – For Illumination Mapping &amp; Environmental Light Analysis</h3>
-        <p>The <strong>ambient light sensor</strong> measures the intensity of light around the phone. In AnyScan209, this sensor becomes a professional <strong>illumination mapping tool</strong>:</p>
+        <p>The <strong>ambient light sensor</strong> measures the intensity of light around the phone. In <span class="ignore">AnyScan209</span>, this sensor becomes a professional <strong>illumination mapping tool</strong>:</p>
         <ul>
             <li><strong>Light intensity surveying</strong> – measuring and mapping brightness across a surface or space</li>
             <li><strong>Lighting installation analysis</strong> – visualizing how light is distributed in a room, hall, or outdoor space</li>
@@ -888,7 +888,7 @@
         <p>Perfect for lighting engineers, greenhouse operators, photographers, and anyone who needs to <strong>see</strong> how light is distributed in a space.</p>
 
         <h3>🔊 4. Sound / Noise Meter – For Acoustic Mapping &amp; Industrial Noise Analysis</h3>
-        <p>The phone's <strong>microphone</strong> is used as a professional <strong>sound level meter</strong> (SPL meter). In AnyScan209 this becomes a powerful <strong>acoustic mapping tool</strong>:</p>
+        <p>The phone's <strong>microphone</strong> is used as a professional <strong>sound level meter</strong> (SPL meter). In <span class="ignore">AnyScan209</span> this becomes a powerful <strong>acoustic mapping tool</strong>:</p>
         <ul>
             <li><strong>Noise mapping</strong> – measuring and visualizing sound levels across an area</li>
             <li><strong>Industrial noise analysis</strong> – mapping noise pollution in factories, workshops, and construction sites</li>
@@ -901,12 +901,12 @@
 
         <div class="highlight-box" style="border-left-color:#16a34a;">
             <strong>✅ One app – Four sensors – Unlimited possibilities:</strong>
-            <p style="margin:10px 0 0 0;">With <strong>AnyScan209</strong>, the same app can be used as a <strong>magnetometer</strong>, <strong>altimeter</strong>, <strong>light meter</strong>, or <strong>sound level meter</strong> — just switch the sensor and start scanning. All four sensors use the same <strong>0–1024 visualization range</strong>, the same <strong>2D/3D viewers</strong>, and the same <strong>OBJ / STL / CSV export</strong>. This makes AnyScan209 a truly <strong>universal measurement platform</strong> for professionals and hobbyists alike.</p>
+            <p style="margin:10px 0 0 0;">With <strong class="ignore">AnyScan209</strong>, the same app can be used as a <strong>magnetometer</strong>, <strong>altimeter</strong>, <strong>light meter</strong>, or <strong>sound level meter</strong> — just switch the sensor and start scanning. All four sensors use the same <strong>0–1024 visualization range</strong>, the same <strong>2D/3D viewers</strong>, and the same <strong>OBJ / STL / CSV export</strong>. This makes <span class="ignore">AnyScan209</span> a truly <strong>universal measurement platform</strong> for professionals and hobbyists alike.</p>
         </div>
 
         <h2 id="gain-balance">12. Gain and Balance – Understanding the 0–1024 Range</h2>
         <h3>Internal Sensor (Magnetometer)</h3>
-        <p>Smartphone magnetometers are typically <strong>16‑bit sensors</strong> with a raw range of <strong>0 to 65,535</strong>. AnyScan209 applies a <strong>Gain factor</strong> (adjustable from 10 down to 1) to map this raw data into the <strong>0–1024</strong> visualization range.</p>
+        <p>Smartphone magnetometers are typically <strong>16‑bit sensors</strong> with a raw range of <strong>0 to 65,535</strong>. <span class="ignore">AnyScan209</span> applies a <strong>Gain factor</strong> (adjustable from 10 down to 1) to map this raw data into the <strong>0–1024</strong> visualization range.</p>
         <ul>
             <li><strong>Default Gain = 10:</strong> The app automatically balances the sensor using the <strong>Balancer (⚖️) icon</strong>, setting the neutral point to <strong>512</strong>. This provides maximum sensitivity for magnetic field detection.</li>
             <li><strong>Lower Gain (9 to 1):</strong> Reduces sensitivity but covers a wider measurement range. At <strong>Gain = 1</strong>, every <strong>64 raw sensor units</strong> equals <strong>1 unit</strong> in the 0–1024 range.</li>
@@ -922,7 +922,7 @@
 
         <h2 id="arduino">14. Microcontroller Integration: BASCOM to Arduino</h2>
         <div class="highlight-box">
-            <strong>📘 Overview:</strong> This section demonstrates converting AVR BASCOM code into Arduino C++ code for use with <strong>AnyScan209 external sensor mode</strong>. The example reads sensor values and transmits them through serial communication using <strong>Bluetooth modules</strong> such as HC-05 or SPP devices.
+            <strong>📘 Overview:</strong> This section demonstrates converting AVR BASCOM code into Arduino C++ code for use with <strong class="ignore">AnyScan209</strong> external sensor mode. The example reads sensor values and transmits them through serial communication using <strong>Bluetooth modules</strong> such as HC-05 or SPP devices.
         </div>
         <h3>Original BASCOM Code</h3>
         <div class="code-block">
@@ -952,7 +952,7 @@
         <h3>Converted Arduino C++ Code</h3>
         <div class="code-block">
             <pre>
-                <span class="comment">// BASCOM PortC.0 → Arduino input pin</span>
+                <span class="comment">// BASCOM PortC.0 to Arduino input pin</span>
                 <span class="keyword">const int</span> switchPin = A1;
                 <span class="keyword">const int</span> outputPin = 2;
                 <span class="keyword">bool</span> lastSwitchState = <span class="keyword">false</span>;
@@ -1014,7 +1014,7 @@
         </div>
 
         <h2 id="sensor-guide">15. Magnetometer Sensor Guide for AnyScan209</h2>
-        <p>This table provides information about smartphone <strong>magnetometer sensors</strong> and their general characteristics for use with <strong>AnyScan209</strong>.</p>
+        <p>This table provides information about smartphone <strong>magnetometer sensors</strong> and their general characteristics for use with <strong class="ignore">AnyScan209</strong>.</p>
         <figure>
             <table class="comparison-table">
                 <thead>
@@ -1036,7 +1036,7 @@
                     <tr><td><strong>STMicroelectronics</strong></td><td>LIS3MDL</td><td>1000 Hz</td><td>Medium</td><td>Medium</td><td>Motorola, Nokia and LG devices</td></tr>
                 </tbody>
             </table>
-            <figcaption style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Table 1: Magnetometer sensor specifications for smartphones compatible with AnyScan209.</figcaption>
+            <figcaption style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Table 1: Magnetometer sensor specifications for smartphones compatible with <span class="ignore">AnyScan209</span>.</figcaption>
         </figure>
 
         <div class="highlight-box" style="border-left-color: #f0883e; margin-top: 25px;">
@@ -1055,7 +1055,7 @@
 
         <h2 id="wire-detection">16. Use Your Smartphone as a Magnetic Field Detector</h2>
         <h3>How to Use the Gauge and Graph Features</h3>
-        <p>In <strong>AnyScan209</strong>, switch to <b>Internal Sensor</b> mode. Press and hold the sensor option to open advanced settings, then enable the <b>Graph</b> and <b>Gauge</b> features. Select the <b>Bipolar Gauge</b> display mode for real-time <strong>magnetic field visualization</strong>.</p>
+        <p>In <strong class="ignore">AnyScan209</strong>, switch to <b>Internal Sensor</b> mode. Press and hold the sensor option to open advanced settings, then enable the <b>Graph</b> and <b>Gauge</b> features. Select the <b>Bipolar Gauge</b> display mode for real-time <strong>magnetic field visualization</strong>.</p>
         <p>Return to the scan screen and bring your smartphone close to a device that produces a <strong>magnetic field</strong>, such as:</p>
         <ul>
             <li>Current-carrying wires</li>
@@ -1090,32 +1090,32 @@
         <h2 id="faq">18. Frequently Asked Questions About AnyScan209</h2>
         <div class="faq-section">
             <div class="faq-item">
-                <h4>Is AnyScan209 completely free to download and use?</h4>
-                <p>Yes, <strong>AnyScan209 is 100% free</strong> to download and use. There are no hidden charges, in-app purchases, or premium versions. The app provides full functionality without any cost.</p>
+                <h4>Is <span class="ignore">AnyScan209</span> completely free to download and use?</h4>
+                <p>Yes, <strong class="ignore">AnyScan209</strong> is 100% free to download and use. There are no hidden charges, in-app purchases, or premium versions. The app provides full functionality without any cost.</p>
             </div>
             <div class="faq-item">
-                <h4>Does AnyScan209 work with external sensors?</h4>
-                <p>Yes! <strong>AnyScan209</strong> supports external <strong>Bluetooth sensors</strong> such as HC-05 modules and other SPP-compatible devices. This makes it ideal for custom measurements using specialized hardware.</p>
+                <h4>Does <span class="ignore">AnyScan209</span> work with external sensors?</h4>
+                <p>Yes! <strong class="ignore">AnyScan209</strong> supports external <strong>Bluetooth sensors</strong> such as HC-05 modules and other SPP-compatible devices. This makes it ideal for custom measurements using specialized hardware.</p>
             </div>
             <div class="faq-item">
-                <h4>What data formats can I export from AnyScan209?</h4>
-                <p><strong>AnyScan209</strong> supports export in three formats: <strong>OBJ</strong> for 3D models, <strong>STL</strong> for 3D printing applications, and <strong>CSV</strong> for data analysis in spreadsheets and scientific software.</p>
+                <h4>What data formats can I export from <span class="ignore">AnyScan209</span>?</h4>
+                <p><strong class="ignore">AnyScan209</strong> supports export in three formats: <strong>OBJ</strong> for 3D models, <strong>STL</strong> for 3D printing applications, and <strong>CSV</strong> for data analysis in spreadsheets and scientific software.</p>
             </div>
             <div class="faq-item">
-                <h4>Can I use AnyScan209 for more than just magnetic field scanning?</h4>
-                <p>Absolutely! <strong>AnyScan209 is a universal 2D/3D visualizer</strong> with <strong>four internal sensors</strong> (magnetometer, barometer, light, sound) and support for any external 0–1024 sensor data. Whether you're measuring <strong>temperature, pressure, altitude, light, acoustic signals,</strong> or <strong>custom sensor data</strong>, just send values between 0 and 1024 and the app creates stunning visualizations.</p>
+                <h4>Can I use <span class="ignore">AnyScan209</span> for more than just magnetic field scanning?</h4>
+                <p>Absolutely! <strong class="ignore">AnyScan209</strong> is a universal 2D/3D visualizer with <strong>four internal sensors</strong> (magnetometer, barometer, light, sound) and support for any external 0–1024 sensor data. Whether you're measuring <strong>temperature, pressure, altitude, light, acoustic signals,</strong> or <strong>custom sensor data</strong>, just send values between 0 and 1024 and the app creates stunning visualizations.</p>
             </div>
             <div class="faq-item">
-                <h4>Does AnyScan209 contain ads or collect my data?</h4>
-                <p><strong>No.</strong> AnyScan209 is <strong>completely free</strong>, contains <strong>no advertisements</strong>, and <strong>never sends any data</strong> to external servers. All scans, settings, and data stay locally on your device. Your privacy is fully respected.</p>
+                <h4>Does <span class="ignore">AnyScan209</span> contain ads or collect my data?</h4>
+                <p><strong>No.</strong> <span class="ignore">AnyScan209</span> is <strong>completely free</strong>, contains <strong>no advertisements</strong>, and <strong>never sends any data</strong> to external servers. All scans, settings, and data stay locally on your device. Your privacy is fully respected.</p>
             </div>
             <div class="faq-item">
-                <h4>Which Android devices are compatible with AnyScan209?</h4>
-                <p><strong>AnyScan209</strong> works on any <strong>Android device</strong> that has a built-in <strong>magnetometer sensor</strong>. Most modern smartphones include this sensor. For best results, use devices with high-quality sensors like those listed in the sensor guide above.</p>
+                <h4>Which Android devices are compatible with <span class="ignore">AnyScan209</span>?</h4>
+                <p><strong class="ignore">AnyScan209</strong> works on any <strong>Android device</strong> that has a built-in <strong>magnetometer sensor</strong>. Most modern smartphones include this sensor. For best results, use devices with high-quality sensors like those listed in the sensor guide above.</p>
             </div>
             <div class="faq-item">
-                <h4>Can I use AnyScan209 for professional geophysical surveys?</h4>
-                <p>Absolutely! <strong>AnyScan209</strong> is designed for both educational and professional use. Its <strong>2D/3D visualization</strong>, <strong>data export</strong>, and <strong>external sensor support</strong> make it suitable for various fields.</p>
+                <h4>Can I use <span class="ignore">AnyScan209</span> for professional geophysical surveys?</h4>
+                <p>Absolutely! <strong class="ignore">AnyScan209</strong> is designed for both educational and professional use. Its <strong>2D/3D visualization</strong>, <strong>data export</strong>, and <strong>external sensor support</strong> make it suitable for various fields.</p>
             </div>
             <div class="faq-item">
                 <h4>What is the Gain feature and how does it work?</h4>
@@ -1123,7 +1123,7 @@
             </div>
         </div>
 
-        <h1 style="text-align:center; color:var(--accent-color); margin-top:50px; font-size:2rem;">Saeid Moghadam</h1>
+        <h1 style="text-align:center; color:var(--accent-color); margin-top:50px; font-size:2rem;"><span class="ignore">Saeid Moghadam</span></h1>
 
         <footer>
             <p>
@@ -1132,12 +1132,11 @@
                 &nbsp;|&nbsp; <a href="https://github.com/soifgo/AnyScan209" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 &nbsp;|&nbsp; <a href="https://github.com/soifgo/AnyScan209/discussions" target="_blank" rel="noopener noreferrer">💬 Community Forum</a>
             </p>
-            <p style="font-size:0.9rem; margin-top:8px; color:var(--text-muted);">&copy;2025-2026 AnyScan209 — Built by Saeid Moghadam</p>
+            <p style="font-size:0.9rem; margin-top:8px; color:var(--text-muted);">&copy;2025-2026 <span class="ignore">AnyScan209</span> — Built by <span class="ignore">Saeid Moghadam</span></p>
         </footer>
 
     </div>
 
-    <!-- ===== THEME TOGGLE SCRIPT ===== -->
     <script>
         (function() {
             var btn = document.getElementById('themeToggle');
@@ -1162,62 +1161,58 @@
         })();
     </script>
 
-    <!-- ===== TRANSLATE.JS LIBRARY ===== -->
     <script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
 
-    <!-- ===== LANGUAGE CONFIGURATION WITH FALLBACK DETECTION ===== -->
     <script>
     (function() {
         'use strict';
 
         var LANGUAGES = {
-            'english': { label: 'English', dir: 'ltr' },
-            'spanish': { label: 'Español', dir: 'ltr' },
-            'french': { label: 'Français', dir: 'ltr' },
-            'deutsch': { label: 'Deutsch', dir: 'ltr' },
-            'italian': { label: 'Italiano', dir: 'ltr' },
-            'dutch': { label: 'Nederlands', dir: 'ltr' },
-            'portuguese': { label: 'Português', dir: 'ltr' },
-            'polish': { label: 'Polski', dir: 'ltr' },
-            'swedish': { label: 'Svenska', dir: 'ltr' },
-            'norwegian': { label: 'Norsk', dir: 'ltr' },
-            'danish': { label: 'Dansk', dir: 'ltr' },
-            'romanian': { label: 'Română', dir: 'ltr' },
-            'czech': { label: 'Čeština', dir: 'ltr' },
-            'slovak': { label: 'Slovenčina', dir: 'ltr' },
-            'hungarian': { label: 'Magyar', dir: 'ltr' },
-            'greek': { label: 'Ελληνικά', dir: 'ltr' },
-            'bulgarian': { label: 'Български', dir: 'ltr' },
-            'russian': { label: 'Русский', dir: 'ltr' },
-            'ukrainian': { label: 'Українська', dir: 'ltr' },
-            'serbian': { label: 'Srpski', dir: 'ltr' },
-            'hebrew': { label: 'עברית', dir: 'rtl' },
-            'chinese_simplified': { label: '简体中文', dir: 'ltr' },
-            'japanese': { label: '日本語', dir: 'ltr' },
-            'korean': { label: '한국어', dir: 'ltr' },
-            'hindi': { label: 'हिन्दी', dir: 'ltr' },
-            'bengali': { label: 'বাংলা', dir: 'ltr' },
-            'turkish': { label: 'Türkçe', dir: 'ltr' },
-            'arabic': { label: 'العربية', dir: 'rtl' },
-            'persian': { label: 'فارسی', dir: 'rtl' },
-            'urdu': { label: 'اردو', dir: 'rtl' },
-            'azerbaijani': { label: 'Azərbaycanca', dir: 'ltr' },
-            'armenian': { label: 'Հայերեն', dir: 'ltr' },
-            'georgian': { label: 'ქართული', dir: 'ltr' },
-            'indonesian': { label: 'Bahasa Indonesia', dir: 'ltr' },
-            'malay': { label: 'Melayu', dir: 'ltr' },
-            'filipino': { label: 'Filipino', dir: 'ltr' },
-            'thai': { label: 'ไทย', dir: 'ltr' },
-            'afrikaans': { label: 'Afrikaans', dir: 'ltr' },
-            'swahili': { label: 'Swahili', dir: 'ltr' },
-            'vietnamese': { label: 'Tiếng Việt', dir: 'ltr' },
-            'tamil': { label: 'தமிழ்', dir: 'ltr' }
+            'english':              { label: 'English',              dir: 'ltr' },
+            'spanish':              { label: 'Español',              dir: 'ltr' },
+            'french':               { label: 'Français',             dir: 'ltr' },
+            'deutsch':              { label: 'Deutsch',              dir: 'ltr' },
+            'italian':              { label: 'Italiano',             dir: 'ltr' },
+            'dutch':                { label: 'Nederlands',           dir: 'ltr' },
+            'portuguese':           { label: 'Português',            dir: 'ltr' },
+            'polish':               { label: 'Polski',               dir: 'ltr' },
+            'swedish':              { label: 'Svenska',              dir: 'ltr' },
+            'norwegian':            { label: 'Norsk',                dir: 'ltr' },
+            'danish':               { label: 'Dansk',                dir: 'ltr' },
+            'romanian':             { label: 'Română',               dir: 'ltr' },
+            'czech':                { label: 'Čeština',              dir: 'ltr' },
+            'slovak':               { label: 'Slovenčina',           dir: 'ltr' },
+            'hungarian':            { label: 'Magyar',               dir: 'ltr' },
+            'greek':                { label: 'Ελληνικά',             dir: 'ltr' },
+            'bulgarian':            { label: 'Български',            dir: 'ltr' },
+            'russian':              { label: 'Русский',              dir: 'ltr' },
+            'ukrainian':            { label: 'Українська',           dir: 'ltr' },
+            'serbian':              { label: 'Srpski',               dir: 'ltr' },
+            'hebrew':               { label: 'עברית',                dir: 'rtl' },
+            'chinese_simplified':   { label: '简体中文',             dir: 'ltr' },
+            'japanese':             { label: '日本語',               dir: 'ltr' },
+            'korean':               { label: '한국어',               dir: 'ltr' },
+            'hindi':                { label: 'हिन्दी',               dir: 'ltr' },
+            'bengali':              { label: 'বাংলা',                dir: 'ltr' },
+            'turkish':              { label: 'Türkçe',               dir: 'ltr' },
+            'arabic':               { label: 'العربية',              dir: 'rtl' },
+            'persian':              { label: 'فارسی',                dir: 'rtl' },
+            'urdu':                 { label: 'اردو',                 dir: 'rtl' },
+            'kurdish_sorani':       { label: 'کوردی',                dir: 'rtl' },
+            'azerbaijani':          { label: 'Azərbaycanca',         dir: 'ltr' },
+            'armenian':             { label: 'Հայերեն',              dir: 'ltr' },
+            'georgian':             { label: 'ქართული',              dir: 'ltr' },
+            'indonesian':           { label: 'Bahasa Indonesia',     dir: 'ltr' },
+            'malay':                { label: 'Melayu',               dir: 'ltr' },
+            'filipino':             { label: 'Filipino',             dir: 'ltr' },
+            'thai':                 { label: 'ไทย',                  dir: 'ltr' },
+            'afrikaans':            { label: 'Afrikaans',            dir: 'ltr' },
+            'vietnamese':           { label: 'Tiếng Việt',           dir: 'ltr' },
+            'tamil':                { label: 'தமிழ்',                dir: 'ltr' }
         };
 
         var DEFAULT_LANG = 'english';
-
         var FALLBACK_CHANNELS = ['giteeAI', 'client.edge', 'siliconflow'];
-        var currentChannelIndex = 0;
 
         var langBtn = document.getElementById('langBtn');
         var langDropdown = document.getElementById('langDropdown');
@@ -1228,7 +1223,7 @@
             for (var code in LANGUAGES) {
                 if (LANGUAGES.hasOwnProperty(code)) {
                     var lang = LANGUAGES[code];
-                    html += '<a href="javascript:void(0)" class="lang-item" data-lang="' + code + '" data-dir="' + lang.dir + '">' + lang.label + '</a>';
+                    html += '<a href="javascript:void(0)" class="lang-item ignore" data-lang="' + code + '" data-dir="' + lang.dir + '">' + lang.label + '</a>';
                 }
             }
             langDropdown.innerHTML = html;
@@ -1265,14 +1260,20 @@
             }
         }
 
+        function resetToEnglish() {
+            try { localStorage.removeItem('anyscan209-lang'); } catch (e) {}
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            currentLangLabel.textContent = LANGUAGES.english.label;
+            langDropdown.classList.remove('show');
+            setTimeout(function() {
+                location.reload();
+            }, 100);
+        }
+
         function changeLanguage(langCode, langDir) {
             if (langCode === 'english') {
-                document.documentElement.setAttribute('dir', 'ltr');
-                document.documentElement.setAttribute('lang', 'en');
-                currentLangLabel.textContent = LANGUAGES[langCode].label;
-                langDropdown.classList.remove('show');
-                try { localStorage.setItem('anyscan209-lang', langCode); } catch (e) {}
-                location.reload();
+                resetToEnglish();
                 return;
             }
 
@@ -1319,7 +1320,29 @@
             langDropdown.classList.remove('show');
         });
 
+        function getSavedLang() {
+            try {
+                var saved = localStorage.getItem('anyscan209-lang');
+                if (saved && LANGUAGES[saved] && saved !== 'english') {
+                    return saved;
+                }
+            } catch (e) {}
+            return null;
+        }
+
         function initTranslate() {
+            var savedLang = getSavedLang();
+
+            // Force English as default when no saved non-English language exists.
+            // This prevents translate.js from auto-detecting the browser language
+            // and applying an unwanted translation on first visit.
+            if (!savedLang) {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                currentLangLabel.textContent = LANGUAGES.english.label;
+                return;
+            }
+
             translate.language.setLocal('english');
             translate.service.use(FALLBACK_CHANNELS[0]);
             translate.selectLanguageTag.show = false;
@@ -1329,42 +1352,35 @@
             }
         }
 
-        function restoreLanguage() {
-            try {
-                var savedLang = localStorage.getItem('anyscan209-lang');
-                if (savedLang && LANGUAGES[savedLang]) {
-                    var lang = LANGUAGES[savedLang];
-                    if (savedLang !== 'english') {
-                        document.documentElement.setAttribute('dir', lang.dir);
-                        document.documentElement.setAttribute('lang', savedLang === 'persian' ? 'fa' : savedLang);
-                    }
-                    currentLangLabel.textContent = lang.label;
-                    return savedLang;
-                }
-            } catch (e) {}
+        function restoreLanguageUI() {
+            var savedLang = getSavedLang();
+            if (savedLang) {
+                var lang = LANGUAGES[savedLang];
+                document.documentElement.setAttribute('dir', lang.dir);
+                document.documentElement.setAttribute('lang', savedLang === 'persian' ? 'fa' : savedLang);
+                currentLangLabel.textContent = lang.label;
+                return savedLang;
+            }
+            currentLangLabel.textContent = LANGUAGES[DEFAULT_LANG].label;
             return null;
         }
 
         buildLanguageList();
-        var restored = restoreLanguage();
-        if (!restored) currentLangLabel.textContent = LANGUAGES[DEFAULT_LANG].label;
+        var restored = restoreLanguageUI();
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                initTranslate();
-                if (restored && restored !== 'english') {
-                    setTimeout(function() {
-                        changeLanguage(restored, LANGUAGES[restored].dir);
-                    }, 500);
-                }
-            });
-        } else {
+        function bootTranslate() {
             initTranslate();
-            if (restored && restored !== 'english') {
+            if (restored) {
                 setTimeout(function() {
                     changeLanguage(restored, LANGUAGES[restored].dir);
                 }, 500);
             }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootTranslate);
+        } else {
+            bootTranslate();
         }
     })();
     </script>

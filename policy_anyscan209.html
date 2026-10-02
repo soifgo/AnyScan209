@@ -4,40 +4,197 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy — AnyScan209</title>
+
+    <meta name="description" content="Privacy Policy for AnyScan209 - a free, open-source Android app for magnetometer, altimeter, light, and sound sensor visualization. No tracking, no ads, no data collection." />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://soifgo.github.io/AnyScan209/policy_anyscan209.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Privacy Policy — AnyScan209" />
+    <meta property="og:description" content="AnyScan209 does not collect, store, or transmit personal data. Read the full privacy policy." />
+    <meta property="og:url" content="https://soifgo.github.io/AnyScan209/policy_anyscan209.html" />
+    <meta property="og:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy Policy — AnyScan209" />
+    <meta name="twitter:description" content="AnyScan209 does not collect, store, or transmit personal data." />
+    <meta name="twitter:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg" />
+
     <style>
+        * { box-sizing: border-box; }
+
+        .ignore { /* translation skip marker */ }
+
+        :root,
+        html[data-theme="dark"] {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --text: #c9d1d9;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border: #30363d;
+            --link: #58a6ff;
+            --link-hover: #79c0ff;
+            --accent: #4f8cff;
+        }
+
+        html[data-theme="light"] {
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --text: #334155;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --link: #2563eb;
+            --link-hover: #1d4ed8;
+            --accent: #2563eb;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.7;
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
+            transition: background 0.3s ease, color 0.3s ease;
         }
+
         h1, h2 {
-            color: #f0f6fc;
-            border-bottom: 1px solid #30363d;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
             padding-bottom: 8px;
         }
+
         a {
-            color: #58a6ff;
+            color: var(--link);
+            text-decoration: none;
         }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
         .footer {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid #30363d;
+            border-top: 1px solid var(--border);
             font-size: 0.9rem;
-            color: #8b949e;
+            color: var(--text-muted);
+        }
+
+        /* Language switcher - fixed top-left */
+        .language-switcher {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            right: auto;
+            z-index: 1001;
+            direction: ltr;
+        }
+
+        .lang-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        }
+
+        .lang-btn:hover {
+            background: var(--bg);
+            border-color: var(--accent);
+            transform: scale(1.03);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-width: 220px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            padding: 8px 0;
+            direction: ltr;
+        }
+
+        .lang-dropdown.show { display: block; }
+
+        .lang-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: background 0.15s;
+            white-space: nowrap;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .lang-item:hover {
+            background: var(--bg);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            body { margin: 20px auto; padding: 0 16px; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            .language-switcher { top: 12px; left: 12px; }
+            .lang-btn { font-size: 0.8rem; padding: 6px 12px; }
+            .lang-dropdown { min-width: 180px; max-height: 300px; }
+            .lang-item { padding: 8px 14px; font-size: 0.85rem; }
         }
     </style>
+
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('anyscan209-theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
 
-    <h1>🔒 Privacy Policy for AnyScan209</h1>
+    <div class="language-switcher ignore" id="languageSwitcher">
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">
+            🌐 <span id="currentLangLabel">English</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+    </div>
+
+    <h1>🔒 Privacy Policy for <span class="ignore">AnyScan209</span></h1>
     <p><strong>Last Updated:</strong> June 25, 2026</p>
 
     <h2>1. Information Collection</h2>
-    <p>AnyScan209 does <strong>not</strong> collect, store, or transmit any personal or sensitive user data. The application operates entirely offline and does not use any analytics, tracking, or advertising services.</p>
+    <p><span class="ignore">AnyScan209</span> does <strong>not</strong> collect, store, or transmit any personal or sensitive user data. The application operates entirely offline and does not use any analytics, tracking, or advertising services.</p>
 
     <h2>2. Data Usage</h2>
     <p>The app only processes:</p>
@@ -63,14 +220,235 @@
     <h2>6. Contact</h2>
     <p>For any privacy concerns or questions, please contact:</p>
     <ul>
-        <li><strong>Developer:</strong> Saeid Moghadam</li>
+        <li><strong>Developer:</strong> <span class="ignore">Saeid Moghadam</span></li>
         <li><strong>Email:</strong> ssm20985@gmail.com</li>
         <li><strong>Website:</strong> <a href="https://soifgo.github.io/soifgo/">https://soifgo.github.io/soifgo/</a></li>
     </ul>
 
     <div class="footer">
-        © 2026 — AnyScan209
+        &copy; 2026 — <span class="ignore">AnyScan209</span>
     </div>
+
+    <script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var LANGUAGES = {
+            'english':              { label: 'English',              dir: 'ltr' },
+            'spanish':              { label: 'Español',              dir: 'ltr' },
+            'french':               { label: 'Français',             dir: 'ltr' },
+            'deutsch':              { label: 'Deutsch',              dir: 'ltr' },
+            'italian':              { label: 'Italiano',             dir: 'ltr' },
+            'dutch':                { label: 'Nederlands',           dir: 'ltr' },
+            'portuguese':           { label: 'Português',            dir: 'ltr' },
+            'polish':               { label: 'Polski',               dir: 'ltr' },
+            'swedish':              { label: 'Svenska',              dir: 'ltr' },
+            'norwegian':            { label: 'Norsk',                dir: 'ltr' },
+            'danish':               { label: 'Dansk',                dir: 'ltr' },
+            'romanian':             { label: 'Română',               dir: 'ltr' },
+            'czech':                { label: 'Čeština',              dir: 'ltr' },
+            'slovak':               { label: 'Slovenčina',           dir: 'ltr' },
+            'hungarian':            { label: 'Magyar',               dir: 'ltr' },
+            'greek':                { label: 'Ελληνικά',             dir: 'ltr' },
+            'bulgarian':            { label: 'Български',            dir: 'ltr' },
+            'russian':              { label: 'Русский',              dir: 'ltr' },
+            'ukrainian':            { label: 'Українська',           dir: 'ltr' },
+            'serbian':              { label: 'Srpski',               dir: 'ltr' },
+            'hebrew':               { label: 'עברית',                dir: 'rtl' },
+            'chinese_simplified':   { label: '简体中文',             dir: 'ltr' },
+            'japanese':             { label: '日本語',               dir: 'ltr' },
+            'korean':               { label: '한국어',               dir: 'ltr' },
+            'hindi':                { label: 'हिन्दी',               dir: 'ltr' },
+            'bengali':              { label: 'বাংলা',                dir: 'ltr' },
+            'turkish':              { label: 'Türkçe',               dir: 'ltr' },
+            'arabic':               { label: 'العربية',              dir: 'rtl' },
+            'persian':              { label: 'فارسی',                dir: 'rtl' },
+            'urdu':                 { label: 'اردو',                 dir: 'rtl' },
+            'kurdish_sorani':       { label: 'کوردی',                dir: 'rtl' },
+            'azerbaijani':          { label: 'Azərbaycanca',         dir: 'ltr' },
+            'armenian':             { label: 'Հայերեն',              dir: 'ltr' },
+            'georgian':             { label: 'ქართული',              dir: 'ltr' },
+            'indonesian':           { label: 'Bahasa Indonesia',     dir: 'ltr' },
+            'malay':                { label: 'Melayu',               dir: 'ltr' },
+            'filipino':             { label: 'Filipino',             dir: 'ltr' },
+            'thai':                 { label: 'ไทย',                  dir: 'ltr' },
+            'afrikaans':            { label: 'Afrikaans',            dir: 'ltr' },
+            'vietnamese':           { label: 'Tiếng Việt',           dir: 'ltr' },
+            'tamil':                { label: 'தமிழ்',                dir: 'ltr' }
+        };
+
+        var DEFAULT_LANG = 'english';
+        var FALLBACK_CHANNELS = ['giteeAI', 'client.edge', 'siliconflow'];
+
+        var langBtn = document.getElementById('langBtn');
+        var langDropdown = document.getElementById('langDropdown');
+        var currentLangLabel = document.getElementById('currentLangLabel');
+
+        function buildLanguageList() {
+            var html = '';
+            for (var code in LANGUAGES) {
+                if (LANGUAGES.hasOwnProperty(code)) {
+                    var lang = LANGUAGES[code];
+                    html += '<a href="javascript:void(0)" class="lang-item ignore" data-lang="' + code + '" data-dir="' + lang.dir + '">' + lang.label + '</a>';
+                }
+            }
+            langDropdown.innerHTML = html;
+            var items = langDropdown.querySelectorAll('.lang-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    changeLanguage(this.getAttribute('data-lang'), this.getAttribute('data-dir'));
+                });
+            }
+        }
+
+        function waitForTranslation(element, originalText, timeoutMs) {
+            return new Promise(function(resolve) {
+                var start = Date.now();
+                var timer = setInterval(function() {
+                    if (element.textContent !== originalText) {
+                        clearInterval(timer);
+                        resolve(true);
+                    } else if (Date.now() - start > timeoutMs) {
+                        clearInterval(timer);
+                        resolve(false);
+                    }
+                }, 200);
+            });
+        }
+
+        function applyChannel(channel) {
+            try {
+                translate.service.use(channel);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function resetToEnglish() {
+            try { localStorage.removeItem('anyscan209-lang'); } catch (e) {}
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            currentLangLabel.textContent = LANGUAGES.english.label;
+            langDropdown.classList.remove('show');
+            setTimeout(function() {
+                location.reload();
+            }, 100);
+        }
+
+        function changeLanguage(langCode, langDir) {
+            if (langCode === 'english') {
+                resetToEnglish();
+                return;
+            }
+
+            var testElement = document.querySelector('h1');
+            var originalText = testElement ? testElement.textContent : '';
+
+            function tryChannel(index) {
+                if (index >= FALLBACK_CHANNELS.length) {
+                    console.warn('All fallback channels failed.');
+                    return;
+                }
+
+                var channel = FALLBACK_CHANNELS[index];
+                applyChannel(channel);
+
+                translate.changeLanguage(langCode);
+                if (typeof translate.execute === 'function') {
+                    translate.execute();
+                }
+
+                waitForTranslation(testElement, originalText, 3000).then(function(success) {
+                    if (!success) {
+                        console.warn('Channel ' + channel + ' failed, trying next...');
+                        tryChannel(index + 1);
+                    } else {
+                        try { localStorage.setItem('anyscan209-lang', langCode); } catch (e) {}
+                        document.documentElement.setAttribute('dir', langDir);
+                        document.documentElement.setAttribute('lang', langCode === 'persian' ? 'fa' : langCode);
+                        currentLangLabel.textContent = LANGUAGES[langCode].label;
+                        langDropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            tryChannel(0);
+        }
+
+        langBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('show');
+        });
+
+        function getSavedLang() {
+            try {
+                var saved = localStorage.getItem('anyscan209-lang');
+                if (saved && LANGUAGES[saved] && saved !== 'english') {
+                    return saved;
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        function initTranslate() {
+            var savedLang = getSavedLang();
+
+            if (!savedLang) {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                currentLangLabel.textContent = LANGUAGES.english.label;
+                return;
+            }
+
+            translate.language.setLocal('english');
+            translate.service.use(FALLBACK_CHANNELS[0]);
+            translate.selectLanguageTag.show = false;
+            translate.execute();
+            if (translate.listener && translate.listener.start) {
+                translate.listener.start();
+            }
+        }
+
+        function restoreLanguageUI() {
+            var savedLang = getSavedLang();
+            if (savedLang) {
+                var lang = LANGUAGES[savedLang];
+                document.documentElement.setAttribute('dir', lang.dir);
+                document.documentElement.setAttribute('lang', savedLang === 'persian' ? 'fa' : savedLang);
+                currentLangLabel.textContent = lang.label;
+                return savedLang;
+            }
+            currentLangLabel.textContent = LANGUAGES[DEFAULT_LANG].label;
+            return null;
+        }
+
+        buildLanguageList();
+        var restored = restoreLanguageUI();
+
+        function bootTranslate() {
+            initTranslate();
+            if (restored) {
+                setTimeout(function() {
+                    changeLanguage(restored, LANGUAGES[restored].dir);
+                }, 500);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootTranslate);
+        } else {
+            bootTranslate();
+        }
+    })();
+    </script>
 
 </body>
 </html>
