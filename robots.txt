@@ -4,5 +4,7 @@
 User-agent: *
 Allow: /
 
-# Optional: block nothing — all content is public and useful for indexing
-# Disallow: /private/
+# Sitemap
+Sitemap: https://soifgo.github.io/AnyScan209/sitemap.xml
+
+# All content is public and useful for indexing
