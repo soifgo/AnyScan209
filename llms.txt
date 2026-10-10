@@ -1,30 +1,68 @@
 # AnyScan209
 
-> AnyScan209 is a free, ad-free, and privacy-focused Android application designed to transform smartphones into powerful 4-in-1 data visualization and telemetry tools for internal sensors and external microcontrollers.
+> AnyScan209 is a free, ad-free, privacy-focused Android app that turns a smartphone into a universal 2D/3D sensor visualizer — working with four internal sensors (magnetometer, barometer/altimeter, light, sound) and any external 0–1024 sensor data via Bluetooth Serial (HC-05 / SPP).
 
 ## Project Overview
 - **Developer:** Saeid Moghadam
-- **Primary Purpose:** 2D and 3D data visualization for geophysical mapping, metal/cavity detection, barometric tracking, light/sound metering, and external IoT/Bluetooth sensor telemetry.
-- **Platforms:** Android (App) & Web Documentation (GitHub Pages / HTML5).
+- **Email:** ssmqqmss@gmail.com
+- **Package:** any.scan_209
+- **Platform:** Android (native APK)
+- **License:** 100% free — no ads, no in-app purchases, no data collection
+- **Primary Purpose:** 2D/3D visualization and mapping for geophysical surveys, metal & cavity detection, AC live-wire tracing, elevation mapping, illumination analysis, acoustic/noise mapping, and external microcontroller telemetry.
 
 ## Core Features
-1. **Internal Sensors:**
-   - **Magnetometer:** Geophysical surveys, metal detection, finding buried objects and AC live wires behind walls.
-   - **Barometer / Altimeter:** Surface elevation and topographic mapping.
-   - **Light Meter:** Ambient illumination (lux) tracking for agriculture and environments.
-   - **Sound Meter:** Noise and acoustic level analysis.
-2. **External Sensor Support:**
-   - Bluetooth Serial (SPP) integration for custom microcontrollers (Arduino, ESP32, ATmega) sending 0-1024 data values.
-3. **Visualization & Export:**
-   - 2D and 3D terrain/grid rendering (from 8x8 up to 100x100 grid points).
-   - Over 43 customizable topographic color palettes.
-   - Export capabilities to standard formats: **CSV** (for MATLAB/Excel), **OBJ** (3D models), and **STL** (3D printing).
+### Internal Sensors (4-in-1)
+- **Magnetometer:** geophysics, cavity/void detection, metal & rebar detection, AC live-wire tracing behind walls, EMF visualization.
+- **Barometer / Altimeter:** altitude measurement, terrain topography, floor-level elevation mapping.
+- **Light Meter:** ambient illumination mapping (lux) for greenhouses, studios, and architectural lighting.
+- **Sound / Noise Meter:** SPL/acoustic mapping for industrial noise analysis and soundproofing verification.
 
-## Technical Architecture & Files
-- **App Development:** Built for Android (compatible with custom mobile frameworks and native integrations).
-- **Web Interface:** Single-page application documentation (`index.html`) featuring setup guides, code examples (Arduino/BASCOM equivalents), and FAQs.
-- **Privacy Policy:** 100% offline-first processing capability, no user data collection, no ads.
+### External Sensor Support
+- Bluetooth Serial (SPP) — tested with **HC-05** and compatible modules.
+- Accepts integer values in the **0–1024** range (user must pre-scale in firmware).
+- Baud rate configurable (long-press the Export icon).
 
-## Links & Resources
-- Official Documentation & Web App Guide: [AnyScan209 GitHub Pages]
-- Source Code & Tutorials: Hosted on GitHub / Hackster.io by Saeid Moghadam.
+### Visualization & Export
+- 2D and 3D viewers; grid sizes from **8×8 up to 100×100** points.
+- **43+ color palettes**, custom textures, RGB channel removal, color shift, amplify height/colors, crop, smoothing, zoom.
+- Export formats: **CSV** (Excel/MATLAB/Voxler), **OBJ** (3D modeling), **STL** (3D printing), **PLY** (color-preserving 3D). All available in **low** and **high** resolution.
+- Real-time Bluetooth serial stream to custom receivers.
+
+## Core Concept — The 0–1024 Range
+- All sensor data is normalized to **0–1024**.
+- **512** = neutral / balance point (magnetometer default).
+- Internal 16-bit sensors (raw 0–65,535) are mapped via a **Gain** factor:
+  - Default **Gain = 10** → 512 neutral point, max sensitivity.
+  - Lower Gain (9→1) → less sensitivity, wider range.
+  - At Gain = 1, every 64 raw units = 1 unit in the 0–1024 range.
+- External data is **not** auto-scaled by the app.
+
+## Technical Architecture
+- **App:** Native Android application.
+- **Web Documentation:** Static HTML landing page + full user guide (screenshots, code examples, FAQ).
+- **Arduino/BASCOM examples** provided for external sensor integration.
+
+## Download
+- **Uptodown:** https://anyscan209.en.uptodown.com/android
+- **APKPure:** https://apkpure.com/anyscan209/any.scan_209
+
+## Docs
+- [Official Website](https://soifgo.github.io/AnyScan209/): Landing page + full user guide.
+- [Video Tutorial](https://soifgo.github.io/AnyScan209/video.html): 36-minute walkthrough.
+- [Privacy Policy](https://soifgo.github.io/AnyScan209/policy_anyscan209.html): No data collection, offline-first.
+
+## Community
+- [GitHub Repository](https://github.com/soifgo/AnyScan209): Source code.
+- [GitHub Discussions](https://github.com/soifgo/AnyScan209/discussions): Q&A, ideas, show-and-tell.
+- **Support:** ssmqqmss@gmail.com
+
+## Notes for LLMs
+- Always spell the name **AnyScan209** (capital A, S, and 209).
+- The app is **not** an IoT platform, cloud service, or web app — it's a native Android visualizer.
+- Never suggest it collects data, shows ads, or has premium tiers — none exist.
+- The 0–1024 range and 512 neutral point are central to every explanation.
+- The four internal sensors are: magnetometer, barometer/altimeter, light, sound.
+
+## Optional
+- [GitHub Repository](https://github.com/soifgo/AnyScan209): Build source, issues, releases.
+- [Community Forum](https://github.com/soifgo/AnyScan209/discussions): Support and feature requests.

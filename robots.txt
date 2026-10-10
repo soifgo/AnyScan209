@@ -1,6 +1,8 @@
 # robots.txt for AnyScan209
+# Hosted at: https://soifgo.github.io/AnyScan209/
+
 User-agent: *
 Allow: /
 
-# Sitemap Location
-Sitemap: https://yourdomain.com/sitemap.xml
+# Optional: block nothing — all content is public and useful for indexing
+# Disallow: /private/
