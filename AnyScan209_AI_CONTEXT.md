@@ -11,6 +11,8 @@
 |---|---|
 | **App Name** | AnyScan209 |
 | **Package Name** | `any.scan_209` |
+| **Latest Version** | 2.01 |
+| **Release Date** | 2026-09-21 |
 | **Platform** | Android |
 | **Category** | ScienceApplication / Universal Sensor Data Visualizer |
 | **Author / Publisher** | Saeid Moghadam |
@@ -172,15 +174,15 @@ The file provided (`!DOCTYPE html.txt` / `index.html`) is the official **landing
 - **Tutorial Video:** 36 min embedded from Mega.nz
 - **Table of Contents:** 19 anchor links
 - **Sections 1–18** covering all app features
-- **FAQ:** 8 Q&A entries (also in JSON-LD FAQPage schema)
+- **FAQ:** 7 Q&A entries (also in JSON-LD FAQPage schema)
 - **Footer:** email, privacy policy, GitHub, forum
 
 ### 9.2 SEO / Meta
 - **Title:** "AnyScan209 – Free 4-in-1 Sensor Visualizer: Magnetometer, Altimeter, Light & Sound Mapper for Android"
 - **Canonical:** https://soifgo.github.io/AnyScan209/
 - **OG image:** https://soifgo.github.io/AnyScan209/og-banner.jpg (1200×630)
-- **Schema.org:** SoftwareApplication + WebPage + VideoObject + FAQPage
-- **hreflang:** x-default + en (plus video.html alternate)
+- **Schema.org:** SoftwareApplication + WebSite + WebPage + VideoObject + BreadcrumbList + FAQPage
+- **hreflang:** x-default + en
 - **Google verification:** `a_eyU1xDCfLVC4vCKrGpm0_cHHUaNBcgR4AWRieeOmI`
 
 ### 9.3 Download Links
@@ -212,6 +214,7 @@ html[data-theme="dark"] {
 2. **Theme toggle** — button handler, updates icon ☀️/🌙, persists to localStorage
 3. **Language switcher** — 42 languages, fallback channels, custom dropdown
 4. **translate.js** — loaded from `https://cdn.staticfile.net/translate.js/3.18.66/translate.js`
+   (note: CDN may be blocked in some regions; consider self-hosting for production)
 
 ### 9.6 Translation System Details
 - **localStorage key:** `anyscan209-lang`
@@ -223,6 +226,7 @@ html[data-theme="dark"] {
 
 ### 9.7 Language List (42 entries)
 English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, Norwegian, Danish, Romanian, Czech, Slovak, Hungarian, Greek, Bulgarian, Russian, Ukrainian, Serbian, Hebrew, Chinese (Simplified), Japanese, Korean, Hindi, Bengali, Turkish, Arabic, Persian, Urdu, Kurdish Sorani, Azerbaijani, Armenian, Georgian, Indonesian, Malay, Filipino, Thai, Afrikaans, Vietnamese, Tamil.
+
 ---
 
 ## 10. Wire & Conduit Detection (Killer Feature)
@@ -306,6 +310,7 @@ When generating content, code, or translations for AnyScan209:
 | Website | https://soifgo.github.io/AnyScan209/ |
 | Video page | https://soifgo.github.io/AnyScan209/video.html |
 | Privacy policy | https://soifgo.github.io/AnyScan209/policy_anyscan209.html |
+| Sitemap | https://soifgo.github.io/AnyScan209/sitemap.xml |
 | GitHub | https://github.com/soifgo/AnyScan209 |
 | Forum | https://github.com/soifgo/AnyScan209/discussions |
 | Uptodown | https://anyscan209.en.uptodown.com/android |
@@ -347,6 +352,16 @@ If you are an AI assistant asked to work on AnyScan209:
 | Write an FAQ answer | §13, §14 |
 | Debug website CSS/JS | §9.4, §9.5 |
 
+### Anti-Patterns (do NOT do)
+- ❌ Do NOT claim the app has AI/ML features (it doesn't).
+- ❌ Do NOT suggest it works on iOS (Android-only).
+- ❌ Do NOT say it's on Google Play (it isn't — only Uptodown & APKPure).
+- ❌ Do NOT recommend using it for medical, safety-critical, or legal purposes.
+- ❌ Do NOT add emojis to the app name "AnyScan209".
+- ❌ Do NOT suggest it has cloud sync, user accounts, or online storage (it doesn't).
+- ❌ Do NOT describe it as an IoT platform or MQTT broker.
+- ❌ Do NOT recommend paid alternatives when asked for a free option.
+
 ---
 
 ## 18. File Manifest (Referenced Assets)
@@ -355,7 +370,7 @@ Images / assets referenced in the HTML documentation:
 
 | File | Purpose |
 |---|---|
-| `logo.png` | App logo (header) |
+| `logo.png` | App logo (header) — should be 180×180 or 512×512 |
 | `og-banner.jpg` | Open Graph / Twitter card image (1200×630) |
 | `uptodown.png` | Uptodown button icon |
 | `apkpure.png` | APKPure button icon |
@@ -365,6 +380,8 @@ Images / assets referenced in the HTML documentation:
 | `video.html` | Dedicated video page |
 | `policy_anyscan209.html` | Privacy policy page |
 | `Proteuse_file.zip` | Proteus project download |
+| `sitemap.xml` | XML sitemap (3 URLs) |
+| `robots.txt` | Robots file (limited on GitHub Pages) |
 
 ---
 
@@ -385,6 +402,17 @@ Images / assets referenced in the HTML documentation:
 | **SPL** | Sound Pressure Level (dB measurement) |
 | **PLY** | Polygon File Format (stores per-vertex color) |
 | **µT/LSB** | Microtesla per Least Significant Bit (sensor resolution) |
+| **PWA** | Progressive Web App (not enabled on AnyScan209 — only APK) |
+| **APK** | Android Package Kit (the app's distribution format) |
+
+---
+
+## 20. Changelog of This Document
+
+| Version | Date | Changes |
+|---|---|---|
+| 1.0 | 2026-10-10 | Initial AI Context Document |
+| 1.1 | 2026-10-10 | Added version 2.01, fixed FAQ count (7), removed video.html hreflang, added Anti-Patterns, added sitemap.xml & robots.txt to manifest, added PWA/APK glossary terms |
 
 ---
 

@@ -7,6 +7,7 @@
 - **Email:** ssmqqmss@gmail.com
 - **Package:** any.scan_209
 - **Platform:** Android (native APK)
+- **Latest Version:** 2.01 (September 2026)
 - **License:** 100% free — no ads, no in-app purchases, no data collection
 - **Primary Purpose:** 2D/3D visualization and mapping for geophysical surveys, metal & cavity detection, AC live-wire tracing, elevation mapping, illumination analysis, acoustic/noise mapping, and external microcontroller telemetry.
 
