@@ -18,6 +18,7 @@
     <!-- hreflang -->
     <link rel="alternate" hreflang="x-default" href="https://soifgo.github.io/AnyScan209/">
     <link rel="alternate" hreflang="en" href="https://soifgo.github.io/AnyScan209/">
+    <link rel="alternate" hreflang="fa" href="https://soifgo.github.io/AnyScan209/intro.html">
 
     <!-- Repository link -->
     <link rel="repository" href="https://github.com/soifgo/AnyScan209">
@@ -1175,7 +1176,7 @@ Loop
                 <h4>What is the Gain feature and how does it work?</h4>
                 <p><strong>Gain</strong> adjusts the sensitivity of the internal 16-bit magnetometer (0–65535 raw). Default <strong>Gain=10</strong> maps the raw data to the 0–1024 visualization range with neutral point at 512. Lower Gain (9 to 1) reduces sensitivity but covers a wider range. In <strong>External mode</strong>, you must pre-scale your sensor data before sending via Bluetooth.</p>
             </div>
-            <!-- ✅ FAQ جدید اینجا اضافه شد -->
+            <!-- ✅ FAQ جدید -->
             <div class="faq-item">
                 <h4>I have ideas or feature requests for improving the app. How can I submit them?</h4>
                 <p>Thank you for your interest and your ideas! We truly welcome user suggestions, but there is an important point we need to share with you:</p>
@@ -1291,6 +1292,51 @@ Loop
 
         var DEFAULT_LANG = 'english';
         var FALLBACK_CHANNELS = ['giteeAI', 'client.edge', 'siliconflow'];
+
+      
+        var LANG_MAP = {
+            'en': 'english',
+            'fa': 'persian',
+            'ar': 'arabic',
+            'es': 'spanish',
+            'fr': 'french',
+            'de': 'deutsch',
+            'ru': 'russian',
+            'zh': 'chinese_simplified',
+            'ja': 'japanese',
+            'ko': 'korean',
+            'tr': 'turkish',
+            'pt': 'portuguese',
+            'it': 'italian',
+            'hi': 'hindi',
+            'bn': 'bengali',
+            'ur': 'urdu',
+            'he': 'hebrew',
+            'el': 'greek',
+            'pl': 'polish',
+            'nl': 'dutch',
+            'sv': 'swedish',
+            'no': 'norwegian',
+            'da': 'danish',
+            'ro': 'romanian',
+            'cs': 'czech',
+            'sk': 'slovak',
+            'hu': 'hungarian',
+            'bg': 'bulgarian',
+            'uk': 'ukrainian',
+            'sr': 'serbian',
+            'ku': 'kurdish_sorani',
+            'az': 'azerbaijani',
+            'hy': 'armenian',
+            'ka': 'georgian',
+            'id': 'indonesian',
+            'ms': 'malay',
+            'fil': 'filipino',
+            'th': 'thai',
+            'af': 'afrikaans',
+            'vi': 'vietnamese',
+            'ta': 'tamil'
+        };
 
         var langBtn = document.getElementById('langBtn');
         var langDropdown = document.getElementById('langDropdown');
@@ -1408,16 +1454,37 @@ Loop
             return null;
         }
 
-        function initTranslate() {
-            var savedLang = getSavedLang();
+       
+        function getLangFromURL() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                var lang = params.get('lang');
+                if (lang && LANG_MAP[lang]) {
+                    return LANG_MAP[lang];
+                }
+                if (lang && LANGUAGES[lang]) {
+                    return lang;
+                }
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
 
-            if (!savedLang) {
+        function initTranslate() {
+            var urlLang = getLangFromURL();  
+            var savedLang = getSavedLang();  
+
+            var targetLang = urlLang || savedLang;
+
+            if (!targetLang) {
                 document.documentElement.setAttribute('dir', 'ltr');
                 document.documentElement.setAttribute('lang', 'en');
                 currentLangLabel.textContent = LANGUAGES.english.label;
                 return;
             }
 
+            
             translate.language.setLocal('english');
             translate.service.use(FALLBACK_CHANNELS[0]);
             translate.selectLanguageTag.show = false;
@@ -1425,16 +1492,26 @@ Loop
             if (translate.listener && translate.listener.start) {
                 translate.listener.start();
             }
+
+            
+            if (targetLang !== 'english') {
+                setTimeout(function() {
+                    changeLanguage(targetLang, LANGUAGES[targetLang].dir);
+                }, 800);
+            }
         }
 
         function restoreLanguageUI() {
+            var urlLang = getLangFromURL();
             var savedLang = getSavedLang();
-            if (savedLang) {
-                var lang = LANGUAGES[savedLang];
+            var targetLang = urlLang || savedLang;
+
+            if (targetLang) {
+                var lang = LANGUAGES[targetLang];
                 document.documentElement.setAttribute('dir', lang.dir);
-                document.documentElement.setAttribute('lang', savedLang === 'persian' ? 'fa' : savedLang);
+                document.documentElement.setAttribute('lang', targetLang === 'persian' ? 'fa' : targetLang);
                 currentLangLabel.textContent = lang.label;
-                return savedLang;
+                return targetLang;
             }
             currentLangLabel.textContent = LANGUAGES[DEFAULT_LANG].label;
             return null;
@@ -1445,11 +1522,6 @@ Loop
 
         function bootTranslate() {
             initTranslate();
-            if (restored) {
-                setTimeout(function() {
-                    changeLanguage(restored, LANGUAGES[restored].dir);
-                }, 500);
-            }
         }
 
         if (document.readyState === 'loading') {
