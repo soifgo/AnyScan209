@@ -464,6 +464,13 @@
         .highlight-box h3 { color: var(--accent-color); margin-top: 0; }
         .highlight-box ul { margin-top: 8px; }
 
+        .warning-box {
+            background: #fef3c7; border-left: 4px solid #f59e0b;
+            color: #92400e; padding: 18px 22px; margin: 22px 0;
+            border-radius: 0 12px 12px 12px; font-size: 1rem; line-height: 1.9;
+        }
+        .warning-box strong { color: #92400e; }
+
         .download-btn {
             display: inline-block; background: var(--success-color);
             padding: 18px 44px; min-height: 60px; min-width: 220px; border-radius: 10px;
@@ -786,6 +793,7 @@
                 <li><a href="#sensor-guide">Sensor Guide</a></li>
                 <li><a href="#wire-detection">Wire Detection</a></li>
                 <li><a href="#wall-tips">Wall Detection Tips</a></li>
+                <li><a href="#current-measurement">Current Measurement (AC &amp; DC)</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="https://github.com/soifgo/AnyScan209/discussions" target="_blank" rel="noopener noreferrer">💬 Community Forum</a></li>
             </ol>
@@ -1142,7 +1150,49 @@ Loop
         <p>Please note that Android devices use different <strong>magnetometer sensors</strong>. The performance of <strong>magnetic field measurements</strong> depends on the quality and specifications of the sensor installed in each phone.</p>
         <img class="menu menu-medium" alt="AnyScan209 sensor settings" src="set_01.jpg" loading="lazy" width="480" height="800">
 
-        <h2 id="faq">18. Frequently Asked Questions About AnyScan209</h2>
+        <h2 id="current-measurement">18. Direct &amp; Alternating Current Measurement with AnyScan209</h2>
+
+        <p>In the <strong>scan page</strong>, when you open the bottom menu, you will see <strong>four options</strong>:</p>
+        <ul>
+            <li><strong>DC Ammeter</strong> — Direct Current measurement</li>
+            <li><strong>DC Calibration</strong> — Direct Current calibration</li>
+            <li><strong>AC Ammeter</strong> — Alternating Current measurement</li>
+            <li><strong>AC Calibration</strong> — Alternating Current calibration</li>
+        </ul>
+
+        <img class="menu menu-medium" alt="AnyScan209 current measurement menu" src="menu9.jpg" loading="lazy" width="480" height="800">
+
+        <h3>How It Works</h3>
+        <p>If the current-carrying wire is placed in a <strong>proper and consistent position</strong>, you can measure the current through the <strong>magnetic field around it</strong> — exactly what <strong>current transformers (CTs)</strong> do. However, note that the <strong>position of the current-carrying wire relative to the sensor is very important</strong>, because its stability and correct calibration determine the accuracy of the measurement. Conversely, unfavorable conditions lead to inaccurate measurements.</p>
+
+        <h3>DC Current Measurement</h3>
+        <p>Before starting, press the <strong>Balancer (⚖️) icon</strong> so that the measurement field is set to <strong>zero</strong> before measuring. DC current measurement is somewhat <strong>more difficult</strong> because factors such as the presence of <strong>ferromagnetic metals nearby</strong> adversely affect accuracy.</p>
+        <p>If the initial adjustment does not give correct current, simply look at the <strong>now=</strong> value on the right side of the Calibration section and adjust it as follows:</p>
+        <ol>
+            <li>Place the phone sensor on or in front of the wire.</li>
+            <li>Pass a known current (e.g., <strong>1 ampere</strong>) through the wire using a laboratory power supply or any other method.</li>
+            <li>Note the number shown next to <strong>now=</strong>.</li>
+            <li>Enter that number in the <strong>Calibration input</strong> and confirm.</li>
+            <li>If you don't have access to 1 A, any known current works. For example, if the reading now shows <strong>800</strong> for <strong>4 A</strong>, then for 1 A the calibration value is <strong>200</strong>.</li>
+        </ol>
+        <p>For <strong>DC</strong>, it doesn't matter if the wire is reversed and the current reading is <strong>negative</strong> — just enter the <strong>absolute value</strong> (without sign) into the calibration field.</p>
+
+        <h3>AC Current Measurement</h3>
+        <p>AC current calibration follows the same procedure as DC. However, AC measurement is <strong>highly dependent on the performance and speed of the magnetic sensor</strong>, and you may not get satisfactory results on some phone models.</p>
+
+        <h3>Important Notes</h3>
+        <ul>
+            <li>These measurements only work in <strong>Internal Sensor (Magnetometer)</strong> mode.</li>
+            <li>AC measurement depends heavily on the <strong>speed and quality of the magnetometer</strong> — results may vary between phone models.</li>
+            <li>For best results, keep the wire in a <strong>fixed, consistent position</strong> relative to the sensor.</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ SAFETY WARNING:</strong><br>
+            <strong>Never</strong> attempt to measure current in <strong>high-voltage</strong> or <strong>high-current</strong> locations such as <strong>copper busbars</strong>. Doing so puts you at serious risk of <strong>electric shock</strong>, especially if your phone has a <strong>metal body</strong>. Always follow <strong>electrical safety procedures</strong> and never compromise your safety for a measurement.
+        </div>
+
+        <h2 id="faq">19. Frequently Asked Questions About AnyScan209</h2>
         <div class="faq-section">
             <div class="faq-item">
                 <h4>Is <span class="ignore">AnyScan209</span> completely free to download and use?</h4>
@@ -1293,7 +1343,7 @@ Loop
         var DEFAULT_LANG = 'english';
         var FALLBACK_CHANNELS = ['giteeAI', 'client.edge', 'siliconflow'];
 
-      
+        // ✅✅✅ جدید: نگاشت کدهای کوتاه به کدهای داخلی ✅✅✅
         var LANG_MAP = {
             'en': 'english',
             'fa': 'persian',
@@ -1454,7 +1504,7 @@ Loop
             return null;
         }
 
-       
+        // ✅✅✅ جدید: خوندن پارامتر lang از URL ✅✅✅
         function getLangFromURL() {
             try {
                 var params = new URLSearchParams(window.location.search);
@@ -1472,8 +1522,8 @@ Loop
         }
 
         function initTranslate() {
-            var urlLang = getLangFromURL();  
-            var savedLang = getSavedLang();  
+            var urlLang = getLangFromURL();  // ✅ اولویت اول: URL
+            var savedLang = getSavedLang();  // ✅ اولویت دوم: localStorage
 
             var targetLang = urlLang || savedLang;
 
@@ -1484,7 +1534,7 @@ Loop
                 return;
             }
 
-            
+            // مقداردهی اولیه translate.js
             translate.language.setLocal('english');
             translate.service.use(FALLBACK_CHANNELS[0]);
             translate.selectLanguageTag.show = false;
@@ -1493,7 +1543,7 @@ Loop
                 translate.listener.start();
             }
 
-            
+            // اگه targetLang انگلیسی نبود، تغییر بده
             if (targetLang !== 'english') {
                 setTimeout(function() {
                     changeLanguage(targetLang, LANGUAGES[targetLang].dir);
