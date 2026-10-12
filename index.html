@@ -8,9 +8,9 @@
     <meta name="author" content="Saeid Moghadam">
     <meta name="format-detection" content="telephone=no">
 
-    <title>AnyScan209 – Free 4-in-1 Sensor Visualizer: Magnetometer, Altimeter, Light &amp; Sound Mapper for Android</title>
+    <title>AnyScan209 – Free 4-in-1 Sensor Visualizer for Android</title>
 
-    <meta name="description" content="Free Android app: magnetometer, altimeter, light meter &amp; sound level meter in one. 2D/3D visualizer for any 0-1024 sensor data. Export OBJ/STL/CSV/PLY. No ads.">
+    <meta name="description" content="Free Android app: magnetometer, altimeter, light &amp; sound meter in one. 2D/3D visualizer for any 0-1024 sensor data. Export OBJ/STL/CSV/PLY. No ads.">
 
     <meta name="google-site-verification" content="a_eyU1xDCfLVC4vCKrGpm0_cHHUaNBcgR4AWRieeOmI">
     <link rel="canonical" href="https://soifgo.github.io/AnyScan209/">
@@ -18,7 +18,7 @@
     <!-- hreflang -->
     <link rel="alternate" hreflang="x-default" href="https://soifgo.github.io/AnyScan209/">
     <link rel="alternate" hreflang="en" href="https://soifgo.github.io/AnyScan209/">
-    <link rel="alternate" hreflang="fa" href="https://soifgo.github.io/AnyScan209/intro.html">
+    <!-- Other-language alternates (intro/<lang>/) are declared in sitemap.xml -->
 
     <!-- Repository link -->
     <link rel="repository" href="https://github.com/soifgo/AnyScan209">
@@ -93,6 +93,7 @@
             "Switch between internal sensors by long-pressing the sensor icon in Settings",
             "2D and 3D geophysical subsurface mapping",
             "Real-time AC electrical wire and metal conduit tracking behind walls",
+            "DC and AC current measurement (ammeter) with calibration – Internal Magnetometer mode only",
             "Professional export formats: OBJ, STL, CSV, and PLY",
             "43+ color palettes, custom textures, RGB channel removal, color shift, amplify, crop",
             "Bluetooth serial profiling (HC-05 / SPP) with configurable baud rate",
@@ -221,6 +222,27 @@
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Gain adjusts the sensitivity of the internal 16-bit magnetometer (0-65535 raw). Default Gain=10 maps the raw data to the 0-1024 visualization range with neutral point at 512. Lower Gain (9 to 1) reduces sensitivity but covers a wider range. In External mode, you must pre-scale your sensor data before sending via Bluetooth."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Which Android devices are compatible with AnyScan209?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AnyScan209 works on any Android device that has a built-in magnetometer sensor. Most modern smartphones include this sensor. For best results, use devices with high-quality sensors."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Can I use AnyScan209 for professional geophysical surveys?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! AnyScan209 is designed for both educational and professional use. Its 2D/3D visualization, data export, and external sensor support make it suitable for various fields."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Can AnyScan209 measure DC and AC current?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, in Internal Sensor (Magnetometer) mode only. The Scan page bottom menu offers DC Ammeter, DC Calibration, AC Ammeter and AC Calibration. Calibrate with a known current first. AC accuracy depends on the speed and quality of your phone's magnetometer. Never measure high-voltage or high-current locations such as copper busbars."
             }
         }, {
             "@type": "Question",
@@ -1225,6 +1247,14 @@ Loop
             <div class="faq-item">
                 <h4>What is the Gain feature and how does it work?</h4>
                 <p><strong>Gain</strong> adjusts the sensitivity of the internal 16-bit magnetometer (0–65535 raw). Default <strong>Gain=10</strong> maps the raw data to the 0–1024 visualization range with neutral point at 512. Lower Gain (9 to 1) reduces sensitivity but covers a wider range. In <strong>External mode</strong>, you must pre-scale your sensor data before sending via Bluetooth.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I find hidden electrical wires behind walls using <span class="ignore">AnyScan209</span>?</h4>
+                <p>Yes. By switching to <strong>Internal Sensor</strong> mode and using the <strong>Bipolar Gauge</strong> visualization, you can trace hidden live electrical wires (under high-power load) or metal conduits behind walls via the phone's built-in magnetometer. Detection depth is limited to a few centimeters.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can <span class="ignore">AnyScan209</span> measure DC and AC current?</h4>
+                <p>Yes, in <strong>Internal Sensor (Magnetometer)</strong> mode only. The Scan page bottom menu offers <strong>DC Ammeter</strong>, <strong>DC Calibration</strong>, <strong>AC Ammeter</strong> and <strong>AC Calibration</strong>. Calibrate with a known current first. AC accuracy depends on the speed and quality of your phone's magnetometer. <strong>Never</strong> measure high-voltage or high-current locations such as copper busbars.</p>
             </div>
             <!-- ✅ FAQ جدید -->
             <div class="faq-item">

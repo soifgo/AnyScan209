@@ -30,6 +30,20 @@ Highly optimized for geophysical surveying, ground scanning, mineral exploration
 
 ---
 
+## ⚡ DC & AC Current Measurement (Internal Magnetometer Mode)
+
+Open the bottom menu on the **Scan page** to find four options: **DC Ammeter**, **DC Calibration**, **AC Ammeter**, and **AC Calibration**. The app estimates current from the magnetic field around a wire — the same principle used by current transformers (CTs).
+
+* **Fixed wire position matters:** keep the wire in a stable, consistent position relative to the phone's sensor; accuracy depends on it.
+* **DC measurement:** press the **Balancer (⚖️)** icon first to zero the field. Nearby ferromagnetic metals reduce accuracy.
+* **Calibration:** place the sensor on or in front of the wire, pass a known current (e.g. **1 A**), read the **`now=`** value beside the Calibration section, and enter it in the Calibration input. Any known current works — e.g. a reading of `800` at 4 A means `200` for 1 A. For DC, enter the absolute value (no sign) if the wire is reversed.
+* **AC measurement:** same calibration procedure, but results depend heavily on the speed and quality of the phone's magnetometer and may be unsatisfactory on some models.
+* **Only works in Internal Sensor (Magnetometer) mode.**
+
+> ⚠️ **Safety Warning:** Never attempt to measure current in high-voltage or high-current locations such as copper busbars. You risk serious electric shock, especially if your phone has a metal body.
+
+---
+
 ## 🛠️ Key Features & Architecture
 
 * **Advanced Project Management:** Seamlessly create new exploration grids, organize scanning tasks, or open/analyze previously saved databases.

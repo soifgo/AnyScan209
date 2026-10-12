@@ -29,7 +29,7 @@
 
 ## 2. One-Line Summary
 
-AnyScan209 is a **free Android app** that turns a smartphone into a **universal 2D/3D sensor visualizer** for four internal sensors (magnetometer, barometer/altimeter, light, sound) and any external **0–1024** sensor data (Arduino/ESP via Bluetooth HC-05), with export to **OBJ, STL, CSV, PLY**.
+AnyScan209 is a **free Android app** that turns a smartphone into a **universal 2D/3D sensor visualizer** for four internal sensors (magnetometer, barometer/altimeter, light, sound) and any external **0–1024** sensor data (Arduino/ESP via Bluetooth HC-05), with export to **OBJ, STL, CSV, PLY**. The magnetometer mode also includes **DC/AC current measurement** (ammeter + calibration).
 
 ---
 
@@ -173,8 +173,8 @@ The file provided (`!DOCTYPE html.txt` / `index.html`) is the official **landing
 - **Community Forum Banner:** GitHub Discussions with how-to-post instructions
 - **Tutorial Video:** 36 min embedded from Mega.nz
 - **Table of Contents:** 19 anchor links
-- **Sections 1–18** covering all app features
-- **FAQ:** 7 Q&A entries (also in JSON-LD FAQPage schema)
+- **Sections 1–18** covering all app features (§18 = Direct & Alternating Current Measurement, `#current-measurement`), followed by **§19 FAQ**
+- **FAQ:** 9 Q&A entries on the page (the JSON-LD FAQPage schema lists 8 — see note in §20)
 - **Footer:** email, privacy policy, GitHub, forum
 
 ### 9.2 SEO / Meta
@@ -229,7 +229,7 @@ English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, 
 
 ---
 
-## 10. Wire & Conduit Detection (Killer Feature)
+## 10. Wire & Conduit Detection and Current Measurement (Killer Features)
 
 ### Two detection scenarios:
 | Conduit Type | Requires Current? | Method |
@@ -248,6 +248,31 @@ English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, 
 2. **Metal bodies/frames** — ferromagnetic materials distort fields
 3. **Sensor placement** — budget phones (e.g., Samsung A-series) often have cleaner magnetic environments
 - **Bottom line:** Sensor chip is rarely the issue; installation environment matters most.
+
+### 10.1 DC & AC Current Measurement (website section 18)
+
+Available **only in Internal Sensor (Magnetometer) mode**. On the **Scan page**, the bottom menu shows four options:
+
+| Option | Purpose |
+|---|---|
+| **DC Ammeter** | Direct Current measurement |
+| **DC Calibration** | Direct Current calibration |
+| **AC Ammeter** | Alternating Current measurement |
+| **AC Calibration** | Alternating Current calibration |
+
+- **Principle:** current is estimated from the magnetic field around the wire — the same idea as **current transformers (CTs)**.
+- **Position is critical:** the wire must stay in a fixed, consistent position relative to the sensor; stability + correct calibration determine accuracy.
+- **DC:** press the **Balancer ⚖️** icon first so the field reads zero. Harder than AC because nearby **ferromagnetic metals** hurt accuracy.
+- **Calibration procedure (DC and AC):**
+  1. Place the phone sensor on or in front of the wire.
+  2. Pass a known current (e.g. **1 A**) via a lab power supply or other method.
+  3. Read the number shown next to **`now=`** (right side of the Calibration section).
+  4. Enter it in the **Calibration input** and confirm.
+  5. Any known current works: if the reading is **800** at **4 A**, the value for 1 A is **200**.
+- **DC sign:** if the wire is reversed and the reading is negative, enter the **absolute value** (no sign).
+- **AC:** same calibration, but heavily dependent on **magnetometer speed/quality**; may be unsatisfactory on some phones.
+- **⚠️ Safety:** never measure high-voltage or high-current locations such as **copper busbars** — risk of electric shock, especially with a metal-bodied phone.
+- Screenshot: `menu9.jpg`.
 
 ---
 
@@ -283,6 +308,9 @@ English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, 
 6. **Compatible devices?** — Any Android with a built-in magnetometer.
 7. **Professional geophysics?** — Yes, designed for both education and professional field work.
 8. **Gain feature?** — Adjusts 16-bit magnetometer (0–65535) sensitivity into 0–1024 range; default Gain=10; external mode requires pre-scaling.
+9. **Feature requests?** — Post in GitHub Discussions; heavier custom ideas can be built with the SoifGo web app builder (https://soifgo.github.io/soifgo/index.html).
+
+*(Not an on-page FAQ, but common:)* **Can it measure current?** — Yes, DC and AC, in Internal Magnetometer mode only, after calibration with a known current (see §10.1).
 
 ---
 
@@ -300,6 +328,7 @@ When generating content, code, or translations for AnyScan209:
 8. **Author name** — Saeid Moghadam (not "Saeed" or "Said").
 9. **Email** — ssmqqmss@gmail.com
 10. **No ads, no tracking, no telemetry** — this is a core selling point; never contradict it.
+11. **Current measurement is approximate and needs calibration** — never encourage measuring high-voltage/high-current circuits (e.g. copper busbars); always repeat the electric-shock safety warning (§10.1).
 
 ---
 
@@ -338,7 +367,7 @@ If you are an AI assistant asked to work on AnyScan209:
 3. **Read §5** if the task involves external sensors, Bluetooth, or Arduino/ESP.
 4. **Read §6–§8** if the task involves scanning workflow, visualization, or export.
 5. **Read §9** if the task involves the website, translation, or SEO.
-6. **Read §10** if the task involves wire/conduit detection or magnetometer physics.
+6. **Read §10** if the task involves wire/conduit detection, current (ammeter) measurement, or magnetometer physics.
 7. **Read §14** for style/accuracy rules before generating any output.
 
 ### Common Task Patterns
@@ -348,6 +377,7 @@ If you are an AI assistant asked to work on AnyScan209:
 | Write a blog post about AnyScan209 | §1, §2, §4, §10, §13 |
 | Generate Arduino code for external sensor | §5 |
 | Explain magnetometer behavior | §3, §10, §11 |
+| Explain DC/AC current measurement or calibration | §10.1, §14 |
 | Add a new language to the site | §9.6, §9.7 |
 | Write an FAQ answer | §13, §14 |
 | Debug website CSS/JS | §9.4, §9.5 |
@@ -357,6 +387,8 @@ If you are an AI assistant asked to work on AnyScan209:
 - ❌ Do NOT suggest it works on iOS (Android-only).
 - ❌ Do NOT say it's on Google Play (it isn't — only Uptodown & APKPure).
 - ❌ Do NOT recommend using it for medical, safety-critical, or legal purposes.
+- ❌ Do NOT suggest measuring current on high-voltage / high-current conductors (e.g. copper busbars).
+- ❌ Do NOT claim current readings are accurate without calibration, or that they work in External/Barometer/Light/Sound modes.
 - ❌ Do NOT add emojis to the app name "AnyScan209".
 - ❌ Do NOT suggest it has cloud sync, user accounts, or online storage (it doesn't).
 - ❌ Do NOT describe it as an IoT platform or MQTT broker.
@@ -374,13 +406,13 @@ Images / assets referenced in the HTML documentation:
 | `og-banner.jpg` | Open Graph / Twitter card image (1200×630) |
 | `uptodown.png` | Uptodown button icon |
 | `apkpure.png` | APKPure button icon |
-| `menu1.jpg` – `menu8.jpg` | UI screenshots (main menu, scan screen, 2D, 3D, settings, external sensor, schematic, sensor selection) |
+| `menu1.jpg` – `menu9.jpg` | UI screenshots (main menu, scan screen, 2D, 3D, settings, external sensor, schematic, sensor selection, current-measurement menu) |
 | `selfi.jpg` | Scanning setup (selfie stick / holder) |
 | `set_01.jpg`, `set_02.jpg` | Sensor settings / metal conduit detection |
 | `video.html` | Dedicated video page |
 | `policy_anyscan209.html` | Privacy policy page |
 | `Proteuse_file.zip` | Proteus project download |
-| `sitemap.xml` | XML sitemap (3 URLs) |
+| `sitemap.xml` | XML sitemap (3 main URLs + 41 `intro/<lang>/` pages = 44 URLs) |
 | `robots.txt` | Robots file (limited on GitHub Pages) |
 
 ---
@@ -413,6 +445,7 @@ Images / assets referenced in the HTML documentation:
 |---|---|---|
 | 1.0 | 2026-10-10 | Initial AI Context Document |
 | 1.1 | 2026-10-10 | Added version 2.01, fixed FAQ count (7), removed video.html hreflang, added Anti-Patterns, added sitemap.xml & robots.txt to manifest, added PWA/APK glossary terms |
+| 1.2 | 2026-10-12 | Added website §18 (DC & AC current measurement) as §10.1; updated section/FAQ counts, task table, anti-patterns, safety rule, `menu9.jpg`, sitemap URL count. **Known site inconsistency:** JSON-LD FAQPage lists 8 questions (includes "hidden wires behind walls", omits "compatible devices" and "professional geophysics") while the page shows 9 — should be synchronized. |
 
 ---
 
