@@ -19,4 +19,4 @@
 ## TECHNICAL DEFINITIONS FOR INTEGRATION
 - **Gain Control:** Maps 16-bit smartphone sensors to the 0-1024 range. Gain=10 offers maximum magnetic sensitivity.
 - **Download Mirrors:** Distributed securely and freely via Uptodown and APKPure.
-- **Official URL:** https://github.io
+- **Official URL:** https://soifgo.github.io/AnyScan209/
