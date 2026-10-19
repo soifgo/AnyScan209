@@ -1253,8 +1253,17 @@ Loop
                 </ol>
                 <p><strong>Important note:</strong> Remember that <strong>HTML</strong> has one of the widest libraries available among all programs, giving you the greatest freedom to customize and experiment.</p>
                 <p><strong>In summary:</strong> Your ideas are still respected and executable, but let's not make the main app heavier or divert it further. Instead, use <strong>SoifGo</strong> as your personal laboratory to implement your creative ideas. This way, both our scientific app stays intact and you have complete freedom to create whatever you envision.</p>
+                <p><strong>Tutorial video:</strong> As shown in the tutorial video below, you can open a <strong>3D View</strong> inside <strong>SoifGo</strong>. This 3D View is saved in the SoifGo <strong>HTML folder</strong>, so don't worry about losing it. You can even edit it yourself: describe your idea to an <strong>AI assistant</strong> and run the result in this web app. You can do almost anything you like.</p>
+                <!-- Place the tutorial video embed here -->
             </div>
         </div>
+
+            <div class="video-wrapper">
+         <iframe src="https://mega.nz/embed/rOoQET4Z#cmdvIjc-yN3egHJwVS1jApOzPzUSwRbEqCqv7vKDKNM"
+                allowfullscreen
+                loading="lazy"
+                title="AnyScan209 Tutorial Video – 36 minutes"></iframe>
+    </div>
 
         <h2 style="text-align:center; color:var(--accent-color); margin-top:50px; font-size:2rem;">
             <span class="ignore">Saeid Moghadam</span>
@@ -1510,7 +1519,7 @@ Loop
             return null;
         }
 
-        // ✅✅✅ جدید: خوندن پارامتر lang از URL ✅✅✅
+        
         function getLangFromURL() {
             try {
                 var params = new URLSearchParams(window.location.search);
@@ -1528,8 +1537,8 @@ Loop
         }
 
         function initTranslate() {
-            var urlLang = getLangFromURL();  // ✅ اولویت اول: URL
-            var savedLang = getSavedLang();  // ✅ اولویت دوم: localStorage
+            var urlLang = getLangFromURL();   
+            var savedLang = getSavedLang();  
 
             var targetLang = urlLang || savedLang;
 
@@ -1540,7 +1549,7 @@ Loop
                 return;
             }
 
-            // مقداردهی اولیه translate.js
+            
             translate.language.setLocal('english');
             translate.service.use(FALLBACK_CHANNELS[0]);
             translate.selectLanguageTag.show = false;
@@ -1549,7 +1558,7 @@ Loop
                 translate.listener.start();
             }
 
-            // اگه targetLang انگلیسی نبود، تغییر بده
+             
             if (targetLang !== 'english') {
                 setTimeout(function() {
                     changeLanguage(targetLang, LANGUAGES[targetLang].dir);
