@@ -29,7 +29,7 @@
 
 ## 2. One-Line Summary
 
-AnyScan209 is a **free Android app** that turns a smartphone into a **universal 2D/3D sensor visualizer** for four internal sensors (magnetometer, barometer/altimeter, light, sound) and any external **0–1024** sensor data (Arduino/ESP via Bluetooth HC-05), with export to **OBJ, STL, CSV, PLY**. The magnetometer mode also includes **DC/AC current measurement** (ammeter + calibration).
+AnyScan209 is a **free Android app** that turns a smartphone into a **universal 2D/3D sensor visualizer** for four internal sensors (magnetometer, barometer/altimeter, light, sound) and any external **0–1024** sensor data (Arduino/ESP via Bluetooth HC-05, plus the open **Live Scan** protocol for single- or four-sensor scanners), with export to **OBJ, STL, CSV, PLY**. The magnetometer mode also includes **DC/AC current measurement** (ammeter + calibration).
 
 ---
 
@@ -86,6 +86,7 @@ Switching sensors: **Long-press the sensor icon** on the **Settings** page → s
 - **Baud rate:** Configurable; long-press the **Export icon** to open advanced baud configuration
 - **Cell editing:** Manual cell editing (slider + Record button) is only allowed in **External mode** or when **Bluetooth is disconnected**
 - **User responsibility:** Pre-scale sensor output to 0–1024 in firmware (Arduino/ESP code)
+- **Live Scan (professional scan):** naming the module `ANY_SCAN_MS209` unlocks a richer protocol — see §5.1
 
 ### Example Arduino/BASCOM Integration
 The site provides a conversion example from **BASCOM AVR** to **Arduino C++**:
@@ -94,6 +95,58 @@ The site provides a conversion example from **BASCOM AVR** to **Arduino C++**:
 - Original BASCOM uses `$regfile = "m8adef.dat"`, `$crystal = 8000000`, ADC on channel 1
 - Arduino version available with and without `INPUT_PULLUP`
 - Proteus project file downloadable: `Proteuse_file.zip`
+
+### 5.1 Live Scan (Professional Scan) Mode — Open Bluetooth Protocol
+
+An extension of External Sensor mode for purpose-built scanners (magnetometer or metal detector). Full spec page: **https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html** (`live-scan-bluetooth-protocol.html`, English only, protocol documentation released under the **MIT License**).
+
+**Activation:** rename the Bluetooth module to exactly **`ANY_SCAN_MS209`** (e.g. `AT+NAME=ANY_SCAN_MS209` on HC-05; command varies by module) and re-pair the phone. Then choose **single scan** or **four-sensor scan** in the app options (must match what the scanner sends).
+
+| Module name | App behavior |
+|---|---|
+| No name / any other name | **Simple mode** — every incoming input advances the scan one step (old scanners keep working) |
+| `ANY_SCAN_MS209` | Live Scan options unlock: single scan, four scan, battery display, `Next` and `Bal` commands |
+
+**Scan types**
+- **Single scan:** one sensor; scan moves one row at a time.
+- **Four-sensor scan:** four sensors sent at once, four rows filled at once → **4× faster** scanning.
+
+**Data packet (mandatory format):** exactly **20 characters** = **5 fields × 4 digits**, each `0000`–`1024`, zero-padded, terminated by CR+LF (`Print` in BASCOM / `println` in Arduino add it).
+
+| Field | Digits | Meaning |
+|---|---|---|
+| 1 | 1–4 | Sensor 1 |
+| 2 | 5–8 | Sensor 2 |
+| 3 | 9–12 | Sensor 3 |
+| 4 | 13–16 | Sensor 4 |
+| 5 | 17–20 | Battery |
+
+- Always send **all five fields**; unused sensor fields are `0000`. A packet whose length is not exactly 20 is **rejected** (send `0512`, never `512`).
+- Single-scan example: `05120000000000000980` · Four-sensor example: `05120300070000900980`
+- Keep values inside 0–1024 (the app clamps with a small safety margin, but senders should not rely on it).
+
+**Command words** (optional; sent alone on their own line — meant for two hardware buttons on the scanner):
+
+| Word | Meaning | App action |
+|---|---|---|
+| `Next` | Go to next scan | Same as pressing the on-screen scan button |
+| `Bal` | Balance request | Shows the *Balance Device* message and starts balancing |
+
+**Battery field (field 5):** the app knows nothing about voltages — the **scanner maps its real battery voltage to a number**; the app converts it to a percentage with a linear formula, averages **50 packets** before updating the bar, and colors it dark red → yellow-green.
+
+| Scanner type | Number for empty (0%) | Number for full (100%) | App formula |
+|---|---|---|---|
+| Magnetometer | 600 | 860 | `(value − 600) / 2.6` |
+| Metal detector | 820 | 1024 | `(value − 820) / 2.04` |
+
+- At or below the empty point the bar shows **3%**.
+- **Low-battery alarm:** raw battery number **< 630** → LOW BATTERY message + warning sound (≈ 11% on a magnetometer; on a metal detector it only fires if the sender reports a value far below 820).
+- Linear mapping: `number = emptyNumber + (voltage − emptyVoltage) × (fullNumber − emptyNumber) / (fullVoltage − emptyVoltage)`. Works for any battery (3.3–4.2 V, 9.6–12.4 V, 14–18 V…).
+- **Voltage divider** (to bring battery voltage under the ADC reference) is the **builder's responsibility**; the divided-voltage → ADC relation is near-linear and can be corrected in firmware.
+- Sender examples on the page: **BASCOM (AVR)** (sensor on ADC0, battery on ADC1 with +305 offset), **Arduino** (four-sensor `snprintf("%04d…")` example), **Python/MicroPython** (`make_packet()`).
+- The page also explains how to ask an AI assistant to write sender firmware (needs: MCU, language, baud rate, single/four scan, magnetometer/metal detector, battery empty/full voltages, ADC reference voltage).
+
+> ℹ️ Live Scan concerns the **Bluetooth link to external scanners**. It does not change the four internal sensors, and the plain 0–1024 External mode (§5) remains fully valid.
 
 ---
 
@@ -171,10 +224,12 @@ The file provided (`!DOCTYPE html.txt` / `index.html`) is the official **landing
 - **Language Switcher:** 42 languages, custom dropdown, uses `translate.js` CDN
 - **Download Cards:** Uptodown + APKPure
 - **Community Forum Banner:** GitHub Discussions with how-to-post instructions
-- **Tutorial Video:** 36 min embedded from Mega.nz
-- **Table of Contents:** 19 anchor links
+- **Tutorial Video:** 36 min, hosted on Mega.nz and embedded directly in `index.html`
+- **Table of Contents:** 19 anchor links + 1 extra link (last item) to the separate Live Scan page
+- **AI hint bar:** first line of the page (above the logo) tells AI assistants to read this file; `<head>` also has `<link rel="alternate" type="text/markdown">` pointing to it
+- **Live Scan callout:** highlight box at the end of §10 (External Sensor Mode) announcing Live Scan and linking to `live-scan-bluetooth-protocol.html`
 - **Sections 1–18** covering all app features (§18 = Direct & Alternating Current Measurement, `#current-measurement`), followed by **§19 FAQ**
-- **FAQ:** 9 Q&A entries on the page (the JSON-LD FAQPage schema lists 8 — see note in §20)
+- **FAQ:** 11 Q&A entries on the page, and the JSON-LD FAQPage schema now lists the same 11 (in sync; includes "hidden wires behind walls", "compatible devices", "professional geophysics", "DC and AC current" and "feature requests")
 - **Footer:** email, privacy policy, GitHub, forum
 
 ### 9.2 SEO / Meta
@@ -226,6 +281,22 @@ html[data-theme="dark"] {
 
 ### 9.7 Language List (42 entries)
 English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, Norwegian, Danish, Romanian, Czech, Slovak, Hungarian, Greek, Bulgarian, Russian, Ukrainian, Serbian, Hebrew, Chinese (Simplified), Japanese, Korean, Hindi, Bengali, Turkish, Arabic, Persian, Urdu, Kurdish Sorani, Azerbaijani, Armenian, Georgian, Indonesian, Malay, Filipino, Thai, Afrikaans, Vietnamese, Tamil.
+
+### 9.8 Live Scan Protocol Page (`live-scan-bluetooth-protocol.html`)
+
+A separate, English-only documentation page (not part of the 42-language `intro/<lang>/` set).
+
+- **URL:** https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html
+- **Title:** "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)"
+- **Canonical / hreflang:** self-canonical; hreflang `x-default` + `en` only
+- **Schema.org:** TechArticle (`dateModified` 2026-10-31, `license` MIT, `about` → the SoftwareApplication) + BreadcrumbList (AnyScan209 → Live Scan Bluetooth Protocol) + FAQPage (3 questions in JSON-LD; the page shows 5 FAQ items — same kind of mismatch as the main page)
+- **OG / Twitter image:** `og-banner.jpg`
+- **Same theme system** as the main page (light/dark, `localStorage` key `anyscan209-theme`, same CSS variables); **no translate.js / language switcher**
+- **Brand names** use `<span class="ignore">` like the main page
+- **Contents (10 sections):** 1 What Live Scan mode does · 2 Enable it (Bluetooth name) · 3 Single or four-sensor scan · 4 Data packet format · 5 Command words Next/Bal · 6 Battery display and alarm · 7 Voltage divider · 8 Sender code (BASCOM, Arduino, Python) · 9 Let an AI write your sender code · 10 FAQ
+- **Links:** "← Back to the main AnyScan209 guide" → `index.html`; footer has email, privacy policy, GitHub, forum
+- **Linked from:** the main page TOC (last item) and the callout box in §10 of `index.html`
+- **In the sitemap** as a plain URL (no hreflang block), `lastmod` 2026-10-31
 
 ---
 
@@ -298,7 +369,7 @@ Available **only in Internal Sensor (Magnetometer) mode**. On the **Scan page**,
 
 ---
 
-## 13. FAQ (Core Answers)
+## 13. FAQ (Core Answers — matches the 11 on-page FAQ entries)
 
 1. **Free?** — Yes, 100% free, no hidden fees, no IAP, no ads.
 2. **External sensors?** — Yes, via HC-05 or any SPP Bluetooth module.
@@ -308,9 +379,12 @@ Available **only in Internal Sensor (Magnetometer) mode**. On the **Scan page**,
 6. **Compatible devices?** — Any Android with a built-in magnetometer.
 7. **Professional geophysics?** — Yes, designed for both education and professional field work.
 8. **Gain feature?** — Adjusts 16-bit magnetometer (0–65535) sensitivity into 0–1024 range; default Gain=10; external mode requires pre-scaling.
-9. **Feature requests?** — Post in GitHub Discussions; heavier custom ideas can be built with the SoifGo web app builder (https://soifgo.github.io/soifgo/index.html).
+9. **Hidden wires behind walls?** — See §10 (metal conduits detectable without current; PVC conduits need an AC load; depth only a few centimeters).
+10. **Can it measure DC and AC current?** — Yes, in Internal Sensor (Magnetometer) mode only: DC/AC Ammeter + DC/AC Calibration in the Scan page bottom menu; needs calibration with a known current (§10.1).
+11. **Feature requests?** — Post in GitHub Discussions; heavier custom ideas can be built with the SoifGo web app builder (https://soifgo.github.io/soifgo/index.html).
 
-*(Not an on-page FAQ, but common:)* **Can it measure current?** — Yes, DC and AC, in Internal Magnetometer mode only, after calibration with a known current (see §10.1).
+*(On the Live Scan page, not the main page:)* **How do I turn on Live Scan?** — Rename the Bluetooth module to exactly `ANY_SCAN_MS209`, re-pair, choose single or four-sensor scan. **Why is my packet ignored?** — It must be exactly 20 characters (5 × 4 digits, zero-padded); unused sensor fields = `0000`. **What battery numbers?** — Magnetometer 600 (empty) → 860 (full); metal detector 820 → 1024. **Are Next/Bal required?** — No, optional hardware buttons. (See §5.1.)
+
 
 ---
 
@@ -329,6 +403,8 @@ When generating content, code, or translations for AnyScan209:
 9. **Email** — ssmqqmss@gmail.com
 10. **No ads, no tracking, no telemetry** — this is a core selling point; never contradict it.
 11. **Current measurement is approximate and needs calibration** — never encourage measuring high-voltage/high-current circuits (e.g. copper busbars); always repeat the electric-shock safety warning (§10.1).
+12. **Live Scan name is exact** — the module name must be `ANY_SCAN_MS209` (underscores, capital letters, digits); never alter it. Do not translate or reformat `Next`, `Bal`, or the packet examples.
+13. **Live Scan packets are always 20 characters** — five 4-digit zero-padded fields; never show a shorter example. Battery ranges: magnetometer 600–860, metal detector 820–1024; the scanner (not the app) maps voltage to that number.
 
 ---
 
@@ -337,15 +413,17 @@ When generating content, code, or translations for AnyScan209:
 | Resource | URL |
 |---|---|
 | Website | https://soifgo.github.io/AnyScan209/ |
-| Video page | https://soifgo.github.io/AnyScan209/video.html |
 | Privacy policy | https://soifgo.github.io/AnyScan209/policy_anyscan209.html |
+| AI Context (this file) | https://soifgo.github.io/AnyScan209/AnyScan209_AI_CONTEXT.md |
+| Live Scan Bluetooth protocol | https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html |
 | Sitemap | https://soifgo.github.io/AnyScan209/sitemap.xml |
 | GitHub | https://github.com/soifgo/AnyScan209 |
 | Forum | https://github.com/soifgo/AnyScan209/discussions |
 | Uptodown | https://anyscan209.en.uptodown.com/android |
 | APKPure | https://apkpure.com/anyscan209/any.scan_209 |
 | Tutorial video | https://mega.nz/file/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk |
-| Video embed | https://mega.nz/embed/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk |
+| Video embed (used in JSON-LD VideoObject) | https://mega.nz/embed/7fIGRJob#ibuMQe_Vh0epI77NvD3hmXhMHo6pMgbrLLTMD4DjCxk |
+| Video embed (iframe at the bottom of the page) | https://mega.nz/embed/rOoQET4Z#cmdvIjc-yN3egHJwVS1jApOzPzUSwRbEqCqv7vKDKNM |
 | OG banner | https://soifgo.github.io/AnyScan209/og-banner.jpg |
 
 ---
@@ -368,7 +446,8 @@ If you are an AI assistant asked to work on AnyScan209:
 4. **Read §6–§8** if the task involves scanning workflow, visualization, or export.
 5. **Read §9** if the task involves the website, translation, or SEO.
 6. **Read §10** if the task involves wire/conduit detection, current (ammeter) measurement, or magnetometer physics.
-7. **Read §14** for style/accuracy rules before generating any output.
+7. **Read §5.1 and §9.8** if the task involves Live Scan, the `ANY_SCAN_MS209` Bluetooth name, the 20-character packet, battery mapping, or writing scanner firmware.
+8. **Read §14** for style/accuracy rules before generating any output.
 
 ### Common Task Patterns
 | Task | Sections to read |
@@ -381,6 +460,9 @@ If you are an AI assistant asked to work on AnyScan209:
 | Add a new language to the site | §9.6, §9.7 |
 | Write an FAQ answer | §13, §14 |
 | Debug website CSS/JS | §9.4, §9.5 |
+| Write sender firmware for a Live Scan scanner (Arduino/BASCOM/Python/ESP32) | §5, §5.1, §14 |
+| Explain Live Scan packet, Next/Bal commands, or battery numbers | §5.1 |
+| Edit the Live Scan page | §9.8, §9.4, §14 |
 
 ### Anti-Patterns (do NOT do)
 - ❌ Do NOT claim the app has AI/ML features (it doesn't).
@@ -393,6 +475,10 @@ If you are an AI assistant asked to work on AnyScan209:
 - ❌ Do NOT suggest it has cloud sync, user accounts, or online storage (it doesn't).
 - ❌ Do NOT describe it as an IoT platform or MQTT broker.
 - ❌ Do NOT recommend paid alternatives when asked for a free option.
+- ❌ Do NOT say Live Scan is enabled by an app setting alone — it requires the Bluetooth module to be named exactly `ANY_SCAN_MS209`.
+- ❌ Do NOT send or document Live Scan packets that are not exactly 20 characters, or omit unused fields (they must be `0000`).
+- ❌ Do NOT claim the app measures battery voltage — the scanner maps voltage to a number (600–860 magnetometer, 820–1024 metal detector).
+- ❌ Do NOT claim Live Scan changes or replaces the internal sensors; it is only for external Bluetooth scanners.
 
 ---
 
@@ -409,10 +495,10 @@ Images / assets referenced in the HTML documentation:
 | `menu1.jpg` – `menu9.jpg` | UI screenshots (main menu, scan screen, 2D, 3D, settings, external sensor, schematic, sensor selection, current-measurement menu) |
 | `selfi.jpg` | Scanning setup (selfie stick / holder) |
 | `set_01.jpg`, `set_02.jpg` | Sensor settings / metal conduit detection |
-| `video.html` | Dedicated video page |
 | `policy_anyscan209.html` | Privacy policy page |
+| `live-scan-bluetooth-protocol.html` | Live Scan Bluetooth protocol documentation page (English only, MIT License) |
 | `Proteuse_file.zip` | Proteus project download |
-| `sitemap.xml` | XML sitemap (3 main URLs + 41 `intro/<lang>/` pages = 44 URLs) |
+| `sitemap.xml` | XML sitemap (3 main URLs — site root, privacy policy, Live Scan page — + 40 `intro/<lang>/` pages = 43 URLs) |
 | `robots.txt` | Robots file (limited on GitHub Pages) |
 
 ---
@@ -426,6 +512,10 @@ Images / assets referenced in the HTML documentation:
 | **Direct Save** | Save raw scan data as-is |
 | **Enhanced Save** | Save with improved visualization processing |
 | **Gain** | Sensitivity multiplier mapping 16-bit raw → 0–1024 |
+| **Live Scan** | Professional scan mode unlocked by naming the Bluetooth module `ANY_SCAN_MS209`; single or four-sensor packets + battery + Next/Bal (§5.1) |
+| **ANY_SCAN_MS209** | Exact Bluetooth module name that activates Live Scan |
+| **Packet (Live Scan)** | 20-character string, five 4-digit zero-padded fields: 4 sensors + battery |
+| **Next / Bal** | Optional Live Scan command words: next scan / balance request |
 | **Go/Go** | One-way scan pattern (return to start of each column) |
 | **Go/Return** | Zigzag scan pattern (continuous, faster) |
 | **Grid** | Scan matrix, 8×8 to 100×100 points |
@@ -444,8 +534,9 @@ Images / assets referenced in the HTML documentation:
 | Version | Date | Changes |
 |---|---|---|
 | 1.0 | 2026-10-10 | Initial AI Context Document |
-| 1.1 | 2026-10-10 | Added version 2.01, fixed FAQ count (7), removed video.html hreflang, added Anti-Patterns, added sitemap.xml & robots.txt to manifest, added PWA/APK glossary terms |
+| 1.1 | 2026-10-10 | Added version 2.01, fixed FAQ count (7), added Anti-Patterns, added sitemap.xml & robots.txt to manifest, added PWA/APK glossary terms |
 | 1.2 | 2026-10-12 | Added website §18 (DC & AC current measurement) as §10.1; updated section/FAQ counts, task table, anti-patterns, safety rule, `menu9.jpg`, sitemap URL count. **Known site inconsistency:** JSON-LD FAQPage lists 8 questions (includes "hidden wires behind walls", omits "compatible devices" and "professional geophysics") while the page shows 9 — should be synchronized. |
+| 1.3 | 2026-10-31 | Added **Live Scan (Professional Scan)** — new §5.1 (activation name `ANY_SCAN_MS209`, 20-character packet, Next/Bal, battery mapping & alarm, voltage divider, code examples) and §9.8 (the new `live-scan-bluetooth-protocol.html` page); added the AI-hint bar note and this file's own URL (§9.1, §15); synced FAQ with the current `index.html` (11 on-page = 11 in JSON-LD; the old FAQ-mismatch note from v1.2 is resolved); updated §2, §5, §9.1, §13, §14 (notes 12–13), §15, §17 (quick start, tasks, anti-patterns), §18 (manifest + sitemap now 43 URLs) and §19 (glossary). |
 
 ---
 
