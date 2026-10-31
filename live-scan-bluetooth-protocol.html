@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="author" content="Saeid Moghadam">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <title>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)</title>
+    <meta name="description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <link rel="canonical" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
+    <link rel="alternate" hreflang="x-default" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
+    <link rel="alternate" hreflang="en" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="AnyScan209">
+    <meta property="og:title" content="AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)">
+    <meta property="og:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <meta property="og:url" content="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
+    <meta property="og:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AnyScan209 Live Scan Bluetooth Protocol">
+    <meta name="twitter:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <meta name="twitter:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "@id": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html#article",
+          "headline": "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners",
+          "description": "Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.",
+          "url": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html",
+          "inLanguage": "en",
+          "author": { "@type": "Person", "name": "Saeid Moghadam" },
+          "license": "https://opensource.org/licenses/MIT",
+          "isPartOf": { "@type": "WebSite", "@id": "https://soifgo.github.io/AnyScan209/#website" },
+          "about": { "@type": "SoftwareApplication", "@id": "https://soifgo.github.io/AnyScan209/#app" },
+          "dateModified": "2026-10-31"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "AnyScan209", "item": "https://soifgo.github.io/AnyScan209/" },
+            { "@type": "ListItem", "position": 2, "name": "Live Scan Bluetooth Protocol", "item": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "How do I turn on Live Scan mode in AnyScan209?",
+               "acceptedAnswer": { "@type": "Answer", "text": "Rename your Bluetooth module to exactly ANY_SCAN_MS209, pair it again, then choose single scan or four-sensor scan in the app options." } },
+            { "@type": "Question", "name": "Why is my AnyScan209 Live Scan packet ignored?",
+               "acceptedAnswer": { "@type": "Answer", "text": "The packet must be exactly 20 characters: five fields of four digits with leading zeros. Unused sensor fields must be sent as 0000." } },
+            { "@type": "Question", "name": "What battery numbers should my scanner send?",
+               "acceptedAnswer": { "@type": "Answer", "text": "Magnetometer scanners send 600 for an empty battery and 860 for a full one. Metal detector scanners send 820 for empty and 1024 for full." } }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --bg-card: #ffffff;
+            --text-color: #334155;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-color: #e2e8f0;
+            --success-color: #16a34a;
+            --success-hover: #22c55e;
+            --apkpure-color: #00b36b;
+            --apkpure-hover: #00c974;
+            --code-bg: #f1f5f9;
+            --highlight-bg: #f1f5f9;
+            --table-even: #f8fafc;
+            --table-hover: #eff6ff;
+        }
+
+        html[data-theme="dark"] {
+            --bg-color: #0f172a;
+            --bg-card: #1e293b;
+            --text-color: #cbd5e1;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-color: #4f8cff;
+            --accent-hover: #6aa0ff;
+            --border-color: #334155;
+            --success-color: #22c55e;
+            --success-hover: #4ade80;
+            --apkpure-color: #00c974;
+            --apkpure-hover: #00e085;
+            --code-bg: #0f172a;
+            --highlight-bg: #1e293b;
+            --table-even: #162032;
+            --table-hover: #253348;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        .ignore { /* translation skip marker */ }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.9;
+            padding: 20px;
+            font-size: 1.05rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .container { max-width: 820px; margin: 0 auto; }
+
+        .theme-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            transition: background 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+            padding: 0;
+            line-height: 1;
+            direction: ltr;
+        }
+        .theme-toggle:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: scale(1.08);
+        }
+        .theme-toggle:focus { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+
+        .language-switcher {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            right: auto;
+            z-index: 1001;
+            direction: ltr;
+        }
+
+        .lang-btn {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        }
+
+        .lang-btn:hover {
+            background: var(--highlight-bg);
+            border-color: var(--accent-color);
+            transform: scale(1.03);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            min-width: 220px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            padding: 8px 0;
+            direction: ltr;
+        }
+
+        .lang-dropdown.show { display: block; }
+
+        .lang-item {
+            display: block;
+            padding: 10px 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: background 0.15s;
+            white-space: nowrap;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .lang-item:hover {
+            background: var(--highlight-bg);
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; letter-spacing: -0.02em; }
+        h1 { border-bottom: 3px solid var(--accent-color); padding-bottom: 16px; font-size: 2.2rem; line-height: 1.2; }
+        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 48px; font-size: 1.7rem; }
+        h3 { color: var(--accent-color); margin-top: 32px; font-size: 1.35rem; }
+        h4 { color: var(--text-main); margin-top: 26px; font-size: 1.15rem; }
+        p { color: var(--text-color); margin-bottom: 16px; font-size: 1.05rem; }
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+        ul, ol { padding-left: 26px; margin: 16px 0; color: var(--text-color); }
+        ul li, ol li { margin-bottom: 6px; font-size: 1.02rem; }
+        code {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--text-main);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: #000;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .menu { width: 100%; max-width: 400px; height: auto; display: block; margin: 20px auto; border-radius: 12px; border: 2px solid var(--border-color); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
+        .menu-small { max-width: 280px; }
+        .menu-medium { max-width: 480px; }
+        .menu-large { max-width: 650px; }
+        .logo { max-width: 180px; height: auto; margin: 20px auto; display: block; }
+
+        .code-block {
+            background: var(--code-bg); border-radius: 12px; border: 1px solid var(--border-color);
+            padding: 22px; margin: 25px 0; overflow-x: auto;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.92rem; color: var(--text-main); line-height: 1.7;
+        }
+        .code-block pre { margin: 0; white-space: pre-wrap; word-break: break-all; }
+        .code-block .comment { color: var(--text-muted); font-style: italic; }
+        .code-block .keyword { color: #c084fc; }
+        .code-block .string { color: #7dd3fc; }
+        .code-block .function { color: #fbbf24; }
+        .code-block .number { color: #34d399; }
+
+        .comparison-table {
+            width: 100%; border-collapse: collapse; margin: 20px 0;
+            font-size: 0.95rem; background: var(--bg-card); border-radius: 12px; overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid var(--border-color); padding: 12px 16px; text-align: left;
+        }
+        .comparison-table th { background: var(--bg-card); color: var(--text-main); font-weight: 700; }
+        .comparison-table tr:nth-child(even) { background: var(--table-even); }
+        .comparison-table tr:hover { background: var(--table-hover); }
+
+        .highlight-box {
+            background: var(--highlight-bg); border-left: 4px solid var(--accent-color);
+            padding: 18px 22px; margin: 22px 0; border-radius: 0 12px 12px 12px; color: var(--text-color);
+        }
+        .highlight-box h3 { color: var(--accent-color); margin-top: 0; }
+        .highlight-box ul { margin-top: 8px; }
+
+        .warning-box {
+            background: #fef3c7; border-left: 4px solid #f59e0b;
+            color: #92400e; padding: 18px 22px; margin: 22px 0;
+            border-radius: 0 12px 12px 12px; font-size: 1rem; line-height: 1.9;
+        }
+        .warning-box strong { color: #92400e; }
+
+        .download-btn {
+            display: inline-block; background: var(--success-color);
+            padding: 18px 44px; min-height: 60px; min-width: 220px; border-radius: 10px;
+            color: #ffffff; font-size: 1.3rem; font-weight: 700; text-decoration: none;
+            transition: background 0.25s ease, transform 0.15s ease;
+            text-align: center; line-height: 1.4; letter-spacing: 0.3px;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+        }
+        .download-btn:hover { background: var(--success-hover); text-decoration: none; transform: scale(1.03); box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4); }
+
+        .download-box {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;
+        }
+        .download-box a { color: var(--accent-color); font-size: 1.15rem; font-weight: 600; }
+        .download-box a:hover { color: var(--accent-hover); }
+
+        .faq-section {
+            background: var(--bg-card); border-radius: 12px;
+            padding: 28px 30px; margin: 30px 0; border: 1px solid var(--border-color);
+        }
+        .faq-item { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border-color); }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .faq-item h4 { color: var(--accent-color); margin-bottom: 8px; font-size: 1.1rem; }
+        .faq-item p { color: var(--text-color); margin-bottom: 0; }
+
+        footer { margin-top: 50px; text-align: center; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 22px; }
+        footer a { color: var(--accent-color); }
+        footer a:hover { color: var(--accent-hover); }
+
+        .toc {
+            background: var(--bg-card); border-radius: 12px;
+            padding: 20px 26px; margin: 24px 0; border: 1px solid var(--border-color);
+        }
+        .toc h2 { margin-top: 0; border-bottom: none; padding-bottom: 6px; font-size: 1.4rem; }
+        .toc ol { margin-bottom: 0; }
+        .toc ol li { margin-bottom: 4px; }
+        .toc a { color: var(--accent-color); }
+        .toc a:hover { color: var(--accent-hover); }
+
+        .badge { display: inline-block; background: var(--success-color); color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; }
+
+        .universal-banner { background: var(--bg-card); border-left: 4px solid #f59e0b; padding: 18px 22px; margin: 22px 0; border-radius: 0 12px 12px 12px; }
+        .universal-banner strong { color: #d97706; }
+        html[data-theme="dark"] .universal-banner strong { color: #fbbf24; }
+
+        .dl-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .dl-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            padding: 24px 18px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .dl-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+        .dl-card.uptodown-card { border-color: var(--accent-color); }
+        .dl-card.uptodown-card:hover { box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25); }
+        .dl-card.apkpure-card { border-color: var(--apkpure-color); }
+        .dl-card.apkpure-card:hover { box-shadow: 0 12px 28px rgba(0, 179, 107, 0.25); }
+        .dl-card .dl-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 10px; }
+        .dl-card h3 { margin: 0 0 6px 0; font-size: 1.2rem; }
+        .dl-card .dl-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; min-height: 40px; }
+        .dl-card .dl-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 12px; }
+
+        .btn-uptodown {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-card); color: var(--text-main);
+            border: 2px solid var(--accent-color);
+            padding: 12px 26px; border-radius: 40px;
+            font-weight: 700; font-size: 1rem;
+            text-decoration: none; width: 100%; justify-content: center;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+        }
+        .btn-uptodown:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
+        .btn-uptodown img { height: 26px; width: auto; }
+
+        .btn-apkpure {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--bg-card); color: var(--text-main);
+            border: 2px solid var(--apkpure-color);
+            padding: 12px 26px; border-radius: 40px;
+            font-weight: 700; font-size: 1rem;
+            text-decoration: none; width: 100%; justify-content: center;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(0, 179, 107, 0.2);
+        }
+        .btn-apkpure:hover { background: var(--highlight-bg); color: var(--text-main); text-decoration: none; transform: scale(1.03); }
+        .btn-apkpure img { height: 26px; width: auto; }
+
+        .dl-note {
+            text-align: center; font-size: 0.85rem; color: var(--text-muted);
+            margin-top: 6px; margin-bottom: 28px;
+        }
+        .dl-note a { color: var(--accent-color); }
+
+        .forum-banner {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--highlight-bg) 100%);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 26px 28px;
+            margin: 24px 0 30px 0;
+            text-align: center;
+            box-shadow: 0 6px 22px rgba(37, 99, 235, 0.12);
+        }
+        html[data-theme="dark"] .forum-banner {
+            box-shadow: 0 6px 22px rgba(79, 140, 255, 0.15);
+        }
+        .forum-banner h3 { color: var(--accent-color); margin-top: 0; font-size: 1.4rem; }
+        .forum-banner p { margin-bottom: 18px; }
+        .forum-banner .forum-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background 0.25s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+        .forum-banner .forum-btn:hover {
+            background: var(--accent-hover);
+            text-decoration: none;
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 12px; font-size: 0.98rem; }
+            h1 { font-size: 1.7rem; }
+            h2 { font-size: 1.35rem; }
+            h3 { font-size: 1.15rem; }
+            .code-block { font-size: 0.82rem; padding: 14px; }
+            .menu { max-width: 100%; }
+            .menu-small, .menu-medium, .menu-large { max-width: 100%; }
+            .download-btn { font-size: 1.05rem; padding: 16px 28px; min-height: 52px; min-width: 160px; }
+            .faq-section { padding: 18px; }
+            .toc { padding: 16px; }
+            .forum-banner { padding: 20px 18px; }
+            .forum-banner .forum-btn { font-size: 1rem; padding: 12px 24px; }
+            .theme-toggle { width: 40px; height: 40px; font-size: 1.1rem; top: 12px; right: 12px; }
+            .dl-card { padding: 18px 14px; }
+            .dl-grid { grid-template-columns: 1fr; }
+            .video-wrapper { max-width: 100%; }
+            .language-switcher { top: 12px; left: 12px; }
+            .lang-btn { font-size: 0.8rem; padding: 6px 12px; }
+            .lang-dropdown { min-width: 180px; max-height: 300px; }
+            .lang-item { padding: 8px 14px; font-size: 0.85rem; }
+        }
+        @media (max-width: 400px) {
+            .comparison-table { font-size: 0.75rem; }
+            .comparison-table th, .comparison-table td { padding: 6px 8px; }
+            body { font-size: 0.92rem; }
+        }
+    </style>
+
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('anyscan209-theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light theme" title="Toggle dark / light theme">🌙</button>
+
+    <div class="container">
+
+        <header>
+            <h1>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (<code>ANY_SCAN_MS209</code>)</h1>
+            <p style="margin-top:14px;">Build your own single-scan or four-sensor scanner for <a href="index.html"><span class="ignore">AnyScan209</span></a> with Arduino, BASCOM, C or MicroPython. This page describes the exact data packet, command words and battery display used in <strong>Live Scan (professional scan) mode</strong>. The protocol is open and free to use under the MIT License.</p>
+        </header>
+
+        <nav class="toc">
+            <h2>Contents</h2>
+            <ol>
+                <li><a href="#overview">What Live Scan mode does</a></li>
+                <li><a href="#enable">Enable it: set the Bluetooth name</a></li>
+                <li><a href="#single-four">Single scan or four-sensor scan</a></li>
+                <li><a href="#packet">Data packet format</a></li>
+                <li><a href="#commands">Command words: Next and Bal</a></li>
+                <li><a href="#battery">Battery display and alarm</a></li>
+                <li><a href="#divider">Voltage divider</a></li>
+                <li><a href="#code">Sender code: BASCOM, Arduino, Python</a></li>
+                <li><a href="#ai">Let an AI write your sender code</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ol>
+        </nav>
+
+        <h2 id="overview">1. What Live Scan Mode Does</h2>
+        <p>In Live Scan mode a microcontroller with a Bluetooth serial module (HC-05, HC-06 or any SPP device) streams sensor readings to <span class="ignore">AnyScan209</span>. The app can receive <strong>one sensor</strong> or <strong>four sensors at the same time</strong>, so a four-sensor scanner fills four rows at once and scans <strong>four times faster</strong>. The scanner also reports its <strong>battery level</strong>, which the app shows as a progress bar with a low-battery alarm.</p>
+        <p>Without the special name described below, the app stays in simple external mode: every incoming input moves the scan forward by one step. Both modes work, so scanners you already built keep working.</p>
+
+        <h2 id="enable">2. Enable Live Scan: Set the Bluetooth Name</h2>
+        <p>Rename your Bluetooth module to exactly:</p>
+        <div class="highlight-box"><p style="font-size:1.2rem;"><code>ANY_SCAN_MS209</code></p></div>
+        <table class="comparison-table">
+            <thead><tr><th>Bluetooth module name</th><th>App behavior</th></tr></thead>
+            <tbody>
+                <tr><td>No name, or any other name</td><td>Simple mode: each input advances the scan one step</td></tr>
+                <tr><td><code>ANY_SCAN_MS209</code></td><td>Live Scan options unlock: single scan, four scan, battery display, <code>Next</code> and <code>Bal</code> commands</td></tr>
+            </tbody>
+        </table>
+        <p>Copy the name exactly, including the underscores and digits. Most modules are renamed with an AT command, for example <code>AT+NAME=ANY_SCAN_MS209</code> on an HC-05 (the command differs between modules, so check your module's datasheet). After renaming, pair the phone with the module again so the new name appears.</p>
+
+        <h2 id="single-four">3. Single Scan or Four-Sensor Scan</h2>
+        <p>After the name is set, choose the scan type in the app options to match your hardware:</p>
+        <ul>
+            <li><strong>Single scan:</strong> one sensor, such as one magnetometer or one metal detector. The scan moves forward one row at a time.</li>
+            <li><strong>Four-sensor scan:</strong> four sensors send their values at the same moment and four rows are filled at once.</li>
+        </ul>
+        <p>The option in the app must match what the scanner sends (see the next section). Scanning starts from the scan button in the app, or when the scanner sends the word <code>Next</code>.</p>
+
+        <h2 id="packet">4. Data Packet Format</h2>
+        <p>Every scan packet is a numeric string of <strong>exactly 20 characters</strong>: <strong>five fields of four digits</strong>, each from <code>0000</code> to <code>1024</code> and always padded with leading zeros. Each packet ends with a normal line break (CR+LF), which <code>Print</code> in BASCOM and <code>println</code> in Arduino add automatically.</p>
+        <table class="comparison-table">
+            <thead><tr><th>Field</th><th>Digits</th><th>Meaning</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>1 – 4</td><td>Sensor 1</td></tr>
+                <tr><td>2</td><td>5 – 8</td><td>Sensor 2</td></tr>
+                <tr><td>3</td><td>9 – 12</td><td>Sensor 3</td></tr>
+                <tr><td>4</td><td>13 – 16</td><td>Sensor 4</td></tr>
+                <tr><td>5</td><td>17 – 20</td><td>Battery</td></tr>
+            </tbody>
+        </table>
+        <div class="warning-box"><strong>Mandatory rule:</strong> always send all five fields, even the unused ones. The app accepts a scan packet only when its length is exactly 20 characters. Send <code>512</code> and the packet is rejected; send <code>0512</code>.</div>
+        <h3>Single-scan packet</h3>
+        <p>Field 1 holds the real value, fields 2–4 are sent as <code>0000</code>, field 5 is the battery.</p>
+        <div class="code-block"><pre>0512 0000 0000 0000 0980   →   send as   05120000000000000980</pre></div>
+        <h3>Four-sensor packet</h3>
+        <p>All four sensor fields hold real values.</p>
+        <div class="code-block"><pre>0512 0300 0700 0090 0980   →   send as   05120300070000900980</pre></div>
+        <p>Keep every value between 0 and 1024 (a 10-bit ADC range). The app clamps sensor values to a small safety margin beyond that range, but a well-behaved sender stays inside 0–1024.</p>
+
+        <h2 id="commands">5. Command Words: Next and Bal</h2>
+        <p>Two optional words let the user control the app from the scanner. Send the word alone on its own line.</p>
+        <table class="comparison-table">
+            <thead><tr><th>Word</th><th>Meaning</th><th>What the app does</th></tr></thead>
+            <tbody>
+                <tr><td><code>Next</code></td><td>Go to the next scan</td><td>Same as pressing the scan button in the app</td></tr>
+                <tr><td><code>Bal</code></td><td>Balance request</td><td>Shows the Balance Device message and starts the balance process</td></tr>
+            </tbody>
+        </table>
+        <p>Both words are optional. They are meant for two hardware buttons on the scanner, so the user does not have to touch the phone each time. If you skip the buttons nothing breaks: the app already has an on-screen scan button and a balance button. Adding the two hardware buttons is recommended for comfort.</p>
+
+        <h2 id="battery">6. Battery Display and Alarm</h2>
+        <p>The app knows nothing about voltages. Field 5 is just a number, and <strong>your scanner is responsible for mapping its real battery voltage to that number</strong>. The app turns the number into a percentage with a linear formula, averages 50 packets before updating the bar (so the icon does not flicker), and colors the bar from dark red (low) to yellow-green (full).</p>
+        <table class="comparison-table">
+            <thead><tr><th>Scanner type</th><th>Number for empty battery (0%)</th><th>Number for full battery (100%)</th></tr></thead>
+            <tbody>
+                <tr><td>Magnetometer</td><td>600</td><td>860</td></tr>
+                <tr><td>Metal detector</td><td>820</td><td>1024</td></tr>
+            </tbody>
+        </table>
+        <p>Percentage formulas used by the app: magnetometer <code>(value − 600) / 2.6</code>, metal detector <code>(value − 820) / 2.04</code>; at or below the empty point the bar shows 3%.</p>
+        <div class="warning-box"><strong>Low-battery alarm:</strong> if the raw battery number is below <strong>630</strong>, the app shows a LOW BATTERY message and plays a warning sound. For a magnetometer this is roughly 11% charge left. Because the metal detector range starts at 820, its alarm only triggers when the sender reports a value far below its normal range.</div>
+        <h3>Mapping your battery to the number</h3>
+        <p>Choose the empty and full voltages of <em>your</em> battery, then map linearly:</p>
+        <div class="code-block"><pre>number = emptyNumber + (voltage − emptyVoltage) × (fullNumber − emptyNumber) / (fullVoltage − emptyVoltage)</pre></div>
+        <p>Example, single lithium cell (3.3 V empty, 4.2 V full) on a magnetometer: <code>number = 600 + (voltage − 3.3) × 260 / 0.9</code>. The same formula works for any battery: 3.3–4.2 V, 9.6–12.4 V, 14–18 V and so on. Only the empty and full voltages change.</p>
+
+        <h2 id="divider">7. Voltage Divider</h2>
+        <p>A microcontroller ADC can only read voltages up to its reference voltage, so a higher battery voltage must be reduced by a <strong>resistor voltage divider</strong> before it reaches the ADC pin. Designing the divider (resistor values, accuracy, protecting the ADC pin) is entirely the <strong>builder's responsibility</strong>.</p>
+        <p>The relationship between divided voltage and ADC value is nearly linear. If your divider cannot hit the ranges above exactly, correct the value in your microcontroller code with the mapping formula. Any AI assistant can calculate the resistors and the code for you (see section 9).</p>
+
+        <h2 id="code">8. Sender Code: BASCOM, Arduino, Python</h2>
+        <h3>BASCOM (AVR)</h3>
+        <p>This follows the reference scanner: one sensor on ADC0, battery on ADC1 with a fixed offset of 305 so the number lands in the range the app expects. Calibrate the offset for your own hardware.</p>
+        <div class="code-block"><pre>
+Dim Volt1 As Word
+Dim Sampl1 As Word
+Dim Magno11 As String * 4
+Dim Volt11 As String * 4
+Dim Volt12 As String * 4
+
+Sampl1 = Getadc(0)
+Volt1 = Getadc(1) + 305            ' calibrate: empty battery = 600, full = 860
+
+Magno11 = Str(sampl1) : Magno11 = Format(magno11 , "0000")
+Volt11 = Str(volt1)   : Volt12 = Format(volt11 , "0000")
+
+' Single scan: the three unused fields are mandatory
+Print #1 , Magno11 ; "0000" ; "0000" ; "0000" ; Volt12
+
+' Balance button
+Print #1 , "Bal"</pre></div>
+
+        <h3>Arduino (four-sensor example)</h3>
+        <div class="code-block"><pre>
+const float V_EMPTY = 3.3, V_FULL = 4.2;   // your battery
+const int   N_EMPTY = 600, N_FULL = 860;   // magnetometer (metal detector: 820 to 1024)
+const float ADC_REF = 5.0;                 // ADC reference voltage
+const float DIVIDER = 1.0;                 // (R1+R2)/R2 of your voltage divider
+
+int batteryNumber() {
+  float v = analogRead(A4) * ADC_REF / 1023.0 * DIVIDER;
+  float n = N_EMPTY + (v - V_EMPTY) * (N_FULL - N_EMPTY) / (V_FULL - V_EMPTY);
+  return constrain((int)n, 0, 1024);
+}
+
+void sendScan(int s1, int s2, int s3, int s4) {
+  char buf[21];
+  snprintf(buf, sizeof(buf), "%04d%04d%04d%04d%04d",
+           constrain(s1, 0, 1024), constrain(s2, 0, 1024),
+           constrain(s3, 0, 1024), constrain(s4, 0, 1024),
+           batteryNumber());
+  Serial.println(buf);          // or bluetooth.println(buf)
+}
+
+void loop() {
+  // Four-sensor mode
+  sendScan(analogRead(A0), analogRead(A1), analogRead(A2), analogRead(A3));
+  // Single-scan mode: sendScan(analogRead(A0), 0, 0, 0);
+
+  // Optional buttons
+  // if (digitalRead(NEXT_PIN) == LOW) Serial.println("Next");
+  // if (digitalRead(BAL_PIN)  == LOW) Serial.println("Bal");
+}</pre></div>
+
+        <h3>Python (MicroPython or desktop test)</h3>
+        <div class="code-block"><pre>
+def make_packet(s1, s2=0, s3=0, s4=0, batt=0):
+    vals = [max(0, min(1024, v)) for v in (s1, s2, s3, s4, batt)]
+    return "".join(f"{v:04d}" for v in vals)
+
+print(make_packet(512, 300, 700, 90, 980))  # 05120300070000900980
+print(make_packet(512, batt=980))           # 05120000000000000980</pre></div>
+        <p>Test with a serial terminal first: every line must be exactly 20 digits.</p>
+
+        <h2 id="ai">9. Let an AI Write Your Sender Code</h2>
+        <p>You do not need to be an embedded expert. Copy this page into an AI assistant and ask for the code for your board. A good request looks like this:</p>
+        <div class="highlight-box">
+            <p><em>"Using the AnyScan209 Live Scan protocol on this page, write sender firmware for an ESP32 with an HC-05 module, four sensors, a 3.3–4.2 V lithium battery and a Next button. Also calculate the voltage divider resistors."</em></p>
+        </div>
+        <p>The assistant should ask for your microcontroller, language, Bluetooth baud rate, scan type (single or four), device type (magnetometer or metal detector), battery empty and full voltages, and the ADC reference voltage. Then it designs the divider, writes the battery mapping, builds the 20-character packet and reminds you to rename the Bluetooth module to <code>ANY_SCAN_MS209</code>.</p>
+
+        <h2 id="faq">10. FAQ</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <h4>How do I turn on Live Scan mode in AnyScan209?</h4>
+                <p>Rename your Bluetooth module to exactly <code>ANY_SCAN_MS209</code>, pair it again, then choose single scan or four-sensor scan in the app options.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Why is my packet ignored?</h4>
+                <p>The packet must be exactly 20 characters: five fields of four digits with leading zeros. Unused sensor fields must be sent as <code>0000</code>.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What numbers should my battery send?</h4>
+                <p>Magnetometer scanners send 600 for an empty battery and 860 for a full one. Metal detector scanners send 820 for empty and 1024 for full. Map your real voltage to this range linearly.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do I need the Next and Bal buttons?</h4>
+                <p>No. They are optional hardware conveniences. The app has its own scan and balance buttons.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I use any battery voltage?</h4>
+                <p>Yes. The app only sees a number, so any battery works as long as you map its empty and full voltages to the expected range and scale the voltage down for the ADC with a divider.</p>
+            </div>
+        </div>
+
+        <p style="margin-top:30px;"><a href="index.html">← Back to the main <span class="ignore">AnyScan209</span> guide</a></p>
+
+        <footer>
+            <p>
+                Support: <a href="mailto:ssmqqmss@gmail.com">ssmqqmss@gmail.com</a>
+                &nbsp;|&nbsp; <a href="policy_anyscan209.html">Privacy Policy</a>
+                &nbsp;|&nbsp; <a href="https://github.com/soifgo/AnyScan209" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                &nbsp;|&nbsp; <a href="https://github.com/soifgo/AnyScan209/discussions" target="_blank" rel="noopener noreferrer">💬 Community Forum</a>
+            </p>
+            <p style="font-size:0.9rem; margin-top:8px; color:var(--text-muted);">&copy;2025-2026 <span class="ignore">AnyScan209</span> — Built by <span class="ignore">Saeid Moghadam</span>. This protocol documentation is released under the MIT License.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        (function() {
+            var btn = document.getElementById('themeToggle');
+            var root = document.documentElement;
+
+            function updateIcon() {
+                var isDark = root.getAttribute('data-theme') === 'dark';
+                btn.textContent = isDark ? '☀️' : '🌙';
+                btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+                btn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+            }
+
+            btn.addEventListener('click', function() {
+                var current = root.getAttribute('data-theme');
+                var next = current === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('anyscan209-theme', next); } catch (e) {}
+                updateIcon();
+            });
+
+            updateIcon();
+        })();
+    </script>
+
+</body>
+</html>
