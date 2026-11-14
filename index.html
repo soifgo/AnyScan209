@@ -601,6 +601,9 @@
         }
         .forum-banner h3 { color: var(--accent-color); margin-top: 0; font-size: 1.4rem; }
         .forum-banner p { margin-bottom: 18px; }
+
+        /* Prevent long unbroken text/links from overflowing their boxes */
+        .container li, .container p, .container a:not(.forum-btn):not(.download-btn) { overflow-wrap: anywhere; }
         .forum-banner .forum-btn {
             display: inline-block;
             background: var(--accent-color);
