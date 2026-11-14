@@ -7,7 +7,7 @@
     <meta name="author" content="Saeid Moghadam">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <title>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)</title>
-    <meta name="description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <meta name="description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <link rel="canonical" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <link rel="alternate" hreflang="x-default" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <link rel="alternate" hreflang="en" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
@@ -15,12 +15,12 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="AnyScan209">
     <meta property="og:title" content="AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)">
-    <meta property="og:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <meta property="og:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <meta property="og:url" content="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <meta property="og:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AnyScan209 Live Scan Bluetooth Protocol">
-    <meta name="twitter:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.">
+    <meta name="twitter:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <meta name="twitter:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
 
     <script type="application/ld+json">
@@ -31,14 +31,14 @@
           "@type": "TechArticle",
           "@id": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html#article",
           "headline": "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners",
-          "description": "Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, Next and Bal commands. Arduino, BASCOM and Python examples.",
+          "description": "Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.",
           "url": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html",
           "inLanguage": "en",
           "author": { "@type": "Person", "name": "Saeid Moghadam" },
           "license": "https://opensource.org/licenses/MIT",
           "isPartOf": { "@type": "WebSite", "@id": "https://soifgo.github.io/AnyScan209/#website" },
           "about": { "@type": "SoftwareApplication", "@id": "https://soifgo.github.io/AnyScan209/#app" },
-          "dateModified": "2026-10-31"
+          "dateModified": "2026-11-14"
         },
         {
           "@type": "BreadcrumbList",
@@ -492,10 +492,17 @@
 
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light theme" title="Toggle dark / light theme">🌙</button>
 
+    <div class="language-switcher ignore" id="languageSwitcher">
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Change language">
+            🌐 <span id="currentLangLabel">English</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+    </div>
+
     <div class="container">
 
         <header>
-            <h1>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (<code>ANY_SCAN_MS209</code>)</h1>
+            <h1>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (<code class="ignore">ANY_SCAN_MS209</code>)</h1>
             <p style="margin-top:14px;">Build your own single-scan or four-sensor scanner for <a href="index.html"><span class="ignore">AnyScan209</span></a> with Arduino, BASCOM, C or MicroPython. This page describes the exact data packet, command words and battery display used in <strong>Live Scan (professional scan) mode</strong>. The protocol is open and free to use under the MIT License.</p>
         </header>
 
@@ -521,15 +528,15 @@
 
         <h2 id="enable">2. Enable Live Scan: Set the Bluetooth Name</h2>
         <p>Rename your Bluetooth module to exactly:</p>
-        <div class="highlight-box"><p style="font-size:1.2rem;"><code>ANY_SCAN_MS209</code></p></div>
+        <div class="highlight-box"><p style="font-size:1.2rem;"><code class="ignore">ANY_SCAN_MS209</code></p></div>
         <table class="comparison-table">
             <thead><tr><th>Bluetooth module name</th><th>App behavior</th></tr></thead>
             <tbody>
                 <tr><td>No name, or any other name</td><td>Simple mode: each input advances the scan one step</td></tr>
-                <tr><td><code>ANY_SCAN_MS209</code></td><td>Live Scan options unlock: single scan, four scan, battery display, <code>Next</code> and <code>Bal</code> commands</td></tr>
+                <tr><td><code class="ignore">ANY_SCAN_MS209</code></td><td>Live Scan options unlock: single scan, four scan, battery display and the two-way command words (section 5)</td></tr>
             </tbody>
         </table>
-        <p>Copy the name exactly, including the underscores and digits. Most modules are renamed with an AT command, for example <code>AT+NAME=ANY_SCAN_MS209</code> on an HC-05 (the command differs between modules, so check your module's datasheet). After renaming, pair the phone with the module again so the new name appears.</p>
+        <p>Copy the name exactly, including the underscores and digits. Most modules are renamed with an AT command, for example <code class="ignore">AT+NAME=ANY_SCAN_MS209</code> on an HC-05 (the command differs between modules, so check your module's datasheet). After renaming, pair the phone with the module again so the new name appears.</p>
 
         <h2 id="single-four">3. Single Scan or Four-Sensor Scan</h2>
         <p>After the name is set, choose the scan type in the app options to match your hardware:</p>
@@ -537,10 +544,10 @@
             <li><strong>Single scan:</strong> one sensor, such as one magnetometer or one metal detector. The scan moves forward one row at a time.</li>
             <li><strong>Four-sensor scan:</strong> four sensors send their values at the same moment and four rows are filled at once.</li>
         </ul>
-        <p>The option in the app must match what the scanner sends (see the next section). Scanning starts from the scan button in the app, or when the scanner sends the word <code>Next</code>.</p>
+        <p>The option in the app must match what the scanner sends (see the next section). Scanning starts from the scan button in the app, or when the scanner sends the word <code class="ignore">Next</code>. Sensor packets are only listened to after the scanner has sent <code class="ignore">Bal</code> (section 5).</p>
 
         <h2 id="packet">4. Data Packet Format</h2>
-        <p>Every scan packet is a numeric string of <strong>exactly 20 characters</strong>: <strong>five fields of four digits</strong>, each from <code>0000</code> to <code>1024</code> and always padded with leading zeros. Each packet ends with a normal line break (CR+LF), which <code>Print</code> in BASCOM and <code>println</code> in Arduino add automatically.</p>
+        <p>Every scan packet is a numeric string of <strong>exactly 20 characters</strong>: <strong>five fields of four digits</strong>, each from <code class="ignore">0000</code> to <code class="ignore">1024</code> and always padded with leading zeros. Each packet ends with a normal line break (CR+LF), which <code class="ignore">Print</code> in BASCOM and <code class="ignore">println</code> in Arduino add automatically.</p>
         <table class="comparison-table">
             <thead><tr><th>Field</th><th>Digits</th><th>Meaning</th></tr></thead>
             <tbody>
@@ -551,25 +558,52 @@
                 <tr><td>5</td><td>17 – 20</td><td>Battery</td></tr>
             </tbody>
         </table>
-        <div class="warning-box"><strong>Mandatory rule:</strong> always send all five fields, even the unused ones. The app accepts a scan packet only when its length is exactly 20 characters. Send <code>512</code> and the packet is rejected; send <code>0512</code>.</div>
+        <div class="warning-box"><strong>Mandatory rule:</strong> always send all five fields, even the unused ones. The app accepts a scan packet only when its length is exactly 20 characters. Send <code class="ignore">512</code> and the packet is rejected; send <code class="ignore">0512</code>.</div>
         <h3>Single-scan packet</h3>
-        <p>Field 1 holds the real value, fields 2–4 are sent as <code>0000</code>, field 5 is the battery.</p>
-        <div class="code-block"><pre>0512 0000 0000 0000 0980   →   send as   05120000000000000980</pre></div>
+        <p>Field 1 holds the real value, fields 2–4 are sent as <code class="ignore">0000</code>, field 5 is the battery.</p>
+        <div class="code-block ignore"><pre>0512 0000 0000 0000 0980   →   send as   05120000000000000980</pre></div>
         <h3>Four-sensor packet</h3>
         <p>All four sensor fields hold real values.</p>
-        <div class="code-block"><pre>0512 0300 0700 0090 0980   →   send as   05120300070000900980</pre></div>
+        <div class="code-block ignore"><pre>0512 0300 0700 0090 0980   →   send as   05120300070000900980</pre></div>
         <p>Keep every value between 0 and 1024 (a 10-bit ADC range). The app clamps sensor values to a small safety margin beyond that range, but a well-behaved sender stays inside 0–1024.</p>
 
-        <h2 id="commands">5. Command Words: Next and Bal</h2>
-        <p>Two optional words let the user control the app from the scanner. Send the word alone on its own line.</p>
+        <h2 id="commands">5. Command Words: Two-Way Communication</h2>
+        <p>Besides sensor packets, the scanner and the app exchange short <strong>command words</strong>. Each word is sent alone on its own line. Type the words exactly as shown, including upper and lower case.</p>
+
+        <h3>Scanner → phone</h3>
         <table class="comparison-table">
             <thead><tr><th>Word</th><th>Meaning</th><th>What the app does</th></tr></thead>
             <tbody>
-                <tr><td><code>Next</code></td><td>Go to the next scan</td><td>Same as pressing the scan button in the app</td></tr>
-                <tr><td><code>Bal</code></td><td>Balance request</td><td>Shows the Balance Device message and starts the balance process</td></tr>
+                <tr><td><code class="ignore">Bal</code></td><td>The scanner is balanced</td><td>The app treats the device as balanced and starts listening to the external sensor packets</td></tr>
+                <tr><td><code class="ignore">Bals</code></td><td>Balancing is in progress</td><td>The app knows the scanner is busy balancing</td></tr>
+                <tr><td><code class="ignore">Next</code></td><td>Go to the next scan</td><td>Same as pressing the scan button in the app</td></tr>
+                <tr><td><code class="ignore">BY</code></td><td>The scanner is about to power off</td><td>Goodbye message, sent just before the scanner shuts down</td></tr>
             </tbody>
         </table>
-        <p>Both words are optional. They are meant for two hardware buttons on the scanner, so the user does not have to touch the phone each time. If you skip the buttons nothing breaks: the app already has an on-screen scan button and a balance button. Adding the two hardware buttons is recommended for comfort.</p>
+
+        <h3>Phone → scanner</h3>
+        <table class="comparison-table">
+            <thead><tr><th>Word</th><th>Meaning</th><th>What the scanner must do</th></tr></thead>
+            <tbody>
+                <tr><td><code class="ignore">zero</code></td><td>Sent when the user taps the balance icon (⚖️) in the app</td><td>Balance every sensor to 512, sending <code class="ignore">Bals</code> while balancing and <code class="ignore">Bal</code> when finished</td></tr>
+                <tr><td><code class="ignore">ofof</code></td><td>Power-off request</td><td>Send <code class="ignore">BY</code>, then switch itself off (or command itself to switch off)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>The balance sequence</h3>
+        <p>Balancing is done by the <strong>scanner</strong>, not by the app. The neutral value for every sensor is <strong>512</strong>. There are three ways it can start:</p>
+        <ol>
+            <li><strong>The user taps ⚖️ in the app.</strong> The app sends <code class="ignore">zero</code>. The scanner sends <code class="ignore">Bals</code>, balances all sensors to 512, then sends <code class="ignore">Bal</code>.</li>
+            <li><strong>The scanner balances itself</strong> (automatically). It balances to 512 and sends <code class="ignore">Bal</code>.</li>
+            <li><strong>The user balances by hand or by their own judgment</strong>, and presses an optional balance button on the scanner. The scanner sends <code class="ignore">Bal</code> so the app believes the device is balanced and starts listening to the sensor.</li>
+        </ol>
+        <p>The balance button on the scanner is optional, for builders who want to balance manually. The scan button on the scanner is a separate button: it sends <code class="ignore">Next</code>.</p>
+
+        <div class="warning-box"><strong>Mandatory rule: <code class="ignore">Bal</code> is always sent.</strong> The scanner <strong>must</strong> send <code class="ignore">Bal</code> at two moments: (1) <strong>once at startup</strong>, after power-on and connection, before any sensor packet, and (2) <strong>after every balance</strong>, however it was started. A scanner that never sends <code class="ignore">Bal</code> will not work in Live Scan mode. Older senders that only stream values keep working in the simple mode (any other Bluetooth name), but not under the name <code class="ignore">ANY_SCAN_MS209</code>.</div>
+
+        <h3>Power off</h3>
+        <p>When the app sends <code class="ignore">ofof</code>, the scanner replies <code class="ignore">BY</code> and then switches itself off. Whether the scanner can cut its own power depends on your hardware, for example a power latch or a power-control pin. If it cannot, it can simply stop sending data after <code class="ignore">BY</code>.</p>
+        <p><code class="ignore">Next</code> and the balance button are optional hardware conveniences. Sending <code class="ignore">Bal</code> and answering <code class="ignore">zero</code> and <code class="ignore">ofof</code> are not.</p>
 
         <h2 id="battery">6. Battery Display and Alarm</h2>
         <p>The app knows nothing about voltages. Field 5 is just a number, and <strong>your scanner is responsible for mapping its real battery voltage to that number</strong>. The app turns the number into a percentage with a linear formula, averages 50 packets before updating the bar (so the icon does not flicker), and colors the bar from dark red (low) to yellow-green (full).</p>
@@ -580,12 +614,12 @@
                 <tr><td>Metal detector</td><td>820</td><td>1024</td></tr>
             </tbody>
         </table>
-        <p>Percentage formulas used by the app: magnetometer <code>(value − 600) / 2.6</code>, metal detector <code>(value − 820) / 2.04</code>; at or below the empty point the bar shows 3%.</p>
+        <p>Percentage formulas used by the app: magnetometer <code class="ignore">(value − 600) / 2.6</code>, metal detector <code class="ignore">(value − 820) / 2.04</code>; at or below the empty point the bar shows 3%.</p>
         <div class="warning-box"><strong>Low-battery alarm:</strong> if the raw battery number is below <strong>630</strong>, the app shows a LOW BATTERY message and plays a warning sound. For a magnetometer this is roughly 11% charge left. Because the metal detector range starts at 820, its alarm only triggers when the sender reports a value far below its normal range.</div>
         <h3>Mapping your battery to the number</h3>
         <p>Choose the empty and full voltages of <em>your</em> battery, then map linearly:</p>
-        <div class="code-block"><pre>number = emptyNumber + (voltage − emptyVoltage) × (fullNumber − emptyNumber) / (fullVoltage − emptyVoltage)</pre></div>
-        <p>Example, single lithium cell (3.3 V empty, 4.2 V full) on a magnetometer: <code>number = 600 + (voltage − 3.3) × 260 / 0.9</code>. The same formula works for any battery: 3.3–4.2 V, 9.6–12.4 V, 14–18 V and so on. Only the empty and full voltages change.</p>
+        <div class="code-block ignore"><pre>number = emptyNumber + (voltage − emptyVoltage) × (fullNumber − emptyNumber) / (fullVoltage − emptyVoltage)</pre></div>
+        <p>Example, single lithium cell (3.3 V empty, 4.2 V full) on a magnetometer: <code class="ignore">number = 600 + (voltage − 3.3) × 260 / 0.9</code>. The same formula works for any battery: 3.3–4.2 V, 9.6–12.4 V, 14–18 V and so on. Only the empty and full voltages change.</p>
 
         <h2 id="divider">7. Voltage Divider</h2>
         <p>A microcontroller ADC can only read voltages up to its reference voltage, so a higher battery voltage must be reduced by a <strong>resistor voltage divider</strong> before it reaches the ADC pin. Designing the divider (resistor values, accuracy, protecting the ADC pin) is entirely the <strong>builder's responsibility</strong>.</p>
@@ -593,14 +627,18 @@
 
         <h2 id="code">8. Sender Code: BASCOM, Arduino, Python</h2>
         <h3>BASCOM (AVR)</h3>
-        <p>This follows the reference scanner: one sensor on ADC0, battery on ADC1 with a fixed offset of 305 so the number lands in the range the app expects. Calibrate the offset for your own hardware.</p>
-        <div class="code-block"><pre>
+        <p>This follows the reference scanner: one sensor on ADC0, battery on ADC1 with a fixed offset of 305 so the number lands in the range the app expects. Calibrate the offset for your own hardware. Remember the mandatory <code class="ignore">Bal</code> at startup.</p>
+        <div class="code-block ignore"><pre>
 Dim Volt1 As Word
 Dim Sampl1 As Word
 Dim Magno11 As String * 4
 Dim Volt11 As String * 4
 Dim Volt12 As String * 4
 
+' --- At startup: balance the sensor to 512, then announce it (mandatory) ---
+Print #1 , "Bal"
+
+' --- Normal loop: one sample, one packet ---
 Sampl1 = Getadc(0)
 Volt1 = Getadc(1) + 305            ' calibrate: empty battery = 600, full = 860
 
@@ -610,15 +648,20 @@ Volt11 = Str(volt1)   : Volt12 = Format(volt11 , "0000")
 ' Single scan: the three unused fields are mandatory
 Print #1 , Magno11 ; "0000" ; "0000" ; "0000" ; Volt12
 
-' Balance button
-Print #1 , "Bal"</pre></div>
+' --- Scan button on the scanner ---
+Print #1 , "Next"
+
+' --- When the phone sends "zero": Print #1 , "Bals" ... balance to 512 ... Print #1 , "Bal"
+' --- When the phone sends "ofof": Print #1 , "BY" ... then switch the scanner off</pre></div>
 
         <h3>Arduino (four-sensor example)</h3>
-        <div class="code-block"><pre>
+        <div class="code-block ignore"><pre>
 const float V_EMPTY = 3.3, V_FULL = 4.2;   // your battery
 const int   N_EMPTY = 600, N_FULL = 860;   // magnetometer (metal detector: 820 to 1024)
 const float ADC_REF = 5.0;                 // ADC reference voltage
 const float DIVIDER = 1.0;                 // (R1+R2)/R2 of your voltage divider
+
+String rx = "";                            // last characters received from the phone
 
 int batteryNumber() {
   float v = analogRead(A4) * ADC_REF / 1023.0 * DIVIDER;
@@ -635,50 +678,77 @@ void sendScan(int s1, int s2, int s3, int s4) {
   Serial.println(buf);          // or bluetooth.println(buf)
 }
 
+void doBalance() {
+  Serial.println("Bals");       // balancing in progress
+  // ... your code: bring every sensor to 512 ...
+  Serial.println("Bal");        // balanced (mandatory)
+}
+
+void checkPhone() {
+  while (Serial.available()) {
+    rx += (char)Serial.read();
+    if (rx.length() > 8) rx.remove(0, rx.length() - 8);
+    if (rx.endsWith("zero")) { rx = ""; doBalance(); }
+    if (rx.endsWith("ofof")) {
+      rx = "";
+      Serial.println("BY");     // goodbye
+      delay(50);
+      // ... your code: switch the scanner off ...
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(9600);           // use the baud rate of your Bluetooth module
+  doBalance();                  // balance at startup and send Bal (mandatory)
+}
+
 void loop() {
+  checkPhone();
+
   // Four-sensor mode
   sendScan(analogRead(A0), analogRead(A1), analogRead(A2), analogRead(A3));
   // Single-scan mode: sendScan(analogRead(A0), 0, 0, 0);
 
   // Optional buttons
   // if (digitalRead(NEXT_PIN) == LOW) Serial.println("Next");
-  // if (digitalRead(BAL_PIN)  == LOW) Serial.println("Bal");
+  // if (digitalRead(BAL_PIN)  == LOW) Serial.println("Bal");   // manual balance finished
 }</pre></div>
 
         <h3>Python (MicroPython or desktop test)</h3>
-        <div class="code-block"><pre>
+        <div class="code-block ignore"><pre>
 def make_packet(s1, s2=0, s3=0, s4=0, batt=0):
     vals = [max(0, min(1024, v)) for v in (s1, s2, s3, s4, batt)]
     return "".join(f"{v:04d}" for v in vals)
 
 print(make_packet(512, 300, 700, 90, 980))  # 05120300070000900980
 print(make_packet(512, batt=980))           # 05120000000000000980</pre></div>
-        <p>Test with a serial terminal first: every line must be exactly 20 digits.</p>
+        <p>Test with a serial terminal first: every sensor line must be exactly 20 digits. The command words (<code class="ignore">Bal</code>, <code class="ignore">Bals</code>, <code class="ignore">Next</code>, <code class="ignore">BY</code>) are separate short lines.</p>
 
         <h2 id="ai">9. Let an AI Write Your Sender Code</h2>
         <p>You do not need to be an embedded expert. Copy this page into an AI assistant and ask for the code for your board. A good request looks like this:</p>
         <div class="highlight-box">
             <p><em>"Using the AnyScan209 Live Scan protocol on this page, write sender firmware for an ESP32 with an HC-05 module, four sensors, a 3.3–4.2 V lithium battery and a Next button. Also calculate the voltage divider resistors."</em></p>
         </div>
-        <p>The assistant should ask for your microcontroller, language, Bluetooth baud rate, scan type (single or four), device type (magnetometer or metal detector), battery empty and full voltages, and the ADC reference voltage. Then it designs the divider, writes the battery mapping, builds the 20-character packet and reminds you to rename the Bluetooth module to <code>ANY_SCAN_MS209</code>.</p>
+        <p>The assistant should ask for your microcontroller, language, Bluetooth baud rate, scan type (single or four), device type (magnetometer or metal detector), battery empty and full voltages, and the ADC reference voltage. Then it designs the divider, writes the battery mapping, builds the 20-character packet, adds the command words (<code class="ignore">Bal</code> at startup and after every balance, <code class="ignore">Bals</code>, <code class="ignore">Next</code>, replies to <code class="ignore">zero</code> and <code class="ignore">ofof</code>) and reminds you to rename the Bluetooth module to <code class="ignore">ANY_SCAN_MS209</code>.</p>
 
         <h2 id="faq">10. FAQ</h2>
         <div class="faq-section">
             <div class="faq-item">
                 <h4>How do I turn on Live Scan mode in AnyScan209?</h4>
-                <p>Rename your Bluetooth module to exactly <code>ANY_SCAN_MS209</code>, pair it again, then choose single scan or four-sensor scan in the app options.</p>
+                <p>Rename your Bluetooth module to exactly <code class="ignore">ANY_SCAN_MS209</code>, pair it again, then choose single scan or four-sensor scan in the app options. Your scanner must also send <code class="ignore">Bal</code> after power-on.</p>
             </div>
             <div class="faq-item">
                 <h4>Why is my packet ignored?</h4>
-                <p>The packet must be exactly 20 characters: five fields of four digits with leading zeros. Unused sensor fields must be sent as <code>0000</code>.</p>
+                <p>The packet must be exactly 20 characters: five fields of four digits with leading zeros. Unused sensor fields must be sent as <code class="ignore">0000</code>.</p>
             </div>
             <div class="faq-item">
                 <h4>What numbers should my battery send?</h4>
                 <p>Magnetometer scanners send 600 for an empty battery and 860 for a full one. Metal detector scanners send 820 for empty and 1024 for full. Map your real voltage to this range linearly.</p>
             </div>
             <div class="faq-item">
-                <h4>Do I need the Next and Bal buttons?</h4>
-                <p>No. They are optional hardware conveniences. The app has its own scan and balance buttons.</p>
+                <h4>Which command words are mandatory?</h4>
+                <p><code class="ignore">Bal</code> is mandatory: send it once at startup and after every balance. Your scanner must also answer <code class="ignore">zero</code> (balance everything to 512) and <code class="ignore">ofof</code> (send <code class="ignore">BY</code>, then switch off). The hardware buttons for <code class="ignore">Next</code> and manual balance are optional, because the app has its own scan button.</p>
             </div>
             <div class="faq-item">
                 <h4>Can I use any battery voltage?</h4>
@@ -722,6 +792,303 @@ print(make_packet(512, batt=980))           # 05120000000000000980</pre></div>
 
             updateIcon();
         })();
+    </script>
+
+
+<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var LANGUAGES = {
+            'english':              { label: 'English',              dir: 'ltr' },
+            'spanish':              { label: 'Español',              dir: 'ltr' },
+            'french':               { label: 'Français',             dir: 'ltr' },
+            'deutsch':              { label: 'Deutsch',              dir: 'ltr' },
+            'italian':              { label: 'Italiano',             dir: 'ltr' },
+            'dutch':                { label: 'Nederlands',           dir: 'ltr' },
+            'portuguese':           { label: 'Português',            dir: 'ltr' },
+            'polish':               { label: 'Polski',               dir: 'ltr' },
+            'swedish':              { label: 'Svenska',              dir: 'ltr' },
+            'norwegian':            { label: 'Norsk',                dir: 'ltr' },
+            'danish':               { label: 'Dansk',                dir: 'ltr' },
+            'romanian':             { label: 'Română',               dir: 'ltr' },
+            'czech':                { label: 'Čeština',              dir: 'ltr' },
+            'slovak':               { label: 'Slovenčina',           dir: 'ltr' },
+            'hungarian':            { label: 'Magyar',               dir: 'ltr' },
+            'greek':                { label: 'Ελληνικά',             dir: 'ltr' },
+            'bulgarian':            { label: 'Български',            dir: 'ltr' },
+            'russian':              { label: 'Русский',              dir: 'ltr' },
+            'ukrainian':            { label: 'Українська',           dir: 'ltr' },
+            'serbian':              { label: 'Srpski',               dir: 'ltr' },
+            'hebrew':               { label: 'עברית',                dir: 'rtl' },
+            'chinese_simplified':   { label: '简体中文',             dir: 'ltr' },
+            'japanese':             { label: '日本語',               dir: 'ltr' },
+            'korean':               { label: '한국어',               dir: 'ltr' },
+            'hindi':                { label: 'हिन्दी',               dir: 'ltr' },
+            'bengali':              { label: 'বাংলা',                dir: 'ltr' },
+            'turkish':              { label: 'Türkçe',               dir: 'ltr' },
+            'arabic':               { label: 'العربية',              dir: 'rtl' },
+            'persian':              { label: 'فارسی',                dir: 'rtl' },
+            'urdu':                 { label: 'اردو',                 dir: 'rtl' },
+            'kurdish_sorani':       { label: 'کوردی',                dir: 'rtl' },
+            'azerbaijani':          { label: 'Azərbaycanca',         dir: 'ltr' },
+            'armenian':             { label: 'Հայերեն',              dir: 'ltr' },
+            'georgian':             { label: 'ქართული',              dir: 'ltr' },
+            'indonesian':           { label: 'Bahasa Indonesia',     dir: 'ltr' },
+            'malay':                { label: 'Melayu',               dir: 'ltr' },
+            'filipino':             { label: 'Filipino',             dir: 'ltr' },
+            'thai':                 { label: 'ไทย',                  dir: 'ltr' },
+            'afrikaans':            { label: 'Afrikaans',            dir: 'ltr' },
+            'vietnamese':           { label: 'Tiếng Việt',           dir: 'ltr' },
+            'tamil':                { label: 'தமிழ்',                dir: 'ltr' }
+        };
+
+        var DEFAULT_LANG = 'english';
+        var FALLBACK_CHANNELS = ['giteeAI', 'client.edge', 'siliconflow'];
+
+        // ✅✅✅ جدید: نگاشت کدهای کوتاه به کدهای داخلی ✅✅✅
+        var LANG_MAP = {
+            'en': 'english',
+            'fa': 'persian',
+            'ar': 'arabic',
+            'es': 'spanish',
+            'fr': 'french',
+            'de': 'deutsch',
+            'ru': 'russian',
+            'zh': 'chinese_simplified',
+            'ja': 'japanese',
+            'ko': 'korean',
+            'tr': 'turkish',
+            'pt': 'portuguese',
+            'it': 'italian',
+            'hi': 'hindi',
+            'bn': 'bengali',
+            'ur': 'urdu',
+            'he': 'hebrew',
+            'el': 'greek',
+            'pl': 'polish',
+            'nl': 'dutch',
+            'sv': 'swedish',
+            'no': 'norwegian',
+            'da': 'danish',
+            'ro': 'romanian',
+            'cs': 'czech',
+            'sk': 'slovak',
+            'hu': 'hungarian',
+            'bg': 'bulgarian',
+            'uk': 'ukrainian',
+            'sr': 'serbian',
+            'ku': 'kurdish_sorani',
+            'az': 'azerbaijani',
+            'hy': 'armenian',
+            'ka': 'georgian',
+            'id': 'indonesian',
+            'ms': 'malay',
+            'fil': 'filipino',
+            'th': 'thai',
+            'af': 'afrikaans',
+            'vi': 'vietnamese',
+            'ta': 'tamil'
+        };
+
+        var langBtn = document.getElementById('langBtn');
+        var langDropdown = document.getElementById('langDropdown');
+        var currentLangLabel = document.getElementById('currentLangLabel');
+
+        function buildLanguageList() {
+            var html = '';
+            for (var code in LANGUAGES) {
+                if (LANGUAGES.hasOwnProperty(code)) {
+                    var lang = LANGUAGES[code];
+                    html += '<a href="javascript:void(0)" class="lang-item ignore" data-lang="' + code + '" data-dir="' + lang.dir + '">' + lang.label + '</a>';
+                }
+            }
+            langDropdown.innerHTML = html;
+            var items = langDropdown.querySelectorAll('.lang-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    changeLanguage(this.getAttribute('data-lang'), this.getAttribute('data-dir'));
+                });
+            }
+        }
+
+        function waitForTranslation(element, originalText, timeoutMs) {
+            return new Promise(function(resolve) {
+                var start = Date.now();
+                var timer = setInterval(function() {
+                    if (element.textContent !== originalText) {
+                        clearInterval(timer);
+                        resolve(true);
+                    } else if (Date.now() - start > timeoutMs) {
+                        clearInterval(timer);
+                        resolve(false);
+                    }
+                }, 200);
+            });
+        }
+
+        function applyChannel(channel) {
+            try {
+                translate.service.use(channel);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function resetToEnglish() {
+            try { localStorage.removeItem('anyscan209-lang'); } catch (e) {}
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            currentLangLabel.textContent = LANGUAGES.english.label;
+            langDropdown.classList.remove('show');
+            setTimeout(function() {
+                location.reload();
+            }, 100);
+        }
+
+        function changeLanguage(langCode, langDir) {
+            if (langCode === 'english') {
+                resetToEnglish();
+                return;
+            }
+
+            var testElement = document.querySelector('h1');
+            var originalText = testElement ? testElement.textContent : '';
+
+            function tryChannel(index) {
+                if (index >= FALLBACK_CHANNELS.length) {
+                    console.warn('All fallback channels failed.');
+                    return;
+                }
+
+                var channel = FALLBACK_CHANNELS[index];
+                applyChannel(channel);
+
+                translate.changeLanguage(langCode);
+                if (typeof translate.execute === 'function') {
+                    translate.execute();
+                }
+
+                waitForTranslation(testElement, originalText, 6000).then(function(success) {
+                    if (!success) {
+                        console.warn('Channel ' + channel + ' failed, trying next...');
+                        tryChannel(index + 1);
+                    } else {
+                        try { localStorage.setItem('anyscan209-lang', langCode); } catch (e) {}
+                        document.documentElement.setAttribute('dir', langDir);
+                        document.documentElement.setAttribute('lang', langCode === 'persian' ? 'fa' : langCode);
+                        currentLangLabel.textContent = LANGUAGES[langCode].label;
+                        langDropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            tryChannel(0);
+        }
+
+        langBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function() {
+            langDropdown.classList.remove('show');
+        });
+
+        function getSavedLang() {
+            try {
+                var saved = localStorage.getItem('anyscan209-lang');
+                if (saved && LANGUAGES[saved] && saved !== 'english') {
+                    return saved;
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        
+        function getLangFromURL() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                var lang = params.get('lang');
+                if (lang && LANG_MAP[lang]) {
+                    return LANG_MAP[lang];
+                }
+                if (lang && LANGUAGES[lang]) {
+                    return lang;
+                }
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function initTranslate() {
+            var urlLang = getLangFromURL();   
+            var savedLang = getSavedLang();  
+
+            var targetLang = urlLang || savedLang;
+
+            // Always initialise translate.js so the first manual language pick works too
+            try {
+                translate.language.setLocal('english');
+                translate.service.use(FALLBACK_CHANNELS[0]);
+                translate.selectLanguageTag.show = false;
+                translate.ignore.class.push('ignore');
+            } catch (e) {}
+
+            if (!targetLang) {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                currentLangLabel.textContent = LANGUAGES.english.label;
+                return;
+            }
+
+            translate.execute();
+            if (translate.listener && translate.listener.start) {
+                translate.listener.start();
+            }
+
+             
+            if (targetLang !== 'english') {
+                setTimeout(function() {
+                    changeLanguage(targetLang, LANGUAGES[targetLang].dir);
+                }, 800);
+            }
+        }
+
+        function restoreLanguageUI() {
+            var urlLang = getLangFromURL();
+            var savedLang = getSavedLang();
+            var targetLang = urlLang || savedLang;
+
+            if (targetLang) {
+                var lang = LANGUAGES[targetLang];
+                document.documentElement.setAttribute('dir', lang.dir);
+                document.documentElement.setAttribute('lang', targetLang === 'persian' ? 'fa' : targetLang);
+                currentLangLabel.textContent = lang.label;
+                return targetLang;
+            }
+            currentLangLabel.textContent = LANGUAGES[DEFAULT_LANG].label;
+            return null;
+        }
+
+        buildLanguageList();
+        var restored = restoreLanguageUI();
+
+        function bootTranslate() {
+            initTranslate();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootTranslate);
+        } else {
+            bootTranslate();
+        }
+    })();
     </script>
 
 </body>
