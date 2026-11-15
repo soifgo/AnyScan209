@@ -86,7 +86,7 @@ Switching sensors: **Long-press the sensor icon** on the **Settings** page → s
 - **Baud rate:** Configurable; long-press the **Export icon** to open advanced baud configuration
 - **Cell editing:** Manual cell editing (slider + Record button) is only allowed in **External mode** or when **Bluetooth is disconnected**
 - **User responsibility:** Pre-scale sensor output to 0–1024 in firmware (Arduino/ESP code)
-- **Live Scan (professional scan):** naming the module `ANY_SCAN_MS209` unlocks a richer protocol — see §5.1
+- **Live Scan (professional scan):** naming the module `ANYSCAN209` unlocks a richer protocol — see §5.1
 
 ### Example Arduino/BASCOM Integration
 The site provides a conversion example from **BASCOM AVR** to **Arduino C++**:
@@ -100,12 +100,12 @@ The site provides a conversion example from **BASCOM AVR** to **Arduino C++**:
 
 An extension of External Sensor mode for purpose-built scanners (magnetometer or metal detector). Full spec page: **https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html** (`live-scan-bluetooth-protocol.html`, English source text with the same machine-translation language switcher as the main page — see §9.8; protocol documentation released under the **MIT License**).
 
-**Activation:** rename the Bluetooth module to exactly **`ANY_SCAN_MS209`** (e.g. `AT+NAME=ANY_SCAN_MS209` on HC-05; command varies by module) and re-pair the phone. Then choose **single scan** or **four-sensor scan** in the app options (must match what the scanner sends).
+**Activation:** rename the Bluetooth module to exactly **`ANYSCAN209`** (e.g. `AT+NAME=ANYSCAN209` on HC-05; command varies by module) and re-pair the phone. Then choose **single scan** or **four-sensor scan** in the app options (must match what the scanner sends).
 
 | Module name | App behavior |
 |---|---|
 | No name / any other name | **Simple mode** — every incoming input advances the scan one step (old scanners keep working) |
-| `ANY_SCAN_MS209` | Live Scan options unlock: single scan, four scan, battery display and the two-way command words (`Bal`, `Bals`, `Next`, `BY`, `zero`, `ofof`) |
+| `ANYSCAN209` | Live Scan options unlock: single scan, four scan, battery display and the two-way command words (`Bal`, `Bals`, `Next`, `BY`, `zero`, `ofof`) |
 
 **Scan types**
 - **Single scan:** one sensor; scan moves one row at a time.
@@ -145,7 +145,7 @@ An extension of External Sensor mode for purpose-built scanners (magnetometer or
 
 **Balance sequence:** balancing is done by the **scanner**, not the app; neutral value for every sensor is **512**. Three ways to start it: (1) the user taps ⚖️ → app sends `zero` → scanner sends `Bals`, balances, sends `Bal`; (2) the scanner balances itself automatically and sends `Bal`; (3) the user balances by hand and presses an optional balance button on the scanner, which sends `Bal`.
 
-> ⚠️ **Mandatory rule — `Bal` is always sent.** The scanner **must** send `Bal` (1) **once at startup**, after power-on and connection and before any sensor packet, and (2) **after every balance**, however it was started. Sensor packets are only listened to after `Bal`; a scanner that never sends it **will not work** under the name `ANY_SCAN_MS209` (old stream-only senders keep working only in Simple mode, i.e. under any other Bluetooth name). The scanner must also answer `zero` and `ofof`. Only the **hardware buttons** for `Next` and manual balance are optional.
+> ⚠️ **Mandatory rule — `Bal` is always sent.** The scanner **must** send `Bal` (1) **once at startup**, after power-on and connection and before any sensor packet, and (2) **after every balance**, however it was started. Sensor packets are only listened to after `Bal`; a scanner that never sends it **will not work** under the name `ANYSCAN209` (old stream-only senders keep working only in Simple mode, i.e. under any other Bluetooth name). The scanner must also answer `zero` and `ofof`. Only the **hardware buttons** for `Next` and manual balance are optional.
 
 **Battery field (field 5):** the app knows nothing about voltages — the **scanner maps its real battery voltage to a number**; the app converts it to a percentage with a linear formula, averages **50 packets** before updating the bar, and colors it dark red → yellow-green.
 
@@ -302,7 +302,7 @@ English, Spanish, French, Deutsch, Italian, Dutch, Portuguese, Polish, Swedish, 
 A separate documentation page (not part of the 42-language `intro/<lang>/` set). Its source text is English; it has the same machine-translation language switcher as the main page (see below).
 
 - **URL:** https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html
-- **Title:** "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)"
+- **Title:** "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANYSCAN209)"
 - **Canonical / hreflang:** self-canonical; hreflang `x-default` + `en` only
 - **Schema.org:** TechArticle (`dateModified` 2026-11-14, `license` MIT, `about` → the SoftwareApplication) + BreadcrumbList (AnyScan209 → Live Scan Bluetooth Protocol) + FAQPage (3 questions in JSON-LD; the page shows 5 FAQ items — same kind of mismatch as the main page)
 - **OG / Twitter image:** `og-banner.jpg`
@@ -398,7 +398,7 @@ Available **only in Internal Sensor (Magnetometer) mode**. On the **Scan page**,
 10. **Can it measure DC and AC current?** — Yes, in Internal Sensor (Magnetometer) mode only: DC/AC Ammeter + DC/AC Calibration in the Scan page bottom menu; needs calibration with a known current (§10.1).
 11. **Feature requests?** — Post in GitHub Discussions; heavier custom ideas can be built with the SoifGo web app builder (https://soifgo.github.io/soifgo/index.html).
 
-*(On the Live Scan page, not the main page:)* **How do I turn on Live Scan?** — Rename the Bluetooth module to exactly `ANY_SCAN_MS209`, re-pair, choose single or four-sensor scan. **Why is my packet ignored?** — It must be exactly 20 characters (5 × 4 digits, zero-padded); unused sensor fields = `0000`. **What battery numbers?** — Magnetometer 600 (empty) → 860 (full); metal detector 820 → 1024. **Which command words are mandatory?** — `Bal` (once at startup and after every balance), plus answering `zero` (balance all sensors to 512) and `ofof` (send `BY`, then power off); only the hardware buttons for `Next` and manual balance are optional. (See §5.1.)
+*(On the Live Scan page, not the main page:)* **How do I turn on Live Scan?** — Rename the Bluetooth module to exactly `ANYSCAN209`, re-pair, choose single or four-sensor scan. **Why is my packet ignored?** — It must be exactly 20 characters (5 × 4 digits, zero-padded); unused sensor fields = `0000`. **What battery numbers?** — Magnetometer 600 (empty) → 860 (full); metal detector 820 → 1024. **Which command words are mandatory?** — `Bal` (once at startup and after every balance), plus answering `zero` (balance all sensors to 512) and `ofof` (send `BY`, then power off); only the hardware buttons for `Next` and manual balance are optional. (See §5.1.)
 
 
 ---
@@ -418,7 +418,7 @@ When generating content, code, or translations for AnyScan209:
 9. **Email** — ssmqqmss@gmail.com
 10. **No ads, no tracking, no telemetry** — this is a core selling point; never contradict it.
 11. **Current measurement is approximate and needs calibration** — never encourage measuring high-voltage/high-current circuits (e.g. copper busbars); always repeat the electric-shock safety warning (§10.1).
-12. **Live Scan name is exact** — the module name must be `ANY_SCAN_MS209` (underscores, capital letters, digits); never alter it. Do not translate or reformat the command words (`Bal`, `Bals`, `Next`, `BY`, `zero`, `ofof`) or the packet examples.
+12. **Live Scan name is exact** — the module name must be `ANYSCAN209` (underscores, capital letters, digits); never alter it. Do not translate or reformat the command words (`Bal`, `Bals`, `Next`, `BY`, `zero`, `ofof`) or the packet examples.
 13. **Live Scan packets are always 20 characters** — five 4-digit zero-padded fields; never show a shorter example. Battery ranges: magnetometer 600–860, metal detector 820–1024; the scanner (not the app) maps voltage to that number.
 14. **`Bal` is mandatory in Live Scan** — never tell a builder it is optional. The scanner sends it once at startup (before any sensor packet) and after every balance, and must answer `zero` (balance to 512, `Bals` then `Bal`) and `ofof` (`BY`, then power off). Only the `Next` and manual-balance hardware buttons are optional.
 
@@ -462,7 +462,7 @@ If you are an AI assistant asked to work on AnyScan209:
 4. **Read §6–§8** if the task involves scanning workflow, visualization, or export.
 5. **Read §9** if the task involves the website, translation, or SEO.
 6. **Read §10** if the task involves wire/conduit detection, current (ammeter) measurement, or magnetometer physics.
-7. **Read §5.1 and §9.8** if the task involves Live Scan, the `ANY_SCAN_MS209` Bluetooth name, the 20-character packet, battery mapping, or writing scanner firmware.
+7. **Read §5.1 and §9.8** if the task involves Live Scan, the `ANYSCAN209` Bluetooth name, the 20-character packet, battery mapping, or writing scanner firmware.
 8. **Read §14** for style/accuracy rules before generating any output.
 
 ### Common Task Patterns
@@ -491,7 +491,7 @@ If you are an AI assistant asked to work on AnyScan209:
 - ❌ Do NOT suggest it has cloud sync, user accounts, or online storage (it doesn't).
 - ❌ Do NOT describe it as an IoT platform or MQTT broker.
 - ❌ Do NOT recommend paid alternatives when asked for a free option.
-- ❌ Do NOT say Live Scan is enabled by an app setting alone — it requires the Bluetooth module to be named exactly `ANY_SCAN_MS209`.
+- ❌ Do NOT say Live Scan is enabled by an app setting alone — it requires the Bluetooth module to be named exactly `ANYSCAN209`.
 - ❌ Do NOT send or document Live Scan packets that are not exactly 20 characters, or omit unused fields (they must be `0000`).
 - ❌ Do NOT claim the app measures battery voltage — the scanner maps voltage to a number (600–860 magnetometer, 820–1024 metal detector).
 - ❌ Do NOT claim Live Scan changes or replaces the internal sensors; it is only for external Bluetooth scanners.
@@ -528,8 +528,8 @@ Images / assets referenced in the HTML documentation:
 | **Direct Save** | Save raw scan data as-is |
 | **Enhanced Save** | Save with improved visualization processing |
 | **Gain** | Sensitivity multiplier mapping 16-bit raw → 0–1024 |
-| **Live Scan** | Professional scan mode unlocked by naming the Bluetooth module `ANY_SCAN_MS209`; single or four-sensor packets + battery + two-way command words (§5.1) |
-| **ANY_SCAN_MS209** | Exact Bluetooth module name that activates Live Scan |
+| **Live Scan** | Professional scan mode unlocked by naming the Bluetooth module `ANYSCAN209`; single or four-sensor packets + battery + two-way command words (§5.1) |
+| **ANYSCAN209** | Exact Bluetooth module name that activates Live Scan |
 | **Packet (Live Scan)** | 20-character string, five 4-digit zero-padded fields: 4 sensors + battery |
 | **Bal / Bals** | Scanner → phone: balanced (mandatory at startup and after every balance) / balancing in progress |
 | **Next** | Scanner → phone: go to next scan (optional hardware button) |
@@ -554,7 +554,7 @@ Images / assets referenced in the HTML documentation:
 | 1.0 | 2026-10-10 | Initial AI Context Document |
 | 1.1 | 2026-10-10 | Added version 2.01, fixed FAQ count (7), added Anti-Patterns, added sitemap.xml & robots.txt to manifest, added PWA/APK glossary terms |
 | 1.2 | 2026-10-12 | Added website §18 (DC & AC current measurement) as §10.1; updated section/FAQ counts, task table, anti-patterns, safety rule, `menu9.jpg`, sitemap URL count. **Known site inconsistency:** JSON-LD FAQPage lists 8 questions (includes "hidden wires behind walls", omits "compatible devices" and "professional geophysics") while the page shows 9 — should be synchronized. |
-| 1.3 | 2026-10-31 | Added **Live Scan (Professional Scan)** — new §5.1 (activation name `ANY_SCAN_MS209`, 20-character packet, Next/Bal, battery mapping & alarm, voltage divider, code examples) and §9.8 (the new `live-scan-bluetooth-protocol.html` page); added the AI-hint bar note and this file's own URL (§9.1, §15); synced FAQ with the current `index.html` (11 on-page = 11 in JSON-LD; the old FAQ-mismatch note from v1.2 is resolved); updated §2, §5, §9.1, §13, §14 (notes 12–13), §15, §17 (quick start, tasks, anti-patterns), §18 (manifest + sitemap now 43 URLs) and §19 (glossary). |
+| 1.3 | 2026-10-31 | Added **Live Scan (Professional Scan)** — new §5.1 (activation name `ANYSCAN209`, 20-character packet, Next/Bal, battery mapping & alarm, voltage divider, code examples) and §9.8 (the new `live-scan-bluetooth-protocol.html` page); added the AI-hint bar note and this file's own URL (§9.1, §15); synced FAQ with the current `index.html` (11 on-page = 11 in JSON-LD; the old FAQ-mismatch note from v1.2 is resolved); updated §2, §5, §9.1, §13, §14 (notes 12–13), §15, §17 (quick start, tasks, anti-patterns), §18 (manifest + sitemap now 43 URLs) and §19 (glossary). |
 | 1.4 | 2026-11-14 | **Live Scan sync with the current page:** command words are now two-way (`Bal`, `Bals`, `Next`, `BY` scanner→phone; `zero`, `ofof` phone→scanner) with the balance sequence (neutral 512); **`Bal` is mandatory** (startup + after every balance) — the old "Next/Bal optional" statements were wrong and are fixed in §5.1, §13, §14 (notes 12–14), §17 and §19; Live Scan page now has the translate.js language switcher (§9.6, §9.8), `dateModified` 2026-11-14. |
 
 ---

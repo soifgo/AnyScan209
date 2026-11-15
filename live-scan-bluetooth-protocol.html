@@ -6,21 +6,21 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="author" content="Saeid Moghadam">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <title>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)</title>
-    <meta name="description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
+    <title>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANYSCAN209)</title>
+    <meta name="description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANYSCAN209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <link rel="canonical" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <link rel="alternate" hreflang="x-default" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <link rel="alternate" hreflang="en" href="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="AnyScan209">
-    <meta property="og:title" content="AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANY_SCAN_MS209)">
-    <meta property="og:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
+    <meta property="og:title" content="AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (ANYSCAN209)">
+    <meta property="og:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANYSCAN209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <meta property="og:url" content="https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html">
     <meta property="og:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AnyScan209 Live Scan Bluetooth Protocol">
-    <meta name="twitter:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
+    <meta name="twitter:description" content="Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANYSCAN209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.">
     <meta name="twitter:image" content="https://soifgo.github.io/AnyScan209/og-banner.jpg">
 
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
           "@type": "TechArticle",
           "@id": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html#article",
           "headline": "AnyScan209 Live Scan – Bluetooth Protocol for External Scanners",
-          "description": "Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANY_SCAN_MS209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.",
+          "description": "Open Bluetooth protocol for AnyScan209 Live Scan mode: rename the module to ANYSCAN209, send 20-digit single-scan or four-sensor packets with battery level, and exchange the Bal, Bals, Next, BY, zero and ofof command words. Arduino, BASCOM and Python examples.",
           "url": "https://soifgo.github.io/AnyScan209/live-scan-bluetooth-protocol.html",
           "inLanguage": "en",
           "author": { "@type": "Person", "name": "Saeid Moghadam" },
@@ -51,7 +51,7 @@
           "@type": "FAQPage",
           "mainEntity": [
             { "@type": "Question", "name": "How do I turn on Live Scan mode in AnyScan209?",
-               "acceptedAnswer": { "@type": "Answer", "text": "Rename your Bluetooth module to exactly ANY_SCAN_MS209, pair it again, then choose single scan or four-sensor scan in the app options." } },
+               "acceptedAnswer": { "@type": "Answer", "text": "Rename your Bluetooth module to exactly ANYSCAN209, pair it again, then choose single scan or four-sensor scan in the app options." } },
             { "@type": "Question", "name": "Why is my AnyScan209 Live Scan packet ignored?",
                "acceptedAnswer": { "@type": "Answer", "text": "The packet must be exactly 20 characters: five fields of four digits with leading zeros. Unused sensor fields must be sent as 0000." } },
             { "@type": "Question", "name": "What battery numbers should my scanner send?",
@@ -502,7 +502,7 @@
     <div class="container">
 
         <header>
-            <h1>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (<code class="ignore">ANY_SCAN_MS209</code>)</h1>
+            <h1>AnyScan209 Live Scan – Bluetooth Protocol for External Scanners (<code class="ignore">ANYSCAN209</code>)</h1>
             <p style="margin-top:14px;">Build your own single-scan or four-sensor scanner for <a href="index.html"><span class="ignore">AnyScan209</span></a> with Arduino, BASCOM, C or MicroPython. This page describes the exact data packet, command words and battery display used in <strong>Live Scan (professional scan) mode</strong>. The protocol is open and free to use under the MIT License.</p>
         </header>
 
@@ -528,15 +528,15 @@
 
         <h2 id="enable">2. Enable Live Scan: Set the Bluetooth Name</h2>
         <p>Rename your Bluetooth module to exactly:</p>
-        <div class="highlight-box"><p style="font-size:1.2rem;"><code class="ignore">ANY_SCAN_MS209</code></p></div>
+        <div class="highlight-box"><p style="font-size:1.2rem;"><code class="ignore">ANYSCAN209</code></p></div>
         <table class="comparison-table">
             <thead><tr><th>Bluetooth module name</th><th>App behavior</th></tr></thead>
             <tbody>
                 <tr><td>No name, or any other name</td><td>Simple mode: each input advances the scan one step</td></tr>
-                <tr><td><code class="ignore">ANY_SCAN_MS209</code></td><td>Live Scan options unlock: single scan, four scan, battery display and the two-way command words (section 5)</td></tr>
+                <tr><td><code class="ignore">ANYSCAN209</code></td><td>Live Scan options unlock: single scan, four scan, battery display and the two-way command words (section 5)</td></tr>
             </tbody>
         </table>
-        <p>Copy the name exactly, including the underscores and digits. Most modules are renamed with an AT command, for example <code class="ignore">AT+NAME=ANY_SCAN_MS209</code> on an HC-05 (the command differs between modules, so check your module's datasheet). After renaming, pair the phone with the module again so the new name appears.</p>
+        <p>Copy the name exactly, including the underscores and digits. Most modules are renamed with an AT command, for example <code class="ignore">AT+NAME=ANYSCAN209</code> on an HC-05 (the command differs between modules, so check your module's datasheet). After renaming, pair the phone with the module again so the new name appears.</p>
 
         <h2 id="single-four">3. Single Scan or Four-Sensor Scan</h2>
         <p>After the name is set, choose the scan type in the app options to match your hardware:</p>
@@ -599,7 +599,7 @@
         </ol>
         <p>The balance button on the scanner is optional, for builders who want to balance manually. The scan button on the scanner is a separate button: it sends <code class="ignore">Next</code>.</p>
 
-        <div class="warning-box"><strong>Mandatory rule: <code class="ignore">Bal</code> is always sent.</strong> The scanner <strong>must</strong> send <code class="ignore">Bal</code> at two moments: (1) <strong>once at startup</strong>, after power-on and connection, before any sensor packet, and (2) <strong>after every balance</strong>, however it was started. A scanner that never sends <code class="ignore">Bal</code> will not work in Live Scan mode. Older senders that only stream values keep working in the simple mode (any other Bluetooth name), but not under the name <code class="ignore">ANY_SCAN_MS209</code>.</div>
+        <div class="warning-box"><strong>Mandatory rule: <code class="ignore">Bal</code> is always sent.</strong> The scanner <strong>must</strong> send <code class="ignore">Bal</code> at two moments: (1) <strong>once at startup</strong>, after power-on and connection, before any sensor packet, and (2) <strong>after every balance</strong>, however it was started. A scanner that never sends <code class="ignore">Bal</code> will not work in Live Scan mode. Older senders that only stream values keep working in the simple mode (any other Bluetooth name), but not under the name <code class="ignore">ANYSCAN209</code>.</div>
 
         <h3>Power off</h3>
         <p>When the app sends <code class="ignore">ofof</code>, the scanner replies <code class="ignore">BY</code> and then switches itself off. Whether the scanner can cut its own power depends on your hardware, for example a power latch or a power-control pin. If it cannot, it can simply stop sending data after <code class="ignore">BY</code>.</p>
@@ -730,13 +730,13 @@ print(make_packet(512, batt=980))           # 05120000000000000980</pre></div>
         <div class="highlight-box">
             <p><em>"Using the AnyScan209 Live Scan protocol on this page, write sender firmware for an ESP32 with an HC-05 module, four sensors, a 3.3–4.2 V lithium battery and a Next button. Also calculate the voltage divider resistors."</em></p>
         </div>
-        <p>The assistant should ask for your microcontroller, language, Bluetooth baud rate, scan type (single or four), device type (magnetometer or metal detector), battery empty and full voltages, and the ADC reference voltage. Then it designs the divider, writes the battery mapping, builds the 20-character packet, adds the command words (<code class="ignore">Bal</code> at startup and after every balance, <code class="ignore">Bals</code>, <code class="ignore">Next</code>, replies to <code class="ignore">zero</code> and <code class="ignore">ofof</code>) and reminds you to rename the Bluetooth module to <code class="ignore">ANY_SCAN_MS209</code>.</p>
+        <p>The assistant should ask for your microcontroller, language, Bluetooth baud rate, scan type (single or four), device type (magnetometer or metal detector), battery empty and full voltages, and the ADC reference voltage. Then it designs the divider, writes the battery mapping, builds the 20-character packet, adds the command words (<code class="ignore">Bal</code> at startup and after every balance, <code class="ignore">Bals</code>, <code class="ignore">Next</code>, replies to <code class="ignore">zero</code> and <code class="ignore">ofof</code>) and reminds you to rename the Bluetooth module to <code class="ignore">ANYSCAN209</code>.</p>
 
         <h2 id="faq">10. FAQ</h2>
         <div class="faq-section">
             <div class="faq-item">
                 <h4>How do I turn on Live Scan mode in AnyScan209?</h4>
-                <p>Rename your Bluetooth module to exactly <code class="ignore">ANY_SCAN_MS209</code>, pair it again, then choose single scan or four-sensor scan in the app options. Your scanner must also send <code class="ignore">Bal</code> after power-on.</p>
+                <p>Rename your Bluetooth module to exactly <code class="ignore">ANYSCAN209</code>, pair it again, then choose single scan or four-sensor scan in the app options. Your scanner must also send <code class="ignore">Bal</code> after power-on.</p>
             </div>
             <div class="faq-item">
                 <h4>Why is my packet ignored?</h4>
